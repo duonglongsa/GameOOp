@@ -9,6 +9,28 @@ import Entity.Player;
 import Entity.Tree;
 import Main.Game;
 import Main.Handler;
+<<<<<<< HEAD
+=======
+import statics.entity.desert.BuildingDesert1;
+import statics.entity.desert.BuildingDesert3;
+import statics.entity.desert.Decor7;
+import statics.entity.desert.Lake;
+import statics.entity.desert.Pyramid;
+import statics.entity.desert.Rock1;
+import statics.entity.desert.Rock2;
+import statics.entity.desert.Rock3;
+import statics.entity.desert.StoneDesert1;
+import statics.entity.desert.StoneDesert2;
+import statics.entity.desert.StoneDesert3;
+import statics.entity.desert.Tent;
+import statics.entity.desert.Tree1;
+import statics.entity.desert.Tree11;
+import statics.entity.desert.Tree12;
+import statics.entity.desert.Tree2;
+import statics.entity.desert.Tree3;
+import statics.entity.desert.Tree4;
+import statics.entity.desert.Tree5;
+>>>>>>> 4f7685013dde6f2bad7d1f15a0b528de19608b39
 import tile.Tile;
 import utils.Utils;
 
@@ -28,6 +50,76 @@ public class World {
 		entityManager.addEntity(new Tree(handler, 255, 100));
 		
 		loadWorld(path);
+		
+	// add static entity into map
+	public static void addStaticEntity(Handler handler, EntityManager entityManager) {
+			
+		// Desert building
+		entityManager.addEntity(new BuildingDesert1(handler, 200, 100));
+		entityManager.addEntity(new BuildingDesert3(handler, 100, 200));
+		
+		// Desert stone
+		entityManager.addEntity(new StoneDesert1(handler, 510, 50));
+		entityManager.addEntity(new StoneDesert2(handler, 600, 700));
+		entityManager.addEntity(new StoneDesert3(handler, -50, -50));
+			
+		// Rock 1
+		entityManager.addEntity(new Rock1(handler, 100, 400));
+		entityManager.addEntity(new Rock1(handler, 500, 80));
+		entityManager.addEntity(new Rock1(handler, 300, 50));
+		entityManager.addEntity(new Rock1(handler, 90, 800));
+		entityManager.addEntity(new Rock1(handler, 20, 650));
+		entityManager.addEntity(new Rock1(handler, 475, 750));
+			
+		// Rock 2
+		entityManager.addEntity(new Rock2(handler, 80, 500));
+		entityManager.addEntity(new Rock2(handler, 380, 600));
+			
+		// Rock 3
+		entityManager.addEntity(new Rock3(handler, 150, 450));
+		entityManager.addEntity(new Rock3(handler, 320, 680));
+		entityManager.addEntity(new Rock3(handler, 380, 80));
+		entityManager.addEntity(new Rock3(handler, 105, 750));
+
+
+		// Pyramid
+		entityManager.addEntity(new Pyramid(handler, 400, 360));
+
+		// Tent
+		entityManager.addEntity(new Tent(handler, 700, 40));
+			
+		//Lake
+		entityManager.addEntity(new Lake(handler, 150, 680));
+			
+		// Tree
+		entityManager.addEntity(new Tree1(handler, 230, 600));
+		entityManager.addEntity(new Tree1(handler, 110, 500));
+		entityManager.addEntity(new Tree1(handler, 30, 600));
+		entityManager.addEntity(new Tree1(handler, 700, 130));
+		entityManager.addEntity(new Tree2(handler, 200, 200));
+		entityManager.addEntity(new Tree4(handler, 650, 600));
+		entityManager.addEntity(new Tree4(handler, 100, 350));
+		entityManager.addEntity(new Tree5(handler, 67, 70));
+		entityManager.addEntity(new Tree3(handler, 700, 400));
+		entityManager.addEntity(new Tree2(handler, 380, 660));
+		entityManager.addEntity(new Tree11(handler, 350, 250));		
+		entityManager.addEntity(new Tree12(handler, 600, 500));
+
+		// Decor
+		entityManager.addEntity(new Decor7(handler, 490, 540));
+	}
+	
+	public World(Handler handler, String path) {
+		this.handler = handler;
+		
+		loadWorld(path);
+		
+		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY));
+		
+		// add static
+		addStaticEntity(handler, entityManager);
+		
+		//entityManager.addEntity(new Tree(handler, 255, 100));
 		
 	}
 	
