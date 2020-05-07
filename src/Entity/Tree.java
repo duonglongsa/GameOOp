@@ -15,9 +15,14 @@ public class Tree extends StaticEntity {
 
 	@Override
 	public void tick() {
-		
+			
+	}
+	
+	@Override
+	public void die() {
 		
 	}
+
 
 	@Override
 	public void render(Graphics g) {
@@ -26,4 +31,5 @@ public class Tree extends StaticEntity {
 		
 	}
 
+	
 }
