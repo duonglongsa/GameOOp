@@ -4,37 +4,46 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
 	
-	private static final int width = 0;
+	private static final int PLAYER_SIZE = 64;
 	
 	public static BufferedImage rock, lavaRock, tree, snowTile1, snowTile2, snowTile3, snowTile4, snowTile5;
 	public static BufferedImage[] player_down, player_up, player_left, player_right;
 	
 	public static void innit() {
-		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/SwordCharacter.png"));
+		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/Knight.png"));
 		
-		player_down = new BufferedImage[4];
-		player_down[0] = sheet.crop(20, 500, 50, 40);
-		player_down[1] = sheet.crop(70, 500, 50, 40);
-		player_down[2] = sheet.crop(120, 500, 50, 40);
-		player_down[3] = sheet.crop(170, 500, 50, 40);
+		player_down = new BufferedImage[6];
+		player_down[0] = sheet.crop(PLAYER_SIZE * 0, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE);
+		player_down[1] = sheet.crop(PLAYER_SIZE * 1, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE);
+		player_down[2] = sheet.crop(PLAYER_SIZE * 2, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE);
+		player_down[3] = sheet.crop(PLAYER_SIZE * 3, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE);
+		player_down[4] = sheet.crop(PLAYER_SIZE * 4, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE);
+		player_down[5] = sheet.crop(PLAYER_SIZE * 5, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE);
 		
-		player_up = new BufferedImage[4];
-		player_up[0] = sheet.crop(20, 300, 40, 50);
-		player_up[1] = sheet.crop(60, 300, 45, 50);
-		player_up[2] = sheet.crop(105, 300, 45, 50);
-		player_up[3] = sheet.crop(150, 300, 45, 50);
+		player_up = new BufferedImage[3];
+		player_up[0] = sheet.crop(PLAYER_SIZE * 0, PLAYER_SIZE * 3, PLAYER_SIZE, PLAYER_SIZE);
+		player_up[1] = sheet.crop(PLAYER_SIZE * 1, PLAYER_SIZE * 3, PLAYER_SIZE, PLAYER_SIZE);
+		player_up[2] = sheet.crop(PLAYER_SIZE * 2, PLAYER_SIZE * 3, PLAYER_SIZE, PLAYER_SIZE);
 
-		player_left = new BufferedImage[4];
-		player_left[0] = sheet.crop(20, 110, 25, 40);
-		player_left[1] = sheet.crop(45, 110, 35, 40);
-		player_left[2] = sheet.crop(80, 110, 30, 40);
-		player_left[3] = sheet.crop(110, 110, 35, 40);
+		player_left = new BufferedImage[8];
+		player_left[0] = sheet.crop(PLAYER_SIZE * 0, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
+		player_left[1] = sheet.crop(PLAYER_SIZE * 1, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
+		player_left[2] = sheet.crop(PLAYER_SIZE * 2, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
+		player_left[3] = sheet.crop(PLAYER_SIZE * 3, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
+		player_left[4] = sheet.crop(PLAYER_SIZE * 4, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
+		player_left[5] = sheet.crop(PLAYER_SIZE * 5, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
+		player_left[6] = sheet.crop(PLAYER_SIZE * 6, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
+		player_left[7] = sheet.crop(PLAYER_SIZE * 7, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
 		
-		player_right = new BufferedImage[4];
-		player_right[0] = sheet.crop(20, 110, 25, 40);
-		player_right[1] = sheet.crop(45, 110, 35, 40);
-		player_right[2] = sheet.crop(80, 110, 30, 40);
-		player_right[3] = sheet.crop(110, 110, 35, 40);
+		player_right = new BufferedImage[8];
+		player_right[0] = sheet.crop(PLAYER_SIZE * 0, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
+		player_right[1] = sheet.crop(PLAYER_SIZE * 1, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
+		player_right[2] = sheet.crop(PLAYER_SIZE * 2, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
+		player_right[3] = sheet.crop(PLAYER_SIZE * 3, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
+		player_right[4] = sheet.crop(PLAYER_SIZE * 4, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
+		player_right[5] = sheet.crop(PLAYER_SIZE * 5, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
+		player_right[6] = sheet.crop(PLAYER_SIZE * 6, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
+		player_right[7] = sheet.crop(PLAYER_SIZE * 7, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
 		
 		rock = ImageLoader.loadImage("/textures/Rock1.png");
 		lavaRock = ImageLoader.loadImage("/textures/LavaRock.png");
