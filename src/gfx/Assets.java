@@ -6,8 +6,8 @@ public class Assets {
 
 	private static final int width = 64;
 	private static final int height = 64;
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 	
 	// Desert 
 	public static BufferedImage desertTile;
@@ -21,7 +21,7 @@ public class Assets {
 	public static BufferedImage[] decorDesert;
 	public static BufferedImage[] greeneryDesert;
 
->>>>>>> 4f7685013dde6f2bad7d1f15a0b528de19608b39
+//>>>>>>> 4f7685013dde6f2bad7d1f15a0b528de19608b39
 
 	// static entities
 	public static BufferedImage rock, lavaRock, tree, snowTile1, snowTile2, snowTile3, snowTile4, snowTile5;
@@ -119,8 +119,8 @@ public class Assets {
 		snowTile3 = ImageLoader.loadImage("/textures/SnowTile3.png");
 		snowTile4 = ImageLoader.loadImage("/textures/SnowTile4.png");
 		snowTile5 = ImageLoader.loadImage("/textures/SnowTile5.png");
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 		
 		// Desert Tile
 		SpriteSheet desertSheet = new SpriteSheet(ImageLoader.loadImage("/desert/bg.png"));
@@ -250,7 +250,7 @@ public class Assets {
 		greeneryDesert[0] = greenerySheet.crop(0, 0, 87, 162);
 						
 		
->>>>>>> 4f7685013dde6f2bad7d1f15a0b528de19608b39
+//>>>>>>> 4f7685013dde6f2bad7d1f15a0b528de19608b39
 	}
 
 }

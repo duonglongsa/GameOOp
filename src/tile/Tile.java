@@ -3,8 +3,8 @@ package tile;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 import tile.desert.DesertTile;
 import tile.desert.DesertTileSolid;
 import tile.desert.Land;
@@ -19,7 +19,7 @@ import tile.desert.Land_goc2;
 import tile.desert.Road18;
 import tile.desert.Stair1;
 
->>>>>>> 4f7685013dde6f2bad7d1f15a0b528de19608b39
+//>>>>>>> 4f7685013dde6f2bad7d1f15a0b528de19608b39
 public class Tile {
 	
 	//add tile here
@@ -27,8 +27,8 @@ public class Tile {
 	public static Tile snowTile2 = new SnowTile2(0);
 	public static Tile snowTile5 = new SnowTile5(1);
 	
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 	// Desert Tile
 	public static Tile desertTile = new DesertTile(2);
 	public static Tile desertTileSolid = new DesertTileSolid(3);
@@ -43,7 +43,7 @@ public class Tile {
 	public static Tile land_goc2 = new Land_goc2(12);
 	public static Tile stair = new Stair1(13);
 	public static Tile road =  new Road18(14);
->>>>>>> 4f7685013dde6f2bad7d1f15a0b528de19608b39
+//>>>>>>> 4f7685013dde6f2bad7d1f15a0b528de19608b39
 	
 	public static final int TILE_WIDTH = 32, TILE_HEIGHT = 32	;
 	
