@@ -3,7 +3,7 @@ package State;
 import java.awt.Graphics;
 
 import Entity.Player;
-import Entity.Tree;
+
 import Main.Game;
 import Main.Handler;
 import gfx.Assets;
@@ -16,7 +16,6 @@ public class GameState extends State{
 	public GameState(Handler handler) {
 		super(handler);
 		
-		world = new World(handler, "res/world/world1.txt");
 		world = new World(handler, "res/world/world2.desert.txt");
 
 		handler.setWorld(world);

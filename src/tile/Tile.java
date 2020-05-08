@@ -2,9 +2,6 @@ package tile;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-
-<<<<<<< HEAD
-=======
 import tile.desert.DesertTile;
 import tile.desert.DesertTileSolid;
 import tile.desert.Land;

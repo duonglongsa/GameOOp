@@ -4,52 +4,12 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
 
-	
-	private static final int PLAYER_SIZE = 64;
-	
-	public static BufferedImage rock, lavaRock, tree, snowTile1, snowTile2, snowTile3, snowTile4, snowTile5;
-	public static BufferedImage[] player_down, player_up, player_left, player_right;
-	
-	public static void innit() {
-		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/Knight.png"));
-		
-		player_down = new BufferedImage[6];
-		player_down[0] = sheet.crop(PLAYER_SIZE * 0, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE);
-		player_down[1] = sheet.crop(PLAYER_SIZE * 1, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE);
-		player_down[2] = sheet.crop(PLAYER_SIZE * 2, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE);
-		player_down[3] = sheet.crop(PLAYER_SIZE * 3, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE);
-		player_down[4] = sheet.crop(PLAYER_SIZE * 4, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE);
-		player_down[5] = sheet.crop(PLAYER_SIZE * 5, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE);
-		
-		player_up = new BufferedImage[3];
-		player_up[0] = sheet.crop(PLAYER_SIZE * 0, PLAYER_SIZE * 3, PLAYER_SIZE, PLAYER_SIZE);
-		player_up[1] = sheet.crop(PLAYER_SIZE * 1, PLAYER_SIZE * 3, PLAYER_SIZE, PLAYER_SIZE);
-		player_up[2] = sheet.crop(PLAYER_SIZE * 2, PLAYER_SIZE * 3, PLAYER_SIZE, PLAYER_SIZE);
-
-		player_left = new BufferedImage[8];
-		player_left[0] = sheet.crop(PLAYER_SIZE * 0, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
-		player_left[1] = sheet.crop(PLAYER_SIZE * 1, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
-		player_left[2] = sheet.crop(PLAYER_SIZE * 2, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
-		player_left[3] = sheet.crop(PLAYER_SIZE * 3, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
-		player_left[4] = sheet.crop(PLAYER_SIZE * 4, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
-		player_left[5] = sheet.crop(PLAYER_SIZE * 5, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
-		player_left[6] = sheet.crop(PLAYER_SIZE * 6, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
-		player_left[7] = sheet.crop(PLAYER_SIZE * 7, PLAYER_SIZE * 1, PLAYER_SIZE, PLAYER_SIZE);
-		
-		player_right = new BufferedImage[8];
-		player_right[0] = sheet.crop(PLAYER_SIZE * 0, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
-		player_right[1] = sheet.crop(PLAYER_SIZE * 1, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
-		player_right[2] = sheet.crop(PLAYER_SIZE * 2, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
-		player_right[3] = sheet.crop(PLAYER_SIZE * 3, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
-		player_right[4] = sheet.crop(PLAYER_SIZE * 4, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
-		player_right[5] = sheet.crop(PLAYER_SIZE * 5, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
-		player_right[6] = sheet.crop(PLAYER_SIZE * 6, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
-		player_right[7] = sheet.crop(PLAYER_SIZE * 7, PLAYER_SIZE * 0, PLAYER_SIZE, PLAYER_SIZE);
-		
-
 	private static final int width = 64;
 	private static final int height = 64;
 	
+	//Player-bar
+	public static BufferedImage playerBar;
+
 	// Desert 
 	public static BufferedImage desertTile;
 	public static BufferedImage[] buildingDesert;
@@ -61,6 +21,7 @@ public class Assets {
 	public static BufferedImage[] treeDesert;
 	public static BufferedImage[] decorDesert;
 	public static BufferedImage[] greeneryDesert;
+
 
 
 	// static entities
@@ -76,7 +37,45 @@ public class Assets {
 	// direction
 	public static BufferedImage[] directions;
 
-	public static void innit() {
+	//UI
+	public static BufferedImage[] button_play, button_settings, button_exit, share, facebook, google;
+	public static BufferedImage background, settings;
+	
+	public static void init() {
+		
+		//Player-bar
+		playerBar = ImageLoader.loadImage("/player/PlayerBar.png");
+		
+		// menu state
+		//UI
+		background = ImageLoader.loadImage("/GUI/background.jpg");
+		settings = ImageLoader.loadImage("/GUI/settings.png");
+				
+		button_play = new BufferedImage[2];
+		button_play[0] = ImageLoader.loadImage("/GUI/button_play0.png");
+		button_play[1] = ImageLoader.loadImage("/GUI/button_play1.png");
+				
+		button_settings = new BufferedImage[2];
+		button_settings[0] = ImageLoader.loadImage("/GUI/button_settings0.png");
+		button_settings[1] = ImageLoader.loadImage("/GUI/button_settings1.png");
+				
+		button_exit = new BufferedImage[2];
+		button_exit[0] = ImageLoader.loadImage("/GUI/button_exit0.png");
+		button_exit[1] = ImageLoader.loadImage("/GUI/button_exit1.png");
+				
+		share = new BufferedImage[2];
+		share[0] = ImageLoader.loadImage("/GUI/share0.png");
+		share[1] = ImageLoader.loadImage("/GUI/share1.png");
+				
+		facebook = new BufferedImage[2];
+		facebook[0] = ImageLoader.loadImage("/GUI/facebook0.png");
+		facebook[1] = ImageLoader.loadImage("/GUI/facebook1.png");
+				
+		google = new BufferedImage[2];
+		google[0] = ImageLoader.loadImage("/GUI/google0.png");
+		google[1] = ImageLoader.loadImage("/GUI/google1.png");
+		
+		
 		// my character
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/player/rouge.png"));
 		player_right = new BufferedImage[6];

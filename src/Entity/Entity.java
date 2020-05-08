@@ -9,7 +9,6 @@ import Main.Handler;
 public abstract class Entity {
 
 	protected Handler handler;
-
 	public static final int HEALTH = 20;
 	protected float x, y;
 	protected int width, height;
@@ -23,7 +22,8 @@ public abstract class Entity {
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		
+
+		health = HEALTH;
 		bounds = new Rectangle(20, 20, width, height);
 	}
 
@@ -90,6 +90,7 @@ public abstract class Entity {
 	public void setHeight(int height) {
 		this.height = height;
 	} 
+
 
 	public int getHealth() {
 		return health;

@@ -6,11 +6,8 @@ import javax.xml.crypto.dsig.keyinfo.X509Data;
 
 import Entity.EntityManager;
 import Entity.Player;
-import Entity.Tree;
 import Main.Game;
 import Main.Handler;
-<<<<<<< HEAD
-=======
 import statics.entity.desert.BuildingDesert1;
 import statics.entity.desert.BuildingDesert3;
 import statics.entity.desert.Decor7;
@@ -30,7 +27,6 @@ import statics.entity.desert.Tree2;
 import statics.entity.desert.Tree3;
 import statics.entity.desert.Tree4;
 import statics.entity.desert.Tree5;
->>>>>>> 4f7685013dde6f2bad7d1f15a0b528de19608b39
 import tile.Tile;
 import utils.Utils;
 
@@ -43,15 +39,7 @@ public class World {
 	
 	//entities
 	private EntityManager entityManager;
-	
-	public World(Handler handler, String path) {
-		this.handler = handler;
-		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY));
-		entityManager.addEntity(new Tree(handler, 255, 100));
-		
-		loadWorld(path);
-		
-	// add static entity into map
+
 	public static void addStaticEntity(Handler handler, EntityManager entityManager) {
 			
 		// Desert building
