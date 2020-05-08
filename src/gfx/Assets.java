@@ -36,7 +36,42 @@ public class Assets {
 	// direction
 	public static BufferedImage[] directions;
 
-	public static void innit() {
+	//UI
+	public static BufferedImage[] button_play, button_settings, button_exit, share, facebook, google;
+	public static BufferedImage background, settings;
+	
+	public static void init() {
+		
+		// menu state
+		//UI
+		background = ImageLoader.loadImage("/GUI/background.jpg");
+		settings = ImageLoader.loadImage("/GUI/settings.png");
+				
+		button_play = new BufferedImage[2];
+		button_play[0] = ImageLoader.loadImage("/GUI/button_play0.png");
+		button_play[1] = ImageLoader.loadImage("/GUI/button_play1.png");
+				
+		button_settings = new BufferedImage[2];
+		button_settings[0] = ImageLoader.loadImage("/GUI/button_settings0.png");
+		button_settings[1] = ImageLoader.loadImage("/GUI/button_settings1.png");
+				
+		button_exit = new BufferedImage[2];
+		button_exit[0] = ImageLoader.loadImage("/GUI/button_exit0.png");
+		button_exit[1] = ImageLoader.loadImage("/GUI/button_exit1.png");
+				
+		share = new BufferedImage[2];
+		share[0] = ImageLoader.loadImage("/GUI/share0.png");
+		share[1] = ImageLoader.loadImage("/GUI/share1.png");
+				
+		facebook = new BufferedImage[2];
+		facebook[0] = ImageLoader.loadImage("/GUI/facebook0.png");
+		facebook[1] = ImageLoader.loadImage("/GUI/facebook1.png");
+				
+		google = new BufferedImage[2];
+		google[0] = ImageLoader.loadImage("/GUI/google0.png");
+		google[1] = ImageLoader.loadImage("/GUI/google1.png");
+		
+		
 		// my character
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/player/rouge.png"));
 		player_right = new BufferedImage[6];
