@@ -1,5 +1,6 @@
 package world;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.xml.crypto.dsig.keyinfo.X509Data;
@@ -8,6 +9,7 @@ import Entity.EntityManager;
 import Entity.Player;
 import Main.Game;
 import Main.Handler;
+import gfx.Assets;
 import statics.entity.desert.BuildingDesert1;
 import statics.entity.desert.BuildingDesert3;
 import statics.entity.desert.Decor7;
@@ -36,6 +38,9 @@ public class World {
 	private int width, height;
 	private int spawnX, spawnY;
 	private int[][] tiles;
+	
+	//Player-bar
+	private int health = 100, totalMana = 100, mana = 100; 
 	
 	//entities
 	private EntityManager entityManager;
@@ -99,10 +104,10 @@ public class World {
 	
 	public World(Handler handler, String path) {
 		this.handler = handler;
-		
 		loadWorld(path);
 		
 		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY));
+		
 		
 		// add static
 		addStaticEntity(handler, entityManager);
@@ -113,9 +118,19 @@ public class World {
 	
 	public void tick() {
 		entityManager.tick();
+		
+		//Player-bar
+		if(handler.getKeyManager().skill) {
+			mana -= 5;
+			if(mana <= 0) {
+				handler.getKeyManager().skill = false;
+			}
+		}
+		
 	}
 	
 	public void render(Graphics g) {
+		
 		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILE_WIDTH);
 		int xEnd   = (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILE_WIDTH + 1);
 		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILE_HEIGHT);
@@ -127,8 +142,17 @@ public class World {
 										(int)(y * Tile.TILE_HEIGHT - handler.getGameCamera().getyOffset()));
 			}
 		}
-		
+				
 		entityManager.render(g);
+		
+		//Player-bar
+		g.setColor(Color.red);
+		g.fillRect(73, 30, 127, 12);				
+								
+		g.setColor(Color.blue);
+		g.fillRect(73, 46, 122 * mana / totalMana, 6);
+			
+		g.drawImage(Assets.playerBar, 0, 0, null);
 	}
 	
 	public Tile getTile(int x, int y) {

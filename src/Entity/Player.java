@@ -17,9 +17,6 @@ import gfx.Assets;
 
 public class Player extends Creature {
 
-	//Player-bar
-	private int health = 100, mana = 100, manaUsed = 0;
-	
 	// Animations
 	private Animation animDown, animUp, animLeft, animRight;
 	private Animation aLeft, aRight, extraLeft, extraRight;
@@ -163,7 +160,6 @@ public class Player extends Creature {
 			} else if (handler.getKeyManager().skill) {
 				g.drawImage(extraRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
-				manaUsed += 5;
 			} else {
 				g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
@@ -175,22 +171,12 @@ public class Player extends Creature {
 			} else if (handler.getKeyManager().skill) {
 				g.drawImage(extraLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
-				manaUsed += 5;
 			} else {
 				g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 			}
 		}
 		
-		//Player-bar
-		g.setColor(Color.red);
-		g.fillRect(73, 30, 127, 12);
-		
-		g.setColor(Color.blue);
-		g.fillRect(73, 46, 122 * (mana - manaUsed) / mana, 6);
-		
-		g.drawImage(Assets.playerBar, 0, 0, null);
-
 	}
 
 	public BufferedImage getCurrentAnimationFrame() {

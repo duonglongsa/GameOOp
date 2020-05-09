@@ -149,17 +149,6 @@ public class Assets {
 		directions[3] = player_right[0];
 		directions[2] = player_left[0];
 
-		// enities
-
-		rock = ImageLoader.loadImage("/textures/Rock1.png");
-		lavaRock = ImageLoader.loadImage("/textures/LavaRock.png");
-		tree = ImageLoader.loadImage("/textures/tree.png");
-		snowTile1 = ImageLoader.loadImage("/textures/SnowTile1.png");
-		snowTile2 = ImageLoader.loadImage("/textures/SnowTile2.png");
-		snowTile3 = ImageLoader.loadImage("/textures/SnowTile3.png");
-		snowTile4 = ImageLoader.loadImage("/textures/SnowTile4.png");
-		snowTile5 = ImageLoader.loadImage("/textures/SnowTile5.png");
-
 		// Desert Tile
 		SpriteSheet desertSheet = new SpriteSheet(ImageLoader.loadImage("/desert/bg.png"));
 		desertTile = desertSheet.crop(0, 0, 32*8, 32*8);
