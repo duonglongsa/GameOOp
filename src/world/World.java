@@ -40,7 +40,7 @@ public class World {
 	private int[][] tiles;
 	
 	//Player-bar
-	private int health = 100, totalMana = 100, mana = 100; 
+	private double health = 100, totalMana = 100, mana = 100; 
 	
 	//entities
 	private EntityManager entityManager;
@@ -121,11 +121,16 @@ public class World {
 		
 		//Player-bar
 		if(handler.getKeyManager().skill) {
-			mana -= 5;
-			if(mana <= 0) {
+			if(mana > 0) {
+				mana -= 0.2;
+			}else {
 				handler.getKeyManager().skill = false;
 			}
 		}
+		if(mana <= totalMana) {
+			mana += 0.01;
+		}
+
 		
 	}
 	
@@ -150,7 +155,7 @@ public class World {
 		g.fillRect(73, 30, 127, 12);				
 								
 		g.setColor(Color.blue);
-		g.fillRect(73, 46, 122 * mana / totalMana, 6);
+		g.fillRect(73, 46, (int) (122 *  (mana / totalMana)), 6);
 			
 		g.drawImage(Assets.playerBar, 0, 0, null);
 	}
