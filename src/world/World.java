@@ -29,6 +29,24 @@ import statics.entity.desert.Tree2;
 import statics.entity.desert.Tree3;
 import statics.entity.desert.Tree4;
 import statics.entity.desert.Tree5;
+import statics.entity.wind.BuildingWind1;
+import statics.entity.wind.BuildingWind10;
+import statics.entity.wind.BuildingWind11;
+import statics.entity.wind.BuildingWind12;
+import statics.entity.wind.BuildingWind13;
+import statics.entity.wind.BuildingWind14;
+import statics.entity.wind.BuildingWind15;
+import statics.entity.wind.BuildingWind16;
+import statics.entity.wind.BuildingWind17;
+import statics.entity.wind.BuildingWind18;
+import statics.entity.wind.BuildingWind2;
+import statics.entity.wind.BuildingWind3;
+import statics.entity.wind.BuildingWind4;
+import statics.entity.wind.BuildingWind5;
+import statics.entity.wind.BuildingWind6;
+import statics.entity.wind.BuildingWind7;
+import statics.entity.wind.BuildingWind8;
+import statics.entity.wind.BuildingWind9;
 import tile.Tile;
 import utils.Utils;
 
@@ -45,7 +63,7 @@ public class World {
 	//entities
 	private EntityManager entityManager;
 
-	public static void addStaticEntity(Handler handler, EntityManager entityManager) {
+	public static void addStaticEntityDesert(Handler handler, EntityManager entityManager) {
 			
 		// Desert building
 		entityManager.addEntity(new BuildingDesert1(handler, 200, 100));
@@ -102,6 +120,31 @@ public class World {
 		entityManager.addEntity(new Decor7(handler, 490, 540));
 	}
 	
+	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
+		
+		// Building
+		entityManager.addEntity(new BuildingWind1(handler, 663, 60));
+		entityManager.addEntity(new BuildingWind2(handler, 650, 620));
+		entityManager.addEntity(new BuildingWind3(handler, 495, 642));
+		entityManager.addEntity(new BuildingWind4(handler, 70, 300));
+		entityManager.addEntity(new BuildingWind5(handler, 340, 600));
+		entityManager.addEntity(new BuildingWind6(handler, 270, 340));
+		entityManager.addEntity(new BuildingWind7(handler, 560, 60));
+		entityManager.addEntity(new BuildingWind8(handler, 100, 570));
+		entityManager.addEntity(new BuildingWind9(handler, 110, 100));
+		entityManager.addEntity(new BuildingWind10(handler, 270, 445));
+		entityManager.addEntity(new BuildingWind11(handler, 420, 45));
+		entityManager.addEntity(new BuildingWind12(handler, 200, 150));
+		entityManager.addEntity(new BuildingWind13(handler, 280, 35));
+		entityManager.addEntity(new BuildingWind14(handler, 110, 450));
+		entityManager.addEntity(new BuildingWind15(handler, 400, 210));
+		entityManager.addEntity(new BuildingWind16(handler, 440, 450));
+		entityManager.addEntity(new BuildingWind17(handler, 578, 300));
+		entityManager.addEntity(new BuildingWind18(handler, 670, 450));
+
+
+	}
+	
 	public World(Handler handler, String path) {
 		this.handler = handler;
 		loadWorld(path);
@@ -109,11 +152,16 @@ public class World {
 		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY));
 		
 		
-		// add static
-		addStaticEntity(handler, entityManager);
+		// add static desert
+		if(path == "res/world/world2.desert.txt") {
+			addStaticEntityDesert(handler, entityManager);
+		}
 		
-		//entityManager.addEntity(new Tree(handler, 255, 100));
-		
+		//add static wind
+		if(path == "res/world/world1.wind.txt") {
+			addStaticEntityWind(handler, entityManager);
+		}
+				
 	}
 	
 	public void tick() {
@@ -163,11 +211,11 @@ public class World {
 	public Tile getTile(int x, int y) {
 		
 		if(x < 0 || y < 0 || x >= width || y >= height) {
-			return Tile.desertTile;
+			return Tile.desertTileSolid;
 		}
 		Tile t = Tile.tiles[tiles[x][y]];
 		if(t == null) {
-			return Tile.desertTile;
+			return Tile.desertTileSolid;
 		}else
 			return t;
 	}

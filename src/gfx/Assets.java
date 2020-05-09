@@ -2,6 +2,8 @@ package gfx;
 
 import java.awt.image.BufferedImage;
 
+import javax.swing.SpinnerDateModel;
+
 public class Assets {
 
 	private static final int width = 64;
@@ -22,6 +24,11 @@ public class Assets {
 	public static BufferedImage[] decorDesert;
 	public static BufferedImage[] greeneryDesert;
 
+	// Wind
+	public static BufferedImage windTile;
+	public static BufferedImage[] roadWind;
+	public static BufferedImage[] buildingWind;
+	
 	// animation
 	public static BufferedImage[] player_right, player_up, player_left, player_down, hurt_left, hurt_right, die_left,
 			die_right;
@@ -270,7 +277,65 @@ public class Assets {
 		SpriteSheet greenerySheet = new SpriteSheet(ImageLoader.loadImage("/desert/greenery_3.png"));
 				
 		greeneryDesert[0] = greenerySheet.crop(0, 0, 87, 162);
+		
+	// Wind
+		
+		// Wind tile
+		SpriteSheet windSheet = new SpriteSheet(ImageLoader.loadImage("/wind/land/land_1.png"));
+		
+		windTile = windSheet.crop(0, 0, 256, 256);
 						
+		// Wind Road
+		roadWind = new BufferedImage[2];
+		SpriteSheet roadSheet16 = new SpriteSheet(ImageLoader.loadImage("/wind/road/road_16.png"));
+		SpriteSheet roadSheet5 = new SpriteSheet(ImageLoader.loadImage("/wind/road/road_5.png"));
+		
+		roadWind[0] = roadSheet16.crop(0, 0, 64, 64);
+		roadWind[1] = roadSheet5.crop(0, 0, 64, 64);
+		
+		// Wind Building
+		buildingWind = new BufferedImage[19];
+		SpriteSheet buildingWindSheet0 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_1/building_1.png"));
+		SpriteSheet buildingWindSheet1 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_1/building_1.png"));
+		SpriteSheet buildingWindSheet2 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_2/building_1.png"));
+		SpriteSheet buildingWindSheet3 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_3/building_1.png"));
+		SpriteSheet buildingWindSheet4 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_4/building_1.png"));
+		SpriteSheet buildingWindSheet5 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_5/building_1.png"));
+		SpriteSheet buildingWindSheet6 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_6/building_1.png"));
+		SpriteSheet buildingWindSheet7 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_7/building_1.png"));
+		SpriteSheet buildingWindSheet8 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_8/building_1.png"));
+		SpriteSheet buildingWindSheet9 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_9/building_1.png"));
+		SpriteSheet buildingWindSheet10 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_10/building_1.png"));
+		SpriteSheet buildingWindSheet11 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_11/building_1.png"));
+		SpriteSheet buildingWindSheet12 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_12/building_1.png"));
+		SpriteSheet buildingWindSheet13 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_13/building_1.png"));
+		SpriteSheet buildingWindSheet14 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_14/building_1.png"));
+		SpriteSheet buildingWindSheet15 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_15/building_1.png"));
+		SpriteSheet buildingWindSheet16 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_16/building_1.png"));
+		SpriteSheet buildingWindSheet17 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_17/building_1.png"));
+		SpriteSheet buildingWindSheet18 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_18/building_1.png"));
+
+		buildingWind[0] = buildingWindSheet0.crop(0, 0, 476, 672);
+		buildingWind[1] = buildingWindSheet1.crop(0, 0, 476, 672);
+		buildingWind[2] = buildingWindSheet2.crop(0, 0, 347, 423);
+		buildingWind[3] = buildingWindSheet3.crop(0, 0, 404, 410);
+		buildingWind[4] = buildingWindSheet4.crop(0, 0, 595, 612);
+		buildingWind[5] = buildingWindSheet5.crop(0, 0, 695, 598);
+		buildingWind[6] = buildingWindSheet6.crop(0, 0, 515, 757);
+		buildingWind[7] = buildingWindSheet7.crop(0, 0, 515, 675);
+		buildingWind[8] = buildingWindSheet8.crop(0, 0, 811, 688);
+		buildingWind[9] = buildingWindSheet9.crop(0, 0, 627, 558);
+		buildingWind[10] = buildingWindSheet10.crop(0, 0, 516, 603);
+		buildingWind[11] = buildingWindSheet11.crop(0, 0, 477, 506);
+		buildingWind[12] = buildingWindSheet12.crop(0, 0, 326, 874);
+		buildingWind[13] = buildingWindSheet13.crop(0, 0, 481, 518);
+		buildingWind[14] = buildingWindSheet14.crop(0, 0, 626, 751);
+		buildingWind[15] = buildingWindSheet15.crop(0, 0, 553, 517);
+		buildingWind[16] = buildingWindSheet16.crop(0, 0, 492, 557);
+		buildingWind[17] = buildingWindSheet17.crop(0, 0, 843, 766);
+		buildingWind[18] = buildingWindSheet18.crop(0, 0, 532, 523);
+		
+		
 	}
 
 }

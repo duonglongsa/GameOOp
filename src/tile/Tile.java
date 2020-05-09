@@ -15,13 +15,21 @@ import tile.desert.Land_goc1;
 import tile.desert.Land_goc2;
 import tile.desert.Road18;
 import tile.desert.Stair1;
+import tile.wind.WindRoad16;
+import tile.wind.WindRoad5;
+import tile.wind.WindTile;
+import tile.wind.WindTileSolid;
 
 public class Tile {
 	
 	//add tile here
 	public static Tile[] tiles = new Tile[256];
-	//public static Tile snowTile2 = new SnowTile2(0);
-	//public static Tile snowTile5 = new SnowTile5(1);
+	
+	// Wind Tile
+	public static Tile windTile = new WindTile(0);
+	public static Tile windTileSolid = new WindTileSolid(1);
+	public static Tile roadWindTile16 = new WindRoad16(15);
+	public static Tile roadWindTile5 = new WindRoad5(16);
 
 	// Desert Tile
 	public static Tile desertTile = new DesertTile(2);

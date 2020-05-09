@@ -16,8 +16,10 @@ public class GameState extends State{
 	public GameState(Handler handler) {
 		super(handler);
 		
-		world = new World(handler, "res/world/world2.desert.txt");
+		//world = new World(handler, "res/world/world2.desert.txt");
+		world = new World(handler, "res/world/world1.wind.txt");
 
+		
 		handler.setWorld(world);
 	
 	}
