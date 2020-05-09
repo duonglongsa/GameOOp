@@ -22,11 +22,6 @@ public class Assets {
 	public static BufferedImage[] decorDesert;
 	public static BufferedImage[] greeneryDesert;
 
-
-
-	// static entities
-	public static BufferedImage rock, lavaRock, tree, snowTile1, snowTile2, snowTile3, snowTile4, snowTile5;
-
 	// animation
 	public static BufferedImage[] player_right, player_up, player_left, player_down, hurt_left, hurt_right, die_left,
 			die_right;

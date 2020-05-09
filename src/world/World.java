@@ -163,11 +163,11 @@ public class World {
 	public Tile getTile(int x, int y) {
 		
 		if(x < 0 || y < 0 || x >= width || y >= height) {
-			return Tile.snowTile2;
+			return Tile.desertTile;
 		}
 		Tile t = Tile.tiles[tiles[x][y]];
 		if(t == null) {
-			return Tile.snowTile2;
+			return Tile.desertTile;
 		}else
 			return t;
 	}

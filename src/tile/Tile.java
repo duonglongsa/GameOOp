@@ -20,8 +20,8 @@ public class Tile {
 	
 	//add tile here
 	public static Tile[] tiles = new Tile[256];
-	public static Tile snowTile2 = new SnowTile2(0);
-	public static Tile snowTile5 = new SnowTile5(1);
+	//public static Tile snowTile2 = new SnowTile2(0);
+	//public static Tile snowTile5 = new SnowTile5(1);
 
 	// Desert Tile
 	public static Tile desertTile = new DesertTile(2);
