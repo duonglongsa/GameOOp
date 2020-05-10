@@ -142,6 +142,33 @@ public class World {
 		entityManager.addEntity(new BuildingWind17(handler, 578, 300));
 		entityManager.addEntity(new BuildingWind18(handler, 670, 450));
 
+		// Tree
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, -20, -30));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 60, -40));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 150, -50));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 270, -60));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 540, -70));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 400, -50));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 575, 65));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 700, -10));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 700, 200));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 700, 500));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 700, 200));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 710, 750));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 610, 700));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 280, 720));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 330, 730));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 330, 450));
+		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 25, 590));
+		
+		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 47, 322));
+		entityManager.addEntity(new statics.entity.wind.Tree2(handler, -20, -15));
+		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 90, -30));
+		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 200, -15));
+		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 500, -10));
+		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 390, -10));
+		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 650, -40));
+		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 290, 590));
 
 	}
 	

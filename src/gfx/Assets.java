@@ -28,6 +28,7 @@ public class Assets {
 	public static BufferedImage windTile;
 	public static BufferedImage[] roadWind;
 	public static BufferedImage[] buildingWind;
+	public static BufferedImage[] treeWind;
 	
 	// animation
 	public static BufferedImage[] player_right, player_up, player_left, player_down, hurt_left, hurt_right, die_left,
@@ -335,7 +336,13 @@ public class Assets {
 		buildingWind[17] = buildingWindSheet17.crop(0, 0, 843, 766);
 		buildingWind[18] = buildingWindSheet18.crop(0, 0, 532, 523);
 		
+		// Tree Wind
+		treeWind = new BufferedImage[2];
+		SpriteSheet treeWindSheet1 = new SpriteSheet(ImageLoader.loadImage("/wind/decor/tree_1.png"));
+		SpriteSheet treeWindSheet2 = new SpriteSheet(ImageLoader.loadImage("/wind/decor/tree_2.png"));
 		
+		treeWind[0] = treeWindSheet1.crop(0, 0, 355, 620);
+		treeWind[1] = treeWindSheet2.crop(0, 0, 317, 543);
 	}
 
 }
