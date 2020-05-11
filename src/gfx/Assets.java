@@ -11,6 +11,9 @@ public class Assets {
 	
 	//Player-bar
 	public static BufferedImage playerBar;
+	
+	//NPC
+	public static BufferedImage[] npcJeweler;
 
 	// Desert 
 	public static BufferedImage desertTile;
@@ -48,6 +51,11 @@ public class Assets {
 		
 		//Player-bar
 		playerBar = ImageLoader.loadImage("/player/PlayerBar.png");
+		
+		//NPC
+		npcJeweler = new BufferedImage[2];
+		npcJeweler[0] = ImageLoader.loadImage("/npc/jeweler.png");
+		npcJeweler[1] = ImageLoader.loadImage("/npc/jeweler_talk.png");
 		
 		// menu state
 		//UI

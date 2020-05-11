@@ -47,6 +47,7 @@ import statics.entity.wind.BuildingWind6;
 import statics.entity.wind.BuildingWind7;
 import statics.entity.wind.BuildingWind8;
 import statics.entity.wind.BuildingWind9;
+import statics.entity.wind.NPCJeweler;
 import tile.Tile;
 import utils.Utils;
 
@@ -63,9 +64,10 @@ public class World {
 	
 	//entities
 	private EntityManager entityManager;
+	public static NPCJeweler npcJeweler;
 
 	public static void addStaticEntityDesert(Handler handler, EntityManager entityManager) {
-			
+		
 		// Desert building
 		entityManager.addEntity(new BuildingDesert1(handler, 200, 100));
 		entityManager.addEntity(new BuildingDesert3(handler, 100, 200));
@@ -122,7 +124,7 @@ public class World {
 	}
 	
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
-		
+		npcJeweler = new NPCJeweler(handler, 490, 540);
 		// Building
 		entityManager.addEntity(new BuildingWind1(handler, 1073, 60));
 		entityManager.addEntity(new BuildingWind2(handler, 1050, 620));
@@ -173,6 +175,9 @@ public class World {
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 390, -10));
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 650, -40));
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 290, 590));
+		
+		//NPC
+		entityManager.addEntity(npcJeweler);
 
 	}
 	
@@ -281,6 +286,10 @@ public class World {
 
 	public EntityManager getEntityManager() {
 		return entityManager;
+	}
+	
+	public NPCJeweler getNpcJeweler() {
+		return npcJeweler;
 	}
 	
 }

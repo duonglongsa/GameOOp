@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 import Main.Handler;
 import gfx.Animation;
 import gfx.Assets;
+import statics.entity.wind.NPCJeweler;
 
 public class Player extends Creature {
 
@@ -34,41 +35,39 @@ public class Player extends Creature {
 		bounds.width = 19;
 		bounds.height = 30;
 
-
 		// Animations
-		animDown = new Animation(180, Assets.player_down);
-		animUp = new Animation(180, Assets.player_up);
-		animLeft = new Animation(180, Assets.player_left);
-		animRight = new Animation(180, Assets.player_right);
+		animDown = new Animation(180, Assets.player_down, handler);
+		animUp = new Animation(180, Assets.player_up, handler);
+		animLeft = new Animation(180, Assets.player_left, handler);
+		animRight = new Animation(180, Assets.player_right, handler);
 
 		// attack animations
-		aLeft = new Animation(180, Assets.attack_left);
-		aRight = new Animation(180, Assets.attack_right);
-		extraLeft = new Animation(180, Assets.extra_left);
-		extraRight = new Animation(180, Assets.extra_right);
+		aLeft = new Animation(180, Assets.attack_left, handler);
+		aRight = new Animation(180, Assets.attack_right, handler);
+		extraLeft = new Animation(90, Assets.extra_left, handler);
+		extraRight = new Animation(90, Assets.extra_right, handler);
 
 	}
 
 	private void getInput() {
 		xMove = 0;
 		yMove = 0;
-		
-		if(handler.getKeyManager().up) {
-			yMove = - speed;
+
+		if (handler.getKeyManager().up) {
+			yMove = -speed;
 		}
-		
-		if(handler.getKeyManager().down) {
+
+		if (handler.getKeyManager().down) {
 			yMove = speed;
 		}
-		
-		if(handler.getKeyManager().left) {
-			xMove = - speed;
+
+		if (handler.getKeyManager().left) {
+			xMove = -speed;
 		}
-		if(handler.getKeyManager().right) {
+		if (handler.getKeyManager().right) {
 			xMove = speed;
 		}
 	}
-	
 
 	@Override
 	public void tick() {
@@ -83,14 +82,16 @@ public class Player extends Creature {
 		handler.getGameCamera().centerOnEtity(this);
 
 		// attack
-		aLeft.tick();
-		aRight.tick();
-		extraLeft.tick();
-		extraRight.tick();
+		/*
+		 * aLeft.tick(); aRight.tick(); extraLeft.tick(); extraRight.tick();
+		 */
+		//
+		aLeft.attackTick();
+		aRight.attackTick();
+		extraLeft.attackTick();
+		extraRight.attackTick();
 
-		getInput();
-		move();
-		handler.getGameCamera().centerOnEtity(this);
+		
 		// attack
 		checkAttack();
 	}
@@ -128,8 +129,8 @@ public class Player extends Creature {
 			for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
 				if (e.equals(this)) {
 					continue;
-				} else {
-					if (e.getCollisionBounds(0, 0).intersects(ar)) {
+				} 
+				else if (e.getCollisionBounds(0, 0).intersects(ar)) {
 						e.hurt(1);
 					}
 				}
@@ -137,8 +138,7 @@ public class Player extends Creature {
 
 		}
 
-	}
-
+	
 
 	@Override
 	public void die() {
@@ -147,12 +147,6 @@ public class Player extends Creature {
 
 	@Override
 	public void render(Graphics g) {
-		
-//		g.fillRect((int)(x + bounds.x - handler.getGameCamera().getxOffset()),
-//				   (int)(y + bounds.y - handler.getGameCamera().getyOffset()),
-//				   bounds.width, bounds.height);
-
-
 		if (direction == 1 || direction == 3) { // facing up or right
 			if (handler.getKeyManager().attack) {
 				g.drawImage(aRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
@@ -176,7 +170,7 @@ public class Player extends Creature {
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 			}
 		}
-		
+
 	}
 
 	public BufferedImage getCurrentAnimationFrame() {

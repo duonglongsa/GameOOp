@@ -10,7 +10,7 @@ public class KeyManager implements KeyListener {
 
 	//attack
 	public boolean attack,skill;
-
+	public boolean talk;
 	
 	public KeyManager() {
 		keys = new boolean[256];
@@ -24,7 +24,7 @@ public class KeyManager implements KeyListener {
 		
 		attack = keys[KeyEvent.VK_A];
 		skill = keys[KeyEvent.VK_S];
-
+		talk = keys[KeyEvent.VK_E];
 	}
 	
 	@Override
