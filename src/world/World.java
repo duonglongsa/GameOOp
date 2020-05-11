@@ -56,6 +56,7 @@ public class World {
 	private int width, height;
 	private int spawnX, spawnY;
 	private int[][] tiles;
+	private static String path;
 	
 	//Player-bar
 	private double health = 100, totalMana = 100, mana = 100; 
@@ -123,24 +124,27 @@ public class World {
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
 		
 		// Building
-		entityManager.addEntity(new BuildingWind1(handler, 663, 60));
-		entityManager.addEntity(new BuildingWind2(handler, 650, 620));
-		entityManager.addEntity(new BuildingWind3(handler, 495, 642));
-		entityManager.addEntity(new BuildingWind4(handler, 70, 300));
-		entityManager.addEntity(new BuildingWind5(handler, 340, 600));
-		entityManager.addEntity(new BuildingWind6(handler, 270, 340));
-		entityManager.addEntity(new BuildingWind7(handler, 560, 60));
-		entityManager.addEntity(new BuildingWind8(handler, 100, 570));
+		entityManager.addEntity(new BuildingWind1(handler, 1073, 60));
+		entityManager.addEntity(new BuildingWind2(handler, 1050, 620));
+		entityManager.addEntity(new BuildingWind3(handler, 895, 642));
+		entityManager.addEntity(new BuildingWind4(handler, 470, 300));
+		entityManager.addEntity(new BuildingWind5(handler, 740, 600));
+		entityManager.addEntity(new BuildingWind6(handler, 670, 340));
+		entityManager.addEntity(new BuildingWind7(handler, 960, 60));
+		entityManager.addEntity(new BuildingWind8(handler, 500, 570));
+		entityManager.addEntity(new BuildingWind9(handler, 110, 200));
+		entityManager.addEntity(new BuildingWind9(handler, 110, 300));
 		entityManager.addEntity(new BuildingWind9(handler, 110, 100));
-		entityManager.addEntity(new BuildingWind10(handler, 270, 445));
-		entityManager.addEntity(new BuildingWind11(handler, 420, 45));
-		entityManager.addEntity(new BuildingWind12(handler, 200, 150));
-		entityManager.addEntity(new BuildingWind13(handler, 280, 35));
-		entityManager.addEntity(new BuildingWind14(handler, 110, 450));
-		entityManager.addEntity(new BuildingWind15(handler, 400, 210));
-		entityManager.addEntity(new BuildingWind16(handler, 440, 450));
-		entityManager.addEntity(new BuildingWind17(handler, 578, 300));
-		entityManager.addEntity(new BuildingWind18(handler, 670, 450));
+		
+		entityManager.addEntity(new BuildingWind10(handler, 770, 445));
+		entityManager.addEntity(new BuildingWind11(handler, 820, 45));
+		entityManager.addEntity(new BuildingWind12(handler, 350, 70));
+		entityManager.addEntity(new BuildingWind13(handler, 680, 35));
+		entityManager.addEntity(new BuildingWind14(handler, 510, 450));
+		entityManager.addEntity(new BuildingWind15(handler, 150, 80));
+		entityManager.addEntity(new BuildingWind16(handler, 250, 170));
+		entityManager.addEntity(new BuildingWind17(handler, 978, 300));
+		entityManager.addEntity(new BuildingWind18(handler, 1070, 450));
 
 		// Tree
 		entityManager.addEntity(new statics.entity.wind.Tree1(handler, -20, -30));
@@ -174,6 +178,7 @@ public class World {
 	
 	public World(Handler handler, String path) {
 		this.handler = handler;
+		this.path = path;
 		loadWorld(path);
 		
 		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY));

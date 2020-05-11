@@ -8,12 +8,12 @@ import gfx.Assets;
 
 public class BuildingWind12 extends StaticEntity{
 	public BuildingWind12(Handler handler, float x, float y) {
-		super(handler, x, y, 105, 200);
+		super(handler, x, y, 105, 250);
 		
 		bounds.x = 13;
-		bounds.y = 140;
+		bounds.y = 200;
 		bounds.width = 94;
-		bounds.height = 60;
+		bounds.height = 40;
 	}
 	
 	@Override
