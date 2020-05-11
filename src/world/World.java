@@ -127,7 +127,7 @@ public class World {
 		entityManager.addEntity(new BuildingWind1(handler, 1073, 60));
 		entityManager.addEntity(new BuildingWind2(handler, 1050, 620));
 		entityManager.addEntity(new BuildingWind3(handler, 895, 642));
-		entityManager.addEntity(new BuildingWind4(handler, 470, 300));
+		entityManager.addEntity(new BuildingWind4(handler, 570, 230));
 		entityManager.addEntity(new BuildingWind5(handler, 740, 600));
 		entityManager.addEntity(new BuildingWind6(handler, 670, 340));
 		entityManager.addEntity(new BuildingWind7(handler, 960, 60));
@@ -141,7 +141,7 @@ public class World {
 		entityManager.addEntity(new BuildingWind12(handler, 350, 70));
 		entityManager.addEntity(new BuildingWind13(handler, 680, 35));
 		entityManager.addEntity(new BuildingWind14(handler, 510, 450));
-		entityManager.addEntity(new BuildingWind15(handler, 150, 80));
+		entityManager.addEntity(new BuildingWind15(handler, 445, 80));
 		entityManager.addEntity(new BuildingWind16(handler, 250, 170));
 		entityManager.addEntity(new BuildingWind17(handler, 978, 300));
 		entityManager.addEntity(new BuildingWind18(handler, 1070, 450));
