@@ -1,6 +1,10 @@
 package State;
 
+import java.awt.Desktop;
 import java.awt.Graphics;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import Main.Handler;
 import gfx.Assets;
@@ -41,18 +45,39 @@ public class MenuState extends State {
 		uiManager.addObject(new UIImageButton(1200, 10, 45, 45, Assets.share, new ClickListener() {				//tao nut share
 			@Override
 			public void onClick() {
+				Desktop desktop = Desktop.getDesktop();
+				try {
+					desktop.browse(new URI("https://github.com/ldlongsa/GameOOp"));
+				} catch (IOException | URISyntaxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}));
 		
 		uiManager.addObject(new UIImageButton(1200, 60, 45, 45, Assets.google, new ClickListener() {			//tao nut google
 			@Override
 			public void onClick() {
+				Desktop desktop = Desktop.getDesktop();
+				try {
+					desktop.browse(new URI("https://www.google.com/"));
+				} catch (IOException | URISyntaxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}));
 		
 		uiManager.addObject(new UIImageButton(1200, 110, 45, 45, Assets.facebook, new ClickListener() {			//tao nut facebook
 			@Override
 			public void onClick() {
+				Desktop desktop = Desktop.getDesktop();
+				try {
+					desktop.browse(new URI("https://www.facebook.com/long.leduong.5"));
+				} catch (IOException | URISyntaxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}));
 	}
