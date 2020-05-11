@@ -124,27 +124,43 @@ public class World {
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
 		
 		// Building
-		entityManager.addEntity(new BuildingWind1(handler, 1073, 60));
-		entityManager.addEntity(new BuildingWind2(handler, 1050, 620));
-		entityManager.addEntity(new BuildingWind3(handler, 895, 642));
-		entityManager.addEntity(new BuildingWind4(handler, 570, 230));
-		entityManager.addEntity(new BuildingWind5(handler, 740, 600));
-		entityManager.addEntity(new BuildingWind6(handler, 670, 340));
-		entityManager.addEntity(new BuildingWind7(handler, 960, 60));
-		entityManager.addEntity(new BuildingWind8(handler, 500, 570));
-		entityManager.addEntity(new BuildingWind9(handler, 110, 200));
-		entityManager.addEntity(new BuildingWind9(handler, 110, 300));
-		entityManager.addEntity(new BuildingWind9(handler, 110, 100));
+		entityManager.addEntity(new BuildingWind1(handler, 1070, 60));
+		entityManager.addEntity(new BuildingWind1(handler, 1070, 230));
+
+		entityManager.addEntity(new BuildingWind2(handler, 1150, 620));
+		entityManager.addEntity(new BuildingWind3(handler, 995, 642));
+		entityManager.addEntity(new BuildingWind4(handler, 578, 230));
+		entityManager.addEntity(new BuildingWind5(handler, 840, 600));
 		
-		entityManager.addEntity(new BuildingWind10(handler, 770, 445));
-		entityManager.addEntity(new BuildingWind11(handler, 820, 45));
+		entityManager.addEntity(new BuildingWind6(handler, 220, 530));
+		entityManager.addEntity(new BuildingWind6(handler, 480, 530));
+		
+		entityManager.addEntity(new BuildingWind7(handler, 90, 530));
+		entityManager.addEntity(new BuildingWind7(handler, 350,530));
+		
+		entityManager.addEntity(new BuildingWind7(handler, 220, 400));
+		entityManager.addEntity(new BuildingWind7(handler, 480, 400));
+		
+		entityManager.addEntity(new BuildingWind6(handler, 90, 400));
+		entityManager.addEntity(new BuildingWind6(handler, 350, 400));
+
+		entityManager.addEntity(new BuildingWind8(handler, 1035, -70));
+		entityManager.addEntity(new BuildingWind9(handler, 85, 200));
+		entityManager.addEntity(new BuildingWind9(handler, 85, 300));
+		entityManager.addEntity(new BuildingWind9(handler, 85, 100));
+		
+		entityManager.addEntity(new BuildingWind10(handler, 860, -75));
+		entityManager.addEntity(new BuildingWind11(handler, 270, -5));
 		entityManager.addEntity(new BuildingWind12(handler, 350, 70));
-		entityManager.addEntity(new BuildingWind13(handler, 680, 35));
-		entityManager.addEntity(new BuildingWind14(handler, 510, 450));
+		
+		entityManager.addEntity(new BuildingWind13(handler, 660, 385));
+		entityManager.addEntity(new BuildingWind13(handler, 660, 500));
+
+		entityManager.addEntity(new BuildingWind14(handler, 240, 270));
 		entityManager.addEntity(new BuildingWind15(handler, 445, 80));
-		entityManager.addEntity(new BuildingWind16(handler, 250, 170));
-		entityManager.addEntity(new BuildingWind17(handler, 978, 300));
-		entityManager.addEntity(new BuildingWind18(handler, 1070, 450));
+		entityManager.addEntity(new BuildingWind16(handler, 230, 130));
+		entityManager.addEntity(new BuildingWind17(handler, 818, 70));
+		entityManager.addEntity(new BuildingWind18(handler, 818, 230));
 
 		// Tree
 		entityManager.addEntity(new statics.entity.wind.Tree1(handler, -20, -30));
