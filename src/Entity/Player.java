@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 import Main.Handler;
 import gfx.Animation;
 import gfx.Assets;
+import gfx.AttackAnimation;
 import statics.entity.wind.NPCJeweler;
 
 public class Player extends Creature {
