@@ -7,6 +7,7 @@ import javax.xml.crypto.dsig.keyinfo.X509Data;
 
 import Entity.EntityManager;
 import Entity.Player;
+import Entity.lizardEnemy;
 import Main.Game;
 import Main.Handler;
 import gfx.Assets;
@@ -195,6 +196,8 @@ public class World {
 		//NPC
 		entityManager.addEntity(npcJeweler);
 
+		// enemy
+		entityManager.addEntity(new lizardEnemy(handler, 100, 100));
 	}
 	
 	public World(Handler handler, String path) {

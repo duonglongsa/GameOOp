@@ -50,15 +50,20 @@ public class lizardEnemy extends Creature{
 
 			move();
 
-			// attack
-			/*
-			 * aLeft.tick(); aRight.tick(); extraLeft.tick(); extraRight.tick();
-			 */
+
 			//
 			aLeft.attackTick();
 			aRight.attackTick();		
 			// attack
 			checkAttack();
+		}
+		
+		private boolean isNearPlayer(Rectangle a, Rectangle b) {
+			if (a.intersects(b))
+				return true;
+			else {
+				return false;
+			}
 		}
 
 		private void checkAttack() {
@@ -73,7 +78,7 @@ public class lizardEnemy extends Creature{
 			ar.width = arSize;
 			ar.height = arSize;
 
-			if (handler.getKeyManager().attack || handler.getKeyManager().skill) {
+			if (isNearPlayer(handler.getWorld().getEntityManager().getPlayer().getBounds(), this.getBounds())  ) {
 				if (direction == 1) { // facing up
 					ar.x = cb.x + cb.width / 2 - arSize / 2;
 					ar.y = cb.y - arSize;
@@ -148,7 +153,7 @@ public class lizardEnemy extends Creature{
 					return animRight.getCurrentFrame();
 				}
 			} else {
-				return Assets.directions[direction];
+				return Assets.lizard_directions[direction];
 			}
 
 		}
