@@ -201,7 +201,7 @@ public class World {
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 290, 590));
 
 		// enemy
-		entityManager.addEntity(new lizardEnemy(handler, 100, 100));
+		entityManager.addEntity(new lizardEnemy(handler, 500, 330));
 	}
 	
 	public World(Handler handler, String path) {
