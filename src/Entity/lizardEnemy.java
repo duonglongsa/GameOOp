@@ -47,10 +47,7 @@ public class lizardEnemy extends Creature{
 			// Animations
 			animLeft.tick();
 			animRight.tick();
-
 			move();
-
-
 			//
 			aLeft.attackTick();
 			aRight.attackTick();		
@@ -115,18 +112,50 @@ public class lizardEnemy extends Creature{
 				
 		}
 
+		private boolean isLeftPlayer() {
+			if (handler.getWorld().getEntityManager().getPlayer().getY() != this.getY())
+				return false;
+			if (handler.getWorld().getEntityManager().getPlayer().getX() != this.getX() + 1)
+				return false;
+			return true;
+		}
+		
+		private boolean isRightPlayer() {
+			if (handler.getWorld().getEntityManager().getPlayer().getY() != this.getY())
+				return false;
+			if (handler.getWorld().getEntityManager().getPlayer().getX() != this.getX() - 1)
+				return false;
+			return true;
+		}
+		
+		private boolean isUpPlayer() {
+			if (handler.getWorld().getEntityManager().getPlayer().getX() != this.getX())
+				return false;
+			if (handler.getWorld().getEntityManager().getPlayer().getY() != this.getY() + 1)
+				return false;
+			return true;
+		}
+		
+		private boolean isDownPlayer() {
+			if (handler.getWorld().getEntityManager().getPlayer().getY() != this.getY())
+				return false;
+			if (handler.getWorld().getEntityManager().getPlayer().getX() != this.getX() + 1)
+				return false;
+			return true;
+		}
+		
 		@Override
 		public void render(Graphics g) {
-			if (direction == 1 || direction == 3) { // facing up or right
-				if (handler.getKeyManager().attack) {
+			if (direction == 1 || direction == 3 || direction == 0) { // facing up or right
+				if (true) {
 					g.drawImage(aRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 							(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 				} else {
 					g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 							(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 				}
-			} else if (direction == 0 || direction == 2) {
-				if (handler.getKeyManager().attack) {
+			} else if (direction == 0 || direction == 2 || direction == 1) {
+				if (true) {
 					g.drawImage(aLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 							(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 				} else {
