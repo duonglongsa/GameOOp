@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.security.PublicKey;
 
 import Main.Handler;
 import gfx.Assets;
@@ -15,6 +16,7 @@ import ui.UIManager;
 public class MenuState extends State {
 	
 	private UIManager uiManager;
+	//public static UIManager uiManager;
 	
 	public MenuState(Handler handler) {
 		super(handler);
@@ -32,6 +34,8 @@ public class MenuState extends State {
 		uiManager.addObject(new UIImageButton(460, 400, 360, 70, Assets.button_settings, new ClickListener() {	//tao nut settings
 			@Override
 			public void onClick() {
+				//State.setState(handler.getGame().chooseState);
+				//handler.getMouseManager().setUIManager(null);
 			}
 		}));
 		

@@ -57,7 +57,6 @@ public class World {
 	private int width, height;
 	private int spawnX, spawnY;
 	private int[][] tiles;
-	private static String path;
 	
 	//Player-bar
 	private double health = 100, totalMana = 100, mana = 100; 
@@ -68,13 +67,18 @@ public class World {
 
 	public static void addStaticEntityDesert(Handler handler, EntityManager entityManager) {
 		
+		
+		//NPC
+		npcJeweler = new NPCJeweler(handler, 400, 100);
+		entityManager.addEntity(npcJeweler);
+		
 		// Desert building
 		entityManager.addEntity(new BuildingDesert1(handler, 200, 100));
 		entityManager.addEntity(new BuildingDesert3(handler, 100, 200));
 		
 		// Desert stone
-		entityManager.addEntity(new StoneDesert1(handler, 510, 50));
-		entityManager.addEntity(new StoneDesert2(handler, 600, 700));
+		entityManager.addEntity(new StoneDesert1(handler, 940, 50));
+		entityManager.addEntity(new StoneDesert2(handler, 1030, 600));
 		entityManager.addEntity(new StoneDesert3(handler, -50, -50));
 			
 		// Rock 1
@@ -100,7 +104,7 @@ public class World {
 		entityManager.addEntity(new Pyramid(handler, 400, 360));
 
 		// Tent
-		entityManager.addEntity(new Tent(handler, 700, 40));
+		entityManager.addEntity(new Tent(handler, 1130, 40));
 			
 		//Lake
 		entityManager.addEntity(new Lake(handler, 150, 680));
@@ -109,12 +113,12 @@ public class World {
 		entityManager.addEntity(new Tree1(handler, 230, 600));
 		entityManager.addEntity(new Tree1(handler, 110, 500));
 		entityManager.addEntity(new Tree1(handler, 30, 600));
-		entityManager.addEntity(new Tree1(handler, 700, 130));
+		entityManager.addEntity(new Tree1(handler, 1000, 130));
 		entityManager.addEntity(new Tree2(handler, 200, 200));
 		entityManager.addEntity(new Tree4(handler, 650, 600));
 		entityManager.addEntity(new Tree4(handler, 100, 350));
 		entityManager.addEntity(new Tree5(handler, 67, 70));
-		entityManager.addEntity(new Tree3(handler, 700, 400));
+		entityManager.addEntity(new Tree3(handler, 1000, 400));
 		entityManager.addEntity(new Tree2(handler, 380, 660));
 		entityManager.addEntity(new Tree11(handler, 350, 250));		
 		entityManager.addEntity(new Tree12(handler, 600, 500));
@@ -124,7 +128,10 @@ public class World {
 	}
 	
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
+		//NPC
 		npcJeweler = new NPCJeweler(handler, 490, 540);
+		entityManager.addEntity(npcJeweler);
+		
 		// Building
 		entityManager.addEntity(new BuildingWind1(handler, 1070, 60));
 		entityManager.addEntity(new BuildingWind1(handler, 1070, 230));
@@ -191,16 +198,13 @@ public class World {
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 390, -10));
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 650, -40));
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 290, 590));
-		
-		//NPC
-		entityManager.addEntity(npcJeweler);
 
 	}
 	
 	public World(Handler handler, String path) {
 		this.handler = handler;
-		this.path = path;
 		loadWorld(path);
+
 		
 		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY));
 		
@@ -302,10 +306,6 @@ public class World {
 
 	public EntityManager getEntityManager() {
 		return entityManager;
-	}
-	
-	public NPCJeweler getNpcJeweler() {
-		return npcJeweler;
 	}
 	
 }

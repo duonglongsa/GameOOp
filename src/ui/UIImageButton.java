@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Checkbox;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -7,6 +8,7 @@ public class UIImageButton extends UIObject {
 	
 	private BufferedImage[] images;
 	private ClickListener clicker;
+	private boolean choosen ;
 	
 	public UIImageButton(float x, float y, int width, int height, BufferedImage[] images, ClickListener clicker) {
 		super(x, y, width, height);
@@ -28,6 +30,18 @@ public class UIImageButton extends UIObject {
 	@Override
 	public void onClick() {
 		clicker.onClick();
+		choosen = true;
 	}
+
+	public boolean isChoosen() {
+		return choosen;
+	}
+
+	public void setChoosen(boolean choosen) {
+		this.choosen = choosen;
+	}
+	
+	
+
 	
 }
