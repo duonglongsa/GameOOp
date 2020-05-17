@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.IconifyAction;
+
 import Main.Game;
 
 import java.awt.Rectangle;
@@ -76,22 +78,22 @@ public class Player extends Creature {
 		animUp.tick();
 		animLeft.tick();
 		animRight.tick();
+		//aLeft.attackTick();
+		//aRight.attackTick();
+		//extraLeft.attackTick();
+		//extraRight.attackTick();
 
 		getInput();
 		move();
 		handler.getGameCamera().centerOnEtity(this);
 
 		// attack
-		/*
-		 * aLeft.tick(); aRight.tick(); extraLeft.tick(); extraRight.tick();
-		 */
-		//
-		aLeft.attackTick();
-		aRight.attackTick();
-		extraLeft.attackTick();
-		extraRight.attackTick();
 
-		
+		aLeft.tick();
+		aRight.tick();
+		extraLeft.tick();
+		extraRight.tick();
+
 		// attack
 		checkAttack();
 	}
@@ -102,6 +104,8 @@ public class Player extends Creature {
 		if (attackTimer < attackCooldown) {
 			return;
 		}
+
+		// bounds
 		Rectangle cb = getCollisionBounds(0, 0); // get the collision bound
 		Rectangle ar = new Rectangle(); // attack rectangle
 		int arSize = 20;
@@ -129,16 +133,13 @@ public class Player extends Creature {
 			for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
 				if (e.equals(this)) {
 					continue;
-				} 
-				else if (e.getCollisionBounds(0, 0).intersects(ar)) {
-						e.hurt(1);
-					}
+				} else if (e.getCollisionBounds(0, 0).intersects(ar)) {
+					e.hurt(1);
 				}
 			}
-
 		}
 
-	
+	}
 
 	@Override
 	public void die() {

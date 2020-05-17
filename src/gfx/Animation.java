@@ -2,6 +2,7 @@ package gfx;
 
 import java.awt.image.BufferedImage;
 
+import Entity.Player;
 import Main.Handler;
 
 public class Animation {
@@ -27,7 +28,8 @@ public class Animation {
 			index++;
 			timer = 0;
 			if (index >= frames.length) {
-					index = 0;
+				index = 0;
+				
 			}
 		}
 	}
@@ -46,8 +48,8 @@ public class Animation {
 	}
 
 	public BufferedImage getCurrentFrame() {
-		return frames[index];
-	}
-
+			return frames[index];
+		}
+	
 
 }

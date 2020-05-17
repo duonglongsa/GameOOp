@@ -120,11 +120,11 @@ public class World {
 		entityManager.addEntity(new Tree12(handler, 600, 500));
 
 		// Decor
-		entityManager.addEntity(new Decor7(handler, 490, 540));
+		entityManager.addEntity(new Decor7(handler, 300, 500));
 	}
 	
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
-		npcJeweler = new NPCJeweler(handler, 490, 540);
+		npcJeweler = new NPCJeweler(handler, 300, 500);
 		// Building
 		entityManager.addEntity(new BuildingWind1(handler, 1070, 60));
 		entityManager.addEntity(new BuildingWind1(handler, 1070, 230));

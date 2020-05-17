@@ -12,6 +12,7 @@ public class AttackAnimation extends Animation implements KeyListener{
 	private long lastTime, timer;
 	private BufferedImage[] frames;
 	private Handler handler;
+	private boolean[] keys;
 	public boolean attack,skill;
 	
 	public AttackAnimation(int speed, BufferedImage[] frames, Handler handler) {
@@ -19,6 +20,7 @@ public class AttackAnimation extends Animation implements KeyListener{
 		index = 0;
 		timer = 0;
 		lastTime = System.currentTimeMillis();
+		keys = new boolean[265];
 	}
 
 	public void tick() {
@@ -41,13 +43,13 @@ public class AttackAnimation extends Animation implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
+		keys[e.getKeyCode()] = false;
 		
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+		keys[e.getKeyCode()] = true;
 		
 	}
 	
