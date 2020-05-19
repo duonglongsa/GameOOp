@@ -39,15 +39,16 @@ public class NPCJeweler extends StaticEntity{
 	public void render(Graphics g) {
 		g.drawImage(Assets.npcJeweler[0], (int)(x - handler.getGameCamera().getxOffset()), 
 				(int)(y - handler.getGameCamera().getyOffset()), 30, 64, null);
-		if(check) {
-			g.drawImage(Assets.npcJeweler[1], 100, 
-					200, null);
-			if(handler.getKeyManager().talk) {
-				check = false;
-			}
-		}
+		
 	}
 
+	public void setCheck(boolean check) {
+		this.check = check;
+	}
+	
+	public boolean getCheck() {
+		return check;
+	}
 	@Override
 	public void die() {
 		// TODO Auto-generated method stub

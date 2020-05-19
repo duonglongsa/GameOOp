@@ -3,6 +3,7 @@ package world;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javax.management.loading.PrivateClassLoader;
 import javax.xml.crypto.dsig.keyinfo.X509Data;
 
 import Entity.EntityManager;
@@ -58,9 +59,6 @@ public class World {
 	private int spawnX, spawnY;
 	private int[][] tiles;
 	private static String path;
-	
-	//Player-bar
-	private double health = 100, totalMana = 100, mana = 100; 
 	
 	//entities
 	private EntityManager entityManager;
@@ -124,7 +122,6 @@ public class World {
 	}
 	
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
-		npcJeweler = new NPCJeweler(handler, 490, 540);
 		// Building
 		entityManager.addEntity(new BuildingWind1(handler, 1070, 60));
 		entityManager.addEntity(new BuildingWind1(handler, 1070, 230));
@@ -193,6 +190,7 @@ public class World {
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 290, 590));
 		
 		//NPC
+		npcJeweler = new NPCJeweler(handler, 820, 350);
 		entityManager.addEntity(npcJeweler);
 
 	}
@@ -220,19 +218,6 @@ public class World {
 	public void tick() {
 		entityManager.tick();
 		
-		//Player-bar
-		if(handler.getKeyManager().skill) {
-			if(mana > 0) {
-				mana -= 0.2;
-			}else {
-				handler.getKeyManager().skill = false;
-			}
-		}
-		if(mana <= totalMana) {
-			mana += 0.01;
-		}
-
-		
 	}
 	
 	public void render(Graphics g) {
@@ -251,14 +236,24 @@ public class World {
 				
 		entityManager.render(g);
 		
-		//Player-bar
-		g.setColor(Color.red);
-		g.fillRect(73, 30, 127, 12);				
-								
-		g.setColor(Color.blue);
-		g.fillRect(73, 46, (int) (122 *  (mana / totalMana)), 6);
+		if(npcJeweler.getCheck()) {
+		
+			g.drawImage(Assets.npcJeweler[1], 300, 380, null);
+			if(handler.getKeyManager().talk) {
+				npcJeweler.setCheck(false);
+			}
 			
-		g.drawImage(Assets.playerBar, 0, 0, null);
+	
+				handler.getKeyManager().down = false;
+				handler.getKeyManager().left = false;
+				handler.getKeyManager().right= false;
+				handler.getKeyManager().up = true;
+		}
+		
+		System.out.println(handler.getKeyManager().up);
+		
+		entityManager.getPlayer().postRender(g);
+
 	}
 	
 	public Tile getTile(int x, int y) {

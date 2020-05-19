@@ -6,10 +6,10 @@ import Main.Handler;
 
 public class Animation {
 
-	private int speed, index;
-	private long lastTime, timer, cooldown = 5000;
-	private BufferedImage[] frames;
-	private Handler handler;
+	protected int speed, index;
+	protected long lastTime, timer;
+	protected BufferedImage[] frames;
+	protected Handler handler;
 
 	public Animation(int speed, BufferedImage[] frames, Handler handler) {
 		this.speed = speed;
@@ -28,19 +28,6 @@ public class Animation {
 			timer = 0;
 			if (index >= frames.length) {
 					index = 0;
-			}
-		}
-	}
-
-	public void attackTick() {
-		timer += System.currentTimeMillis() - lastTime;
-		lastTime = System.currentTimeMillis();
-
-		if (timer > speed) {
-			index++;
-			timer = 0;
-			if (index >= frames.length) {
-				index = 0;
 			}
 		}
 	}

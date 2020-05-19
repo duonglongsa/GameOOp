@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 import Main.Handler;
 import gfx.Animation;
 import gfx.Assets;
+import gfx.AttackAnimation;
 import statics.entity.wind.NPCJeweler;
 
 public class Player extends Creature {
@@ -25,6 +26,8 @@ public class Player extends Creature {
 	private long lastAttackTimer, attackCooldown = 50, attackTimer = attackCooldown;
 	// directions
 	private int direction = 0;
+	//Player-bar
+	private double health = 100, totalMana = 100, mana = 100;
 
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDHT, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -44,8 +47,8 @@ public class Player extends Creature {
 		// attack animations
 		aLeft = new Animation(180, Assets.attack_left, handler);
 		aRight = new Animation(180, Assets.attack_right, handler);
-		extraLeft = new Animation(90, Assets.extra_left, handler);
-		extraRight = new Animation(90, Assets.extra_right, handler);
+		extraLeft = new AttackAnimation(90, Assets.extra_left, handler);
+		extraRight = new AttackAnimation(90, Assets.extra_right, handler);
 
 	}
 
@@ -82,18 +85,29 @@ public class Player extends Creature {
 		handler.getGameCamera().centerOnEtity(this);
 
 		// attack
-		/*
-		 * aLeft.tick(); aRight.tick(); extraLeft.tick(); extraRight.tick();
-		 */
-		//
-		aLeft.attackTick();
-		aRight.attackTick();
-		extraLeft.attackTick();
-		extraRight.attackTick();
+		aLeft.tick();
+		aRight.tick();
+		
+		//skill
+		extraLeft.tick();
+		extraRight.tick();
+			
 
 		
 		// attack
 		checkAttack();
+		
+		//Player-bar
+				if(handler.getKeyManager().skill) {
+					if(mana > 0) {
+						mana -= 0.2;
+					}else {
+						handler.getKeyManager().skill = false;
+					}
+				}
+				if(mana <= totalMana) {
+					mana += 0.01;
+				}
 	}
 
 	private void checkAttack() {
@@ -171,6 +185,17 @@ public class Player extends Creature {
 			}
 		}
 
+	}
+	
+	public void postRender(Graphics g) {
+		//Player-bar
+		g.setColor(Color.red);
+		g.fillRect(73, 30, 127, 12);				
+								
+		g.setColor(Color.blue);
+		g.fillRect(73, 46, (int) (122 *  (mana / totalMana)), 6);
+			
+		g.drawImage(Assets.playerBar, 0, 0, null);
 	}
 
 	public BufferedImage getCurrentAnimationFrame() {
