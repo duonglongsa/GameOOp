@@ -3,18 +3,18 @@ package Entity;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import Main.Game;
 import Main.Handler;
 
 public abstract class Entity {
 
 	protected Handler handler;
-	public static final int HEALTH = 20;
+	public static final int HEALTH = 200;
 	protected float x, y;
 	protected int width, height;
 	protected int health;
 	protected boolean active = true; // if that entity still exit
 	protected Rectangle bounds;
+	protected boolean isHurt = false;
 
 	public Entity(Handler handler, float x, float y, int width, int height) {
 		this.handler = handler;
@@ -35,19 +35,21 @@ public abstract class Entity {
 		return bounds;
 	}
 
+	public abstract void die();
+	
 	public void setBounds(Rectangle bounds) {
 		this.bounds = bounds;
 	}
-
-	public abstract void die();
 	
 	public void hurt(int amt) {
 		health -= amt;
 		if(health <= 0) {
 			active = false;
-			//die();
+			
 		}
 	}
+	
+	
 
 	public boolean checkEntityCollisions(float xOffset, float yOffset) {
 		for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
@@ -115,6 +117,15 @@ public abstract class Entity {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+	public boolean isHurt() {
+		return isHurt;
+	}
+
+	public void setHurt(boolean isHurt) {
+		this.isHurt = isHurt;
+	}
 	
+
 
 }

@@ -268,7 +268,7 @@ public class World {
 				handler.getKeyManager().up = true;
 		}
 		
-		System.out.println(handler.getKeyManager().up);
+		//System.out.println(handler.getKeyManager().up);
 		
 		entityManager.getPlayer().postRender(g);
 
