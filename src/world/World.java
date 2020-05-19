@@ -78,7 +78,7 @@ public class World {
 
 		
 		// Desert stone
-		entityManager.addEntity(new StoneDesert1(handler, 510, 50));
+		//entityManager.addEntity(new StoneDesert1(handler, 510, 50));
 		entityManager.addEntity(new StoneDesert2(handler, 600, 700));
 		entityManager.addEntity(new StoneDesert1(handler, 940, 50));
 		entityManager.addEntity(new StoneDesert2(handler, 1030, 600));
@@ -123,7 +123,7 @@ public class World {
 		entityManager.addEntity(new Tree4(handler, 650, 600));
 		entityManager.addEntity(new Tree4(handler, 100, 350));
 		entityManager.addEntity(new Tree5(handler, 67, 70));
-		entityManager.addEntity(new Tree3(handler, 700, 400));
+		//entityManager.addEntity(new Tree3(handler, 700, 400));
 		entityManager.addEntity(new Tree3(handler, 1000, 400));
 		entityManager.addEntity(new Tree2(handler, 380, 660));
 		entityManager.addEntity(new Tree11(handler, 550, 50));		

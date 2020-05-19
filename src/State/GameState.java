@@ -13,18 +13,16 @@ public class GameState extends State{
 	
 	private World world;
 	
-	public GameState(Handler handler) {
+	public GameState(Handler handler, String path) {
 		super(handler);
 		
 		//world = new World(handler, "res/world/world2.desert.txt");
-		world = new World(handler, "res/world/world1.wind.txt");
+		world = new World(handler, path);
 
 		
 		handler.setWorld(world);
 	}
 	
-	private World world2;
-
 	@Override
 	public void tick() {
 		world.tick();
