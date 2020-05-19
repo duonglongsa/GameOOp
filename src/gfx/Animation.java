@@ -32,6 +32,19 @@ public class Animation {
 		}
 	}
 
+	public void attackTick() {
+		timer += System.currentTimeMillis() - lastTime;
+		lastTime = System.currentTimeMillis();
+
+		if (timer > speed) {
+			index++;
+			timer = 0;
+			if (index >= frames.length) {
+				index = 0;
+			}
+		}
+	}
+
 	public BufferedImage getCurrentFrame() {
 		return frames[index];
 	}

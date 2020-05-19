@@ -21,8 +21,9 @@ public class GameState extends State{
 
 		
 		handler.setWorld(world);
-	
 	}
+	
+	private World world2;
 
 	@Override
 	public void tick() {

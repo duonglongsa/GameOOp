@@ -18,7 +18,6 @@ public abstract class Creature extends Entity {
 		super(handler, x, y, width, height);
 		speed = 1.8f;
 		health = 100;
-		xMove = 0;
 		yMove = 0;
 	}
 	

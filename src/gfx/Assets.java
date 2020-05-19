@@ -39,12 +39,19 @@ public class Assets {
 
 	// attack
 	public static BufferedImage[] attack_left, attack_right, extra_left, extra_right, skill;
+	
+	public static BufferedImage[] lizard_right, lizard_left, lizard_hurt_left, lizard_hurt_right, lizard_die_left,
+	lizard_die_right;
+
+	
+	public static BufferedImage[] lizard_attack_left, lizard_attack_right, lizard_skill;
 
 	// direction
 	public static BufferedImage[] directions;
+	public static BufferedImage[] lizard_directions;
 
 	//UI
-	public static BufferedImage[] button_play, button_settings, button_exit, share, facebook, google;
+	public static BufferedImage[] button_play, button_settings, share, button_exit, github, facebook, google;
 	public static BufferedImage background, settings;
 	
 	public static void init() {
@@ -77,6 +84,10 @@ public class Assets {
 		share = new BufferedImage[2];
 		share[0] = ImageLoader.loadImage("/GUI/share0.png");
 		share[1] = ImageLoader.loadImage("/GUI/share1.png");
+
+		github = new BufferedImage[2];
+		github[0] = ImageLoader.loadImage("/GUI/github0.png");
+		github[1] = ImageLoader.loadImage("/GUI/github1.png");
 				
 		facebook = new BufferedImage[2];
 		facebook[0] = ImageLoader.loadImage("/GUI/facebook0.png");
@@ -159,6 +170,61 @@ public class Assets {
 		directions[1] = player_up[2];
 		directions[3] = player_right[0];
 		directions[2] = player_left[0];
+		
+		// Manh - for Lizard
+		// my character
+				SpriteSheet lizard = new SpriteSheet(ImageLoader.loadImage("/enemy/lizard.png"));
+				lizard_right = new BufferedImage[6];
+				for(int i = 0; i < 6; i++) {
+					lizard_right[i] = lizard.crop(width*(i), 0, width, height);
+				}
+				
+				lizard_left = new BufferedImage[6];
+				for(int i = 0; i < 6; i++) {
+					lizard_left[i] = lizard.crop(width*(i), height, width, height);
+				}
+			
+				
+				//lizard_attack
+				lizard_attack_right = new BufferedImage[5];
+				for(int i = 0; i < 5; i++) {
+					lizard_attack_right[i] = lizard.crop(width*(i), height*2, width, height);
+				}
+				
+				lizard_attack_left = new BufferedImage[5];
+				for(int i = 0; i < 5; i++) {
+					lizard_attack_left[i] = lizard.crop(width*(i), height*3, width, height);
+				}
+			
+				
+				//hurt
+				lizard_hurt_right = new BufferedImage[2];
+				for(int i = 0; i < 2; i++) {
+					lizard_hurt_right[i] = lizard.crop(width*(i), height*4, width, height);
+				}
+				
+				lizard_hurt_left = new BufferedImage[2];
+				for(int i = 0; i < 2; i++) {
+					lizard_hurt_left[i] = lizard.crop(width*(i), height*5, width, height);
+				}
+				
+				//lizard_die
+				lizard_die_right = new BufferedImage[6];
+				for(int i = 0; i < 6; i++) {
+					lizard_die_right[i] = lizard.crop(width*i, height*6, width, height);
+				}
+				lizard_die_left = new BufferedImage[6];
+				for(int i = 0; i < 6; i++) {
+					lizard_die_left[i] = lizard.crop(width*(i), height*7, width, height);
+				}
+				
+				
+				// direction
+				lizard_directions = new BufferedImage[4];
+				lizard_directions[0] = lizard_right[0];
+				lizard_directions[1] = lizard_right[0];
+				lizard_directions[3] = lizard_right[0];
+				lizard_directions[2] = lizard_right[0];
 
 		// Desert Tile
 		SpriteSheet desertSheet = new SpriteSheet(ImageLoader.loadImage("/desert/bg.png"));

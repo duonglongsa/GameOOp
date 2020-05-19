@@ -31,6 +31,14 @@ public abstract class Entity {
 
 	public abstract void render(Graphics g);
 	
+	public Rectangle getBounds() {
+		return bounds;
+	}
+
+	public void setBounds(Rectangle bounds) {
+		this.bounds = bounds;
+	}
+
 	public abstract void die();
 	
 	public void hurt(int amt) {

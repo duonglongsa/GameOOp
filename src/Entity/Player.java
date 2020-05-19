@@ -14,7 +14,6 @@ import java.awt.image.BufferedImage;
 import Main.Handler;
 import gfx.Animation;
 import gfx.Assets;
-import gfx.AttackAnimation;
 import statics.entity.wind.NPCJeweler;
 
 public class Player extends Creature {
@@ -47,8 +46,10 @@ public class Player extends Creature {
 		// attack animations
 		aLeft = new Animation(180, Assets.attack_left, handler);
 		aRight = new Animation(180, Assets.attack_right, handler);
-		extraLeft = new AttackAnimation(90, Assets.extra_left, handler);
-		extraRight = new AttackAnimation(90, Assets.extra_right, handler);
+	
+		extraLeft = new Animation(90, Assets.extra_left, handler);
+		extraRight = new Animation(90, Assets.extra_right, handler);
+
 
 	}
 
@@ -92,22 +93,27 @@ public class Player extends Creature {
 		extraLeft.tick();
 		extraRight.tick();
 			
-
+		/*
+		 * aLeft.tick(); aRight.tick(); extraLeft.tick(); extraRight.tick();
+		 */
+		//
 		
 		// attack
 		checkAttack();
+
 		
 		//Player-bar
-				if(handler.getKeyManager().skill) {
-					if(mana > 0) {
-						mana -= 0.2;
-					}else {
-						handler.getKeyManager().skill = false;
-					}
-				}
-				if(mana <= totalMana) {
+		if(handler.getKeyManager().skill) {
+			if(mana > 0) {
+				mana -= 0.2;
+			}else {
+				handler.getKeyManager().skill = false;
+			}
+		}
+		if(mana <= totalMana) {
 					mana += 0.01;
-				}
+		}
+
 	}
 
 	private void checkAttack() {
