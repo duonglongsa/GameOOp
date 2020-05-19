@@ -130,26 +130,20 @@ public class lizardEnemy extends Creature {
 			if (isLeftPlayer()) { // facing left
 				ar.x = cb.x - arSize;
 				ar.y = cb.y + cb.height / 2 - arSize / 2;
-			} else if (isRightPlayer()) { // facing right
-				if (isRightPlayer()) { // facing left
-					ar.x = cb.x - arSize;
-					ar.y = cb.y + cb.height / 2 - arSize / 2;
-				} else if (isLeftPlayer()) { // facing right
+			}
+			else if (isRightPlayer()) { // facing left
+				ar.x = cb.x + cb.width;
+				ar.y = cb.y + cb.height / 2 - arSize / 2;
+			}
+			attackTimer = 0;
 
-					ar.x = cb.x + cb.width;
-					ar.y = cb.y + cb.height / 2 - arSize / 2;
-				} else {
-					return;
-				}
-				attackTimer = 0;
+			for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
+				if (e.equals(this)) {
+					continue;
+				} else if (e.getCollisionBounds(0, 0).intersects(ar)) {
 
-				for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
-					if (e.equals(this)) {
-						continue;
-					} else if (e.getCollisionBounds(0, 0).intersects(ar)) {
-
-						e.hurt((int) handler.getWorld().getEntityManager().getPlayer().getAtkDame());
-						e.isHurt = true;
+					e.hurt((int) handler.getWorld().getEntityManager().getPlayer().getAtkDame());
+					e.isHurt = true;
 					} else {
 						e.isHurt = false;
 					}
@@ -158,30 +152,28 @@ public class lizardEnemy extends Creature {
 			}
 
 		}
-	}
+	
 
 	private boolean isLeftPlayer() {
-		if (handler.getWorld().getEntityManager().getPlayer().getX() < this.getX()) {
-			if (handler.getWorld().getEntityManager().getPlayer().getY() >= this.getY() + 32
-					|| handler.getWorld().getEntityManager().getPlayer().getY() <= this.getY() - 32)
-				return false;
-			if (handler.getWorld().getEntityManager().getPlayer().getX() <= this.getX() - 32)
-				return false;
-		} else
+		if (handler.getWorld().getEntityManager().getPlayer().getX() < this.getX() && 
+			handler.getWorld().getEntityManager().getPlayer().getY() < this.getY() + 32 &&
+			handler.getWorld().getEntityManager().getPlayer().getY() > this.getY() - 32 &&
+			handler.getWorld().getEntityManager().getPlayer().getX() > this.getX() - 32) {
+			
 			return true;
+		}
 
 		return false;
 	}
 
 	private boolean isRightPlayer() {
-		if (handler.getWorld().getEntityManager().getPlayer().getX() > this.getX()) {
-			if (handler.getWorld().getEntityManager().getPlayer().getY() >= this.getY() + 32
-					|| handler.getWorld().getEntityManager().getPlayer().getY() <= this.getY() - 32)
-				return false;
-			if (handler.getWorld().getEntityManager().getPlayer().getX() >= this.getX() + 32)
-				return false;
-		} else
-			return true;
+		if (handler.getWorld().getEntityManager().getPlayer().getX() > this.getX() && 
+				handler.getWorld().getEntityManager().getPlayer().getY() < this.getY() + 32 &&
+				handler.getWorld().getEntityManager().getPlayer().getY() > this.getY() - 32 &&
+				handler.getWorld().getEntityManager().getPlayer().getX() < this.getX() + 32) {
+				
+				return true;
+			}
 
 		return false;
 	}
