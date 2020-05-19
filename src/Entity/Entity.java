@@ -3,7 +3,6 @@ package Entity;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import Main.Game;
 import Main.Handler;
 
 public abstract class Entity {
@@ -36,18 +35,17 @@ public abstract class Entity {
 		return bounds;
 	}
 
+	public abstract void die();
+	
 	public void setBounds(Rectangle bounds) {
 		this.bounds = bounds;
 	}
-
-	public abstract void die();
 	
 	public void hurt(int amt) {
 		health -= amt;
 		if(health <= 0) {
-			System.out.println("abc");
 			active = false;
-			die();
+			
 		}
 	}
 	
