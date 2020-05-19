@@ -4,17 +4,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import Main.Game;
+import java.awt.Rectangle;
 
-import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
 
 import Main.Handler;
 import gfx.Animation;
 import gfx.Assets;
-import statics.entity.wind.NPCJeweler;
+
 
 public class Player extends Creature {
 
@@ -22,16 +18,16 @@ public class Player extends Creature {
 	private Animation animDown, animUp, animLeft, animRight;
 	private Animation aLeft, aRight, extraLeft, extraRight;
 	// attack cooldown
-	private long lastAttackTimer, attackCooldown = 50, attackTimer = attackCooldown;
+	private long lastAttackTimer, attackCooldown = 100, attackTimer = attackCooldown;
 	// directions
 	private int direction = 0;
 	//Player-bar
-	private double health = 100, totalMana = 100, mana = 100;
+	private double totalHealth = HEALTH, health, totalMana = 100, mana = 100;
 
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDHT, Creature.DEFAULT_CREATURE_HEIGHT);
-		
-		health = 1;
+		this.atkDame = 3;
+		this.health = totalHealth;
 
 		// chinh kich thuoc va cham
 		bounds.x = 8;
@@ -95,16 +91,20 @@ public class Player extends Creature {
 		extraLeft.tick();
 		extraRight.tick();
 			
-		/*
-		 * aLeft.tick(); aRight.tick(); extraLeft.tick(); extraRight.tick();
-		 */
-		//
-		
 		// attack
 		checkAttack();
 
 		
 		//Player-bar
+		if(this.isHurt) {
+			if(health > 0) {
+				health -= 1;
+				
+			}else {
+				System.out.println("abc");
+				active = false;
+			}
+		}
 		if(handler.getKeyManager().skill) {
 			if(mana > 0) {
 				mana -= 0.2;
@@ -153,7 +153,7 @@ public class Player extends Creature {
 					continue;
 				} 
 				else if (e.getCollisionBounds(0, 0).intersects(ar)) {
-						e.hurt(1);
+						e.hurt((int) this.getAtkDame());
 					}
 				}
 			}
@@ -198,7 +198,7 @@ public class Player extends Creature {
 	public void postRender(Graphics g) {
 		//Player-bar
 		g.setColor(Color.red);
-		g.fillRect(73, 30, 127, 12);				
+		g.fillRect(73, 30,(int) (127 * (health / totalHealth)), 12);				
 								
 		g.setColor(Color.blue);
 		g.fillRect(73, 46, (int) (122 *  (mana / totalMana)), 6);

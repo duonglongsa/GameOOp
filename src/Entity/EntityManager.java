@@ -79,6 +79,14 @@ public class EntityManager {
 	public void setEntities(ArrayList<Entity> entities) {
 		this.entities = entities;
 	}
+
+	public lizardEnemy getLizardEnemy() {
+		return lizardEnemy;
+	}
+
+	public void setLizardEnemy(lizardEnemy lizardEnemy) {
+		this.lizardEnemy = lizardEnemy;
+	}
 	
 	
 	
