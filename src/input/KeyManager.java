@@ -42,15 +42,15 @@ public class KeyManager implements KeyListener {
 		}
 		keys[e.getKeyCode()] = true;
 
-		lastTime = System.currentTimeMillis();
-		timer += System.currentTimeMillis() - lastTime;
-
-		if (timer < cooldown) {
-			if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_S) {
-				keys[e.getKeyCode()] = false;
-
-			}
-		}
+//		lastTime = System.currentTimeMillis();
+//		timer += System.currentTimeMillis() - lastTime;
+//
+//		if (timer < cooldown) {
+//			if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_S) {
+//				keys[e.getKeyCode()] = false;
+//
+//			}
+//		}
 
 	}
 
@@ -60,10 +60,10 @@ public class KeyManager implements KeyListener {
 			return;
 		}
 		keys[e.getKeyCode()] = false;
-		if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_S) {
-			keys[e.getKeyCode()] = true;
-
-		}
+//		if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_S) {
+//			keys[e.getKeyCode()] = true;
+//
+//		}
 
 	}
 

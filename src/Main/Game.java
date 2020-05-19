@@ -5,6 +5,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 import Display.Display;
+import Entity.Player;
 import State.GameState;
 import State.MenuState;
 import State.State;
@@ -14,6 +15,7 @@ import gfx.ImageLoader;
 import gfx.SpriteSheet;
 import input.KeyManager;
 import input.MouseManager;
+import statics.entity.wind.NPCJeweler;
 
 public class Game implements Runnable {
 
@@ -26,6 +28,8 @@ public class Game implements Runnable {
 	
 	private BufferStrategy bs;
 	private Graphics g;
+	
+	private int q = 0;
 	
 	//State
 	public State gameState;
@@ -49,7 +53,7 @@ public class Game implements Runnable {
 		mouseManager = new MouseManager();
 	}
 
-	private void init() {
+	private void init(String path, int q) {
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
 		display.getFrame().addMouseListener(mouseManager);
@@ -62,11 +66,16 @@ public class Game implements Runnable {
 		gameCamera = new GameCamera(handler, 0, 0);
 		
 		menuState = new MenuState(handler);
-		gameState = new GameState(handler);
+
+		gameState = new GameState(handler, path);
+
 		
-		State.setState(gameState);
-		
-		//State.setState(gameState);
+		if(q == 1) {
+			State.setState(gameState);
+		}
+		else {
+			State.setState(menuState);
+		}
 
 	}
 	
@@ -103,33 +112,41 @@ public class Game implements Runnable {
 	
 	@Override
 	public void run() {
+		String[] path = new String[2];
+		path[0] = "res/world/world1.wind.txt";
+		path[1] = "res/world/world2.desert.txt";
 		
-		init();
-		
-		int fps = 60;								//run 60 lan / 1s (Hz)
-		double timePerTick = 1000000000 / fps;		//so nanoS can de run 1 lan (nanoS)
-		double delta = 0;
-		long now;
-		long lastTime = System.nanoTime();
-		
-		while(running) {
+		while(true) {
 			
-			now = System.nanoTime();
-			delta += (now - lastTime) / timePerTick;		//tinh xem da du thoi gian de run tiep chua 
-			lastTime = now;
+			int fps = 60;								//run 60 lan / 1s (Hz)
+			double timePerTick = 1000000000 / fps;		//so nanoS can de run 1 lan (nanoS)
+			double delta = 0;
+			long now;
+			long lastTime = System.nanoTime();
+			init(path[q], q);
+			running = true;
 			
-			if(delta >= 1) {
-				tick();
-				render();
+			while(running) {
+				now = System.nanoTime();
+				delta += (now - lastTime) / timePerTick;		//tinh xem da du thoi gian de run tiep chua 
+				lastTime = now;
 			
-				delta --;
+				if(delta >= 1) {
+					tick();
+					render();
+					delta --;
+				}
+				if( NPCJeweler.check == true && q<1) {
+					q = 1;
+					running = false;
+					NPCJeweler.check = false;
+					stop();
+					Main main = new Main();
+				}
 			}
-	
+			stop();
 		}
-		
-		stop();
-		
-	}
+		}
 	
 	public KeyManager getKeyManager() {
 		return keyManager;
