@@ -18,6 +18,9 @@ public class lizardEnemy extends Creature{
 	// Animations
 		private Animation animLeft, animRight;
 		private Animation aLeft, aRight;
+		private Animation hurtLeft, hurtRight;
+		private Animation dieLeft, dieRight; 
+		
 		// attack cooldown
 		private long lastAttackTimer, attackCooldown = 50, attackTimer = attackCooldown;
 		// directions
@@ -39,6 +42,15 @@ public class lizardEnemy extends Creature{
 			// attack animations
 			aLeft = new Animation(180, Assets.lizard_attack_left, handler);
 			aRight = new Animation(180, Assets.lizard_attack_right, handler);
+			
+			// hurt animations
+			hurtLeft = new Animation(180, Assets.lizard_hurt_left, handler);
+			hurtRight = new Animation(180, Assets.lizard_hurt_right, handler);
+			
+			// die animations
+			dieLeft = new Animation(180, Assets.lizard_die_left, handler);
+			dieRight = new Animation(180, Assets.lizard_die_right, handler);
+			
 		}
 
 
@@ -47,6 +59,7 @@ public class lizardEnemy extends Creature{
 			// Animations
 			animLeft.tick();
 			animRight.tick();
+			
 			move();
 			//
 			aLeft.attackTick();
@@ -71,7 +84,7 @@ public class lizardEnemy extends Creature{
 			}
 			Rectangle cb = getCollisionBounds(0, 0); // get the collision bound
 			Rectangle ar = new Rectangle(); // attack rectangle
-			int arSize = 15;
+			int arSize = 20;
 			ar.width = arSize;
 			ar.height = arSize;
 
@@ -99,10 +112,10 @@ public class lizardEnemy extends Creature{
 					} 
 					else if (e.getCollisionBounds(0, 0).intersects(ar)) {
 							e.hurt(1);
-						}
+						
 					}
 				}
-
+			}
 			}
 
 		
