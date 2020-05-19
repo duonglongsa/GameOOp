@@ -3,6 +3,7 @@ package Entity;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.PrimitiveIterator.OfDouble;
 
 import Main.Handler;
 import gfx.Animation;
@@ -20,6 +21,8 @@ public class lizardEnemy extends Creature{
 		private Animation aLeft, aRight;
 		private Animation hurtLeft, hurtRight;
 		private Animation dieLeft, dieRight; 
+		
+		private boolean isHurtRight, isHurtLeft; // kiểm tra enemy đang bị đánh ở hướng nào
 		
 		// attack cooldown
 		private long lastAttackTimer, attackCooldown = 50, attackTimer = attackCooldown;
@@ -118,7 +121,11 @@ public class lizardEnemy extends Creature{
 					} 
 					else if (e.getCollisionBounds(0, 0).intersects(ar)) {
 							e.hurt(1);
-						
+//							if (isLeftPlayer())
+//								isHurtLeft = true;
+//							if (isLeftPlayer())
+//								isHurtRight = true;
+//						
 					}
 				}
 			}
@@ -183,6 +190,7 @@ public class lizardEnemy extends Creature{
 				}
 			}
 			
+			
 //			if (this.health == 0 && isRightPlayer()) {	// đứng bên phải player và bị player tấn công
 //				g.drawImage(dieLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 //						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
@@ -193,8 +201,18 @@ public class lizardEnemy extends Creature{
 //						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 //			}
 			
-			
-			
+//			if (isHurtLeft) {
+//				g.drawImage(hurtLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+//					(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+//				isHurtLeft = false;
+//			}
+//			
+//			if (isHurtRight) {
+//				g.drawImage(hurtLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+//						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+//				isHurtRight = false;
+//			}
+				
 
 		}
 
