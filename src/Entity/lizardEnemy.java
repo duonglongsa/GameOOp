@@ -113,9 +113,9 @@ public class lizardEnemy extends Creature{
 		}
 
 		private boolean isLeftPlayer() {
-			if (handler.getWorld().getEntityManager().getPlayer().getY() != this.getY())
+			if (handler.getWorld().getEntityManager().getPlayer().getY() >= this.getY() + 32 && handler.getWorld().getEntityManager().getPlayer().getY() <= this.getY() - 32)
 				return false;
-			if (handler.getWorld().getEntityManager().getPlayer().getX() != this.getX() + 1)
+			if (handler.getWorld().getEntityManager().getPlayer().getX() >= this.getX() + 32)
 				return false;
 			return true;
 		}
@@ -123,7 +123,7 @@ public class lizardEnemy extends Creature{
 		private boolean isRightPlayer() {
 			if (handler.getWorld().getEntityManager().getPlayer().getY() != this.getY())
 				return false;
-			if (handler.getWorld().getEntityManager().getPlayer().getX() != this.getX() - 1)
+			if (handler.getWorld().getEntityManager().getPlayer().getX() != this.getX() - 32)
 				return false;
 			return true;
 		}
