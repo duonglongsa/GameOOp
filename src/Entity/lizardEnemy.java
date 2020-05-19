@@ -3,7 +3,6 @@ package Entity;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.util.PrimitiveIterator.OfDouble;
 
 import Main.Handler;
 import gfx.Animation;
@@ -208,7 +207,7 @@ public class lizardEnemy extends Creature{
 //			}
 //			
 //			if (isHurtRight) {
-//				g.drawImage(hurtLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+//				g.drawImage(hurtRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 //						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 //				isHurtRight = false;
 //			}
