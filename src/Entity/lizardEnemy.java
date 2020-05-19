@@ -60,6 +60,12 @@ public class lizardEnemy extends Creature{
 			animLeft.tick();
 			animRight.tick();
 			
+			hurtRight.tick();
+			hurtLeft.tick();
+			
+			dieLeft.tick();
+			dieRight.tick();
+			
 			move();
 			//
 			aLeft.attackTick();
@@ -176,6 +182,19 @@ public class lizardEnemy extends Creature{
 							(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 				}
 			}
+			
+//			if (this.health == 0 && isRightPlayer()) {	// đứng bên phải player và bị player tấn công
+//				g.drawImage(dieLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+//						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+//			}
+//			
+//			if (this.health == 0 && isLeftPlayer()) {	// đứng bên trái player và bị player tấn công
+//				g.drawImage(dieRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+//						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+//			}
+			
+			
+			
 
 		}
 
