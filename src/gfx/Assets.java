@@ -51,8 +51,12 @@ public class Assets {
 	public static BufferedImage[] lizard_directions;
 
 	//UI
-	public static BufferedImage[] button_play, button_settings, share, button_exit, github, facebook, google;
-	public static BufferedImage background, settings;
+
+//	public static BufferedImage[] button_play, button_settings, share, button_exit, github, facebook, google;
+
+	public static BufferedImage[] easy, hard, settings, exit, github, facebook, google, share;
+	public static BufferedImage background, playBackground;
+
 	
 	public static void init() {
 		
@@ -67,19 +71,23 @@ public class Assets {
 		// menu state
 		//UI
 		background = ImageLoader.loadImage("/GUI/background.jpg");
-		settings = ImageLoader.loadImage("/GUI/settings.png");
+		playBackground = ImageLoader.loadImage("/GUI/playBackground.png");
 				
-		button_play = new BufferedImage[2];
-		button_play[0] = ImageLoader.loadImage("/GUI/button_play0.png");
-		button_play[1] = ImageLoader.loadImage("/GUI/button_play1.png");
+		easy = new BufferedImage[2];
+		easy[0] = ImageLoader.loadImage("/GUI/easy0.png");
+		easy[1] = ImageLoader.loadImage("/GUI/easy1.png");
+		
+		hard = new BufferedImage[2];
+		hard[0] = ImageLoader.loadImage("/GUI/hard0.png");
+		hard[1] = ImageLoader.loadImage("/GUI/hard1.png");
 				
-		button_settings = new BufferedImage[2];
-		button_settings[0] = ImageLoader.loadImage("/GUI/button_settings0.png");
-		button_settings[1] = ImageLoader.loadImage("/GUI/button_settings1.png");
+		settings = new BufferedImage[2];
+		settings[0] = ImageLoader.loadImage("/GUI/settings0.png");
+		settings[1] = ImageLoader.loadImage("/GUI/settings1.png");
 				
-		button_exit = new BufferedImage[2];
-		button_exit[0] = ImageLoader.loadImage("/GUI/button_exit0.png");
-		button_exit[1] = ImageLoader.loadImage("/GUI/button_exit1.png");
+		exit = new BufferedImage[2];
+		exit[0] = ImageLoader.loadImage("/GUI/exit0.png");
+		exit[1] = ImageLoader.loadImage("/GUI/exit1.png");
 				
 		share = new BufferedImage[2];
 		share[0] = ImageLoader.loadImage("/GUI/share0.png");

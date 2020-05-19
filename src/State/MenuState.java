@@ -22,7 +22,7 @@ public class MenuState extends State {
 		uiManager = new UIManager(handler);
 		handler.getMouseManager().setUIManager(uiManager);
 		
-		uiManager.addObject(new UIImageButton(460, 320, 360, 70, Assets.button_play, new ClickListener() {		//tao nut play
+		uiManager.addObject(new UIImageButton(460, 470, 360, 70, Assets.easy, new ClickListener() {				//tao nut easy
 			@Override
 			public void onClick() {
 				State.setState(handler.getGame().gameState);
@@ -30,15 +30,24 @@ public class MenuState extends State {
 			}
 		}));
 		
-		uiManager.addObject(new UIImageButton(460, 400, 360, 70, Assets.button_settings, new ClickListener() {	//tao nut settings
+		uiManager.addObject(new UIImageButton(460, 550, 360, 70, Assets.hard, new ClickListener() {				//tao nut hard
 			@Override
 			public void onClick() {
+
 				//State.setState(handler.getGame().chooseState);
 				//handler.getMouseManager().setUIManager(null);
+				State.setState(handler.getGame().gameState);
+				handler.getMouseManager().setUIManager(null);
 			}
 		}));
 		
-		uiManager.addObject(new UIImageButton(460, 480, 360, 70, Assets.button_exit, new ClickListener() {		//tao nut exit
+		uiManager.addObject(new UIImageButton(1200, 600, 45, 45, Assets.settings, new ClickListener() {			//tao nut settings
+			@Override
+			public void onClick() {
+			}
+		}));
+		
+		uiManager.addObject(new UIImageButton(1200, 650, 45, 45, Assets.exit, new ClickListener() {				//tao nut exit
 			@Override
 			public void onClick() {
 				System.exit(0);
@@ -93,9 +102,20 @@ public class MenuState extends State {
 		uiManager.tick();
 	}
 	
+	int bgX = -140;
+	int j = 1;
+	
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Assets.background, -80, -10, null);		//hinh nen Menu
-		uiManager.render(g);
+		j++;
+		if(bgX == 0)															//background chuyen dong
+			g.drawImage(Assets.background, 0, -10, null);
+		else if(j % 10 == 0) 
+			g.drawImage(Assets.background, bgX++, -10, null);
+		else 
+			g.drawImage(Assets.background, bgX, -10, null);
+		
+		g.drawImage(Assets.playBackground, 385, 360, 500, 320, null);			//render o PLAY
+		uiManager.render(g);													//render cac nut
 	}
 }

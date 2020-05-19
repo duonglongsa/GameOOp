@@ -119,8 +119,8 @@ public class Game implements Runnable {
 	public void run() {		
 
 		String[] path = new String[2];
-		path[0] = "res/world/world1.wind.txt";
-		path[1] = "res/world/world2.desert.txt";
+		path[1] = "res/world/world1.wind.txt";
+		path[0] = "res/world/world2.desert.txt";
 		
 		while(true) {
 			

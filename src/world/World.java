@@ -71,8 +71,11 @@ public class World {
 		entityManager.addEntity(npcJeweler);
 		
 		// Desert building
-		entityManager.addEntity(new BuildingDesert1(handler, 200, 100));
-		entityManager.addEntity(new BuildingDesert3(handler, 100, 200));
+		entityManager.addEntity(new BuildingDesert1(handler, 710, 490));
+		entityManager.addEntity(new BuildingDesert3(handler, 230, 50));
+		entityManager.addEntity(new BuildingDesert3(handler, 810, 200));
+		entityManager.addEntity(new BuildingDesert3(handler, 935, 330));
+
 		
 		// Desert stone
 		entityManager.addEntity(new StoneDesert1(handler, 510, 50));
@@ -96,19 +99,19 @@ public class World {
 		// Rock 3
 		entityManager.addEntity(new Rock3(handler, 150, 450));
 		entityManager.addEntity(new Rock3(handler, 320, 680));
-		entityManager.addEntity(new Rock3(handler, 380, 80));
+		entityManager.addEntity(new Rock3(handler, 380, 60));
 		entityManager.addEntity(new Rock3(handler, 105, 750));
 
 
 		// Pyramid
-		entityManager.addEntity(new Pyramid(handler, 400, 360));
+		entityManager.addEntity(new Pyramid(handler, 400, 170));
 
 		// Tent
 		entityManager.addEntity(new Tent(handler, 700, 40));
 		entityManager.addEntity(new Tent(handler, 1130, 40));
 			
 		//Lake
-		entityManager.addEntity(new Lake(handler, 150, 680));
+		entityManager.addEntity(new Lake(handler, 150, 650));
 			
 		// Tree
 		entityManager.addEntity(new Tree1(handler, 230, 600));
@@ -123,11 +126,11 @@ public class World {
 		entityManager.addEntity(new Tree3(handler, 700, 400));
 		entityManager.addEntity(new Tree3(handler, 1000, 400));
 		entityManager.addEntity(new Tree2(handler, 380, 660));
-		entityManager.addEntity(new Tree11(handler, 350, 250));		
+		entityManager.addEntity(new Tree11(handler, 550, 50));		
 		entityManager.addEntity(new Tree12(handler, 600, 500));
 
 		// Decor
-		entityManager.addEntity(new Decor7(handler, 490, 540));
+		entityManager.addEntity(new Decor7(handler, 490, 350));
 	}
 	
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
