@@ -11,7 +11,9 @@ public class EntityManager {
 
 	private Handler handler;
 	private Player player;
+
 	private lizardEnemy lizardEnemy;
+
 	private ArrayList<Entity> entities;
 	private Comparator<Entity> renderSorter = new Comparator<Entity>() {
 		

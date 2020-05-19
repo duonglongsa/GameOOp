@@ -17,6 +17,7 @@ import input.KeyManager;
 import input.MouseManager;
 import statics.entity.wind.NPCJeweler;
 
+
 public class Game implements Runnable {
 
 	private Display display;
@@ -31,6 +32,7 @@ public class Game implements Runnable {
 	
 	private int q = 0;
 	
+
 	//State
 	public State gameState;
 	public State menuState;
@@ -70,13 +72,17 @@ public class Game implements Runnable {
 		gameState = new GameState(handler, path);
 
 		
+		State.setState(gameState);
+		
+		//State.setState(gameState);
+
+		
 		if(q == 1) {
 			State.setState(gameState);
 		}
 		else {
 			State.setState(menuState);
 		}
-
 	}
 	
 	private void tick() {
@@ -111,10 +117,11 @@ public class Game implements Runnable {
 	}
 	
 	@Override
-	public void run() {
+	public void run() {		
+
 		String[] path = new String[2];
-		path[0] = "res/world/world1.wind.txt";
-		path[1] = "res/world/world2.desert.txt";
+		path[1] = "res/world/world1.wind.txt";
+		path[0] = "res/world/world2.desert.txt";
 		
 		while(true) {
 			
@@ -146,7 +153,7 @@ public class Game implements Runnable {
 			}
 			stop();
 		}
-		}
+	}
 	
 	public KeyManager getKeyManager() {
 		return keyManager;

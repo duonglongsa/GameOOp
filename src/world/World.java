@@ -2,7 +2,7 @@ package world;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
+import javax.management.loading.PrivateClassLoader;
 import javax.xml.crypto.dsig.keyinfo.X509Data;
 
 import Entity.EntityManager;
@@ -58,9 +58,7 @@ public class World {
 	private int width, height;
 	private int spawnX, spawnY;
 	private int[][] tiles;
-	
-	//Player-bar
-	private double health = 100, totalMana = 100, mana = 100; 
+	private static String path;
 	
 	//entities
 	private EntityManager entityManager;
@@ -68,16 +66,20 @@ public class World {
 
 	public static void addStaticEntityDesert(Handler handler, EntityManager entityManager) {
 		
-		
 		//NPC
 		npcJeweler = new NPCJeweler(handler, 400, 100);
 		entityManager.addEntity(npcJeweler);
 		
 		// Desert building
-		entityManager.addEntity(new BuildingDesert1(handler, 200, 100));
-		entityManager.addEntity(new BuildingDesert3(handler, 100, 200));
+		entityManager.addEntity(new BuildingDesert1(handler, 710, 490));
+		entityManager.addEntity(new BuildingDesert3(handler, 230, 50));
+		entityManager.addEntity(new BuildingDesert3(handler, 810, 200));
+		entityManager.addEntity(new BuildingDesert3(handler, 935, 330));
+
 		
 		// Desert stone
+		//entityManager.addEntity(new StoneDesert1(handler, 510, 50));
+		entityManager.addEntity(new StoneDesert2(handler, 600, 700));
 		entityManager.addEntity(new StoneDesert1(handler, 940, 50));
 		entityManager.addEntity(new StoneDesert2(handler, 1030, 600));
 		entityManager.addEntity(new StoneDesert3(handler, -50, -50));
@@ -97,46 +99,52 @@ public class World {
 		// Rock 3
 		entityManager.addEntity(new Rock3(handler, 150, 450));
 		entityManager.addEntity(new Rock3(handler, 320, 680));
-		entityManager.addEntity(new Rock3(handler, 380, 80));
+		entityManager.addEntity(new Rock3(handler, 380, 60));
 		entityManager.addEntity(new Rock3(handler, 105, 750));
 
 
 		// Pyramid
-		entityManager.addEntity(new Pyramid(handler, 400, 360));
+		entityManager.addEntity(new Pyramid(handler, 400, 170));
 
 		// Tent
+		entityManager.addEntity(new Tent(handler, 700, 40));
 		entityManager.addEntity(new Tent(handler, 1130, 40));
 			
 		//Lake
-		entityManager.addEntity(new Lake(handler, 150, 680));
+		entityManager.addEntity(new Lake(handler, 150, 650));
 			
 		// Tree
 		entityManager.addEntity(new Tree1(handler, 230, 600));
 		entityManager.addEntity(new Tree1(handler, 110, 500));
 		entityManager.addEntity(new Tree1(handler, 30, 600));
+		entityManager.addEntity(new Tree1(handler, 700, 130));
 		entityManager.addEntity(new Tree1(handler, 1000, 130));
 		entityManager.addEntity(new Tree2(handler, 200, 200));
 		entityManager.addEntity(new Tree4(handler, 650, 600));
 		entityManager.addEntity(new Tree4(handler, 100, 350));
 		entityManager.addEntity(new Tree5(handler, 67, 70));
+		//entityManager.addEntity(new Tree3(handler, 700, 400));
 		entityManager.addEntity(new Tree3(handler, 1000, 400));
 		entityManager.addEntity(new Tree2(handler, 380, 660));
-		entityManager.addEntity(new Tree11(handler, 350, 250));		
+		entityManager.addEntity(new Tree11(handler, 550, 50));		
 		entityManager.addEntity(new Tree12(handler, 600, 500));
 
 		// Decor
-		entityManager.addEntity(new Decor7(handler, 300, 500));
+//<<<<<<< HEAD
+//		entityManager.addEntity(new Decor7(handler, 300, 500));
 	}
 	
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
-//<<<<<<< HEAD
-//		npcJeweler = new NPCJeweler(handler, 300, 500);
-//=======
+
+
+		entityManager.addEntity(new Decor7(handler, 490, 350));
+	
+	
 		//NPC
 		npcJeweler = new NPCJeweler(handler, 490, 540);
 		entityManager.addEntity(npcJeweler);
 		
-//>>>>>>> 33e58240b99629d0a5ab4e759c97f10bbb5c09f5
+
 		// Building
 		entityManager.addEntity(new BuildingWind1(handler, 1070, 60));
 		entityManager.addEntity(new BuildingWind1(handler, 1070, 230));
@@ -203,15 +211,19 @@ public class World {
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 390, -10));
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 650, -40));
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 290, 590));
+		
+		//NPC
+		npcJeweler = new NPCJeweler(handler, 820, 350);
+		entityManager.addEntity(npcJeweler);
 
 		// enemy
-		entityManager.addEntity(new lizardEnemy(handler, 100, 100));
+		entityManager.addEntity(new lizardEnemy(handler, 500, 330));
 	}
 	
 	public World(Handler handler, String path) {
 		this.handler = handler;
+		this.path = path;
 		loadWorld(path);
-
 		
 		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY));
 		
@@ -230,20 +242,6 @@ public class World {
 	
 	public void tick() {
 		entityManager.tick();
-		
-		//Player-bar
-		if(handler.getKeyManager().skill) {
-			if(mana > 0) {
-				mana -= 0.2;
-			}else {
-				handler.getKeyManager().skill = false;
-			}
-		}
-		if(mana <= totalMana) {
-			mana += 0.01;
-		}
-
-		
 	}
 	
 	public void render(Graphics g) {
@@ -261,15 +259,25 @@ public class World {
 		}
 				
 		entityManager.render(g);
+
+		if(npcJeweler.getCheck()) {
 		
-		//Player-bar
-		g.setColor(Color.red);
-		g.fillRect(73, 30, 127, 12);				
-								
-		g.setColor(Color.blue);
-		g.fillRect(73, 46, (int) (122 *  (mana / totalMana)), 6);
+			g.drawImage(Assets.npcJeweler[1], 300, 380, null);
+			if(handler.getKeyManager().talk) {
+				npcJeweler.setCheck(false);
+			}
 			
-		g.drawImage(Assets.playerBar, 0, 0, null);
+	
+				handler.getKeyManager().down = false;
+				handler.getKeyManager().left = false;
+				handler.getKeyManager().right= false;
+				handler.getKeyManager().up = true;
+		}
+		
+		System.out.println(handler.getKeyManager().up);
+		
+		entityManager.getPlayer().postRender(g);
+
 	}
 	
 	public Tile getTile(int x, int y) {
@@ -313,6 +321,10 @@ public class World {
 
 	public EntityManager getEntityManager() {
 		return entityManager;
+	}
+	
+	public NPCJeweler getNpcJeweler() {
+		return npcJeweler;
 	}
 	
 }

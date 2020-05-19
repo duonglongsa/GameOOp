@@ -14,6 +14,7 @@ import gfx.Assets;
 public class NPCJeweler extends StaticEntity{
 	
 	public static boolean check = false;
+
 	public NPCJeweler(Handler handler, float x, float y) {
 		super(handler, x, y, 50, 50);
 		
@@ -39,14 +40,24 @@ public class NPCJeweler extends StaticEntity{
 	public void render(Graphics g) {
 		g.drawImage(Assets.npcJeweler[0], (int)(x - handler.getGameCamera().getxOffset()), 
 				(int)(y - handler.getGameCamera().getyOffset()), 30, 64, null);
-		if(check) {
-			g.drawImage(Assets.npcJeweler[1], 300, 
-					-20, null);
-			if(handler.getKeyManager().talk) {
-				check = false;
-			}
-		}
+		
+//		if(check) {
+//			g.drawImage(Assets.npcJeweler[1], 300, 
+//					200, null);
+//			if(handler.getKeyManager().talk) {
+//				check = false;
+//			}
+//		}
 	}
+
+	public void setCheck(boolean check) {
+		this.check = check;
+	}
+	
+	public boolean getCheck() {
+		return check;
+	}
+
 
 	@Override
 	public void die() {

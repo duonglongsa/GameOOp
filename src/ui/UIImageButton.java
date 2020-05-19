@@ -9,6 +9,7 @@ public class UIImageButton extends UIObject {
 	private BufferedImage[] images;
 	private ClickListener clicker;
 	private boolean choosen ;
+
 	
 	public UIImageButton(float x, float y, int width, int height, BufferedImage[] images, ClickListener clicker) {
 		super(x, y, width, height);
@@ -40,8 +41,5 @@ public class UIImageButton extends UIObject {
 	public void setChoosen(boolean choosen) {
 		this.choosen = choosen;
 	}
-	
-	
-
 	
 }

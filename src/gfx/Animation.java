@@ -7,10 +7,10 @@ import Main.Handler;
 
 public class Animation {
 
-	private int speed, index;
-	private long lastTime, timer, cooldown = 5000;
-	private BufferedImage[] frames;
-	private Handler handler;
+	protected int speed, index;
+	protected long lastTime, timer;
+	protected BufferedImage[] frames;
+	protected Handler handler;
 
 	public Animation(int speed, BufferedImage[] frames, Handler handler) {
 		this.speed = speed;

@@ -71,21 +71,21 @@ public class lizardEnemy extends Creature{
 			}
 			Rectangle cb = getCollisionBounds(0, 0); // get the collision bound
 			Rectangle ar = new Rectangle(); // attack rectangle
-			int arSize = 20;
+			int arSize = 15;
 			ar.width = arSize;
 			ar.height = arSize;
 
 			if (isNearPlayer(handler.getWorld().getEntityManager().getPlayer().getBounds(), this.getBounds())  ) {
-				if (direction == 1) { // facing up
+				if (isDownPlayer()) { // facing up
 					ar.x = cb.x + cb.width / 2 - arSize / 2;
 					ar.y = cb.y - arSize;
-				} else if (direction == 0) { // facing down
+				} else if (isUpPlayer()) { // facing down
 					ar.x = cb.x + cb.width / 2 - arSize / 2;
 					ar.y = cb.y + cb.height;
-				} else if (direction == 2) { // facing left
+				} else if (isRightPlayer()) { // facing left
 					ar.x = cb.x - arSize;
 					ar.y = cb.y + cb.height / 2 - arSize / 2;
-				} else if (direction == 3) { // facing right
+				} else if (isLeftPlayer()) { // facing right
 					ar.x = cb.x + cb.width;
 					ar.y = cb.y + cb.height / 2 - arSize / 2;
 				} else {
@@ -113,9 +113,9 @@ public class lizardEnemy extends Creature{
 		}
 
 		private boolean isLeftPlayer() {
-			if (handler.getWorld().getEntityManager().getPlayer().getY() != this.getY())
+			if (handler.getWorld().getEntityManager().getPlayer().getY() >= this.getY() + 32 && handler.getWorld().getEntityManager().getPlayer().getY() <= this.getY() - 32)
 				return false;
-			if (handler.getWorld().getEntityManager().getPlayer().getX() != this.getX() + 1)
+			if (handler.getWorld().getEntityManager().getPlayer().getX() >= this.getX() + 32)
 				return false;
 			return true;
 		}
@@ -123,7 +123,7 @@ public class lizardEnemy extends Creature{
 		private boolean isRightPlayer() {
 			if (handler.getWorld().getEntityManager().getPlayer().getY() != this.getY())
 				return false;
-			if (handler.getWorld().getEntityManager().getPlayer().getX() != this.getX() - 1)
+			if (handler.getWorld().getEntityManager().getPlayer().getX() != this.getX() - 32)
 				return false;
 			return true;
 		}
