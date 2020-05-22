@@ -33,7 +33,7 @@ public class Player extends Creature {
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDHT, Creature.DEFAULT_CREATURE_HEIGHT);
 		
-		health = 1;
+		health = 100000;
 
 		// chinh kich thuoc va cham
 		bounds.x = 8;

@@ -18,6 +18,11 @@ public class lizardEnemy extends Creature{
 	// Animations
 		private Animation animLeft, animRight;
 		private Animation aLeft, aRight;
+		private Animation hurtLeft, hurtRight;
+		private Animation dieLeft, dieRight; 
+		
+		private boolean isHurtRight, isHurtLeft; // kiểm tra enemy đang bị đánh ở hướng nào
+		
 		// attack cooldown
 		private long lastAttackTimer, attackCooldown = 50, attackTimer = attackCooldown;
 		// directions
@@ -39,6 +44,15 @@ public class lizardEnemy extends Creature{
 			// attack animations
 			aLeft = new Animation(180, Assets.lizard_attack_left, handler);
 			aRight = new Animation(180, Assets.lizard_attack_right, handler);
+			
+			// hurt animations
+			hurtLeft = new Animation(180, Assets.lizard_hurt_left, handler);
+			hurtRight = new Animation(180, Assets.lizard_hurt_right, handler);
+			
+			// die animations
+			dieLeft = new Animation(180, Assets.lizard_die_left, handler);
+			dieRight = new Animation(180, Assets.lizard_die_right, handler);
+			
 		}
 
 
@@ -47,6 +61,13 @@ public class lizardEnemy extends Creature{
 			// Animations
 			animLeft.tick();
 			animRight.tick();
+			
+			hurtRight.tick();
+			hurtLeft.tick();
+			
+			dieLeft.tick();
+			dieRight.tick();
+			
 			move();
 			//
 			aLeft.attackTick();
@@ -71,21 +92,16 @@ public class lizardEnemy extends Creature{
 			}
 			Rectangle cb = getCollisionBounds(0, 0); // get the collision bound
 			Rectangle ar = new Rectangle(); // attack rectangle
-			int arSize = 15;
+			int arSize = 20;
 			ar.width = arSize;
 			ar.height = arSize;
 
 			if (isNearPlayer(handler.getWorld().getEntityManager().getPlayer().getBounds(), this.getBounds())  ) {
-				if (isDownPlayer()) { // facing up
-					ar.x = cb.x + cb.width / 2 - arSize / 2;
-					ar.y = cb.y - arSize;
-				} else if (isUpPlayer()) { // facing down
-					ar.x = cb.x + cb.width / 2 - arSize / 2;
-					ar.y = cb.y + cb.height;
-				} else if (isRightPlayer()) { // facing left
+				if (isRightPlayer()) { // facing left
 					ar.x = cb.x - arSize;
 					ar.y = cb.y + cb.height / 2 - arSize / 2;
-				} else if (isLeftPlayer()) { // facing right
+				}
+				else if (isLeftPlayer()) { // facing right
 					ar.x = cb.x + cb.width;
 					ar.y = cb.y + cb.height / 2 - arSize / 2;
 				} else {
@@ -99,10 +115,14 @@ public class lizardEnemy extends Creature{
 					} 
 					else if (e.getCollisionBounds(0, 0).intersects(ar)) {
 							e.hurt(1);
-						}
+//							if (isLeftPlayer())
+//								isHurtLeft = true;
+//							if (isLeftPlayer())
+//								isHurtRight = true;
+//						
 					}
 				}
-
+			}
 			}
 
 		
@@ -113,36 +133,29 @@ public class lizardEnemy extends Creature{
 		}
 
 		private boolean isLeftPlayer() {
-			if (handler.getWorld().getEntityManager().getPlayer().getY() >= this.getY() + 32 && handler.getWorld().getEntityManager().getPlayer().getY() <= this.getY() - 32)
-				return false;
-			if (handler.getWorld().getEntityManager().getPlayer().getX() >= this.getX() + 32)
-				return false;
-			return true;
+			if(handler.getWorld().getEntityManager().getPlayer().getX() < this.getX()) {
+				if (handler.getWorld().getEntityManager().getPlayer().getY() >= this.getY() + 32 || handler.getWorld().getEntityManager().getPlayer().getY() <= this.getY() - 32)
+					return false;
+				if (handler.getWorld().getEntityManager().getPlayer().getX() <= this.getX() - 32  )
+					return false;
+			}
+			
+			else return true;
+			
+			return false;
 		}
 		
 		private boolean isRightPlayer() {
-			if (handler.getWorld().getEntityManager().getPlayer().getY() != this.getY())
-				return false;
-			if (handler.getWorld().getEntityManager().getPlayer().getX() != this.getX() - 32)
-				return false;
-			return true;
+			if(handler.getWorld().getEntityManager().getPlayer().getX() > this.getX()) {
+				if (handler.getWorld().getEntityManager().getPlayer().getY() >= this.getY() + 32 || handler.getWorld().getEntityManager().getPlayer().getY() <= this.getY() - 32)
+					return false;
+				if (handler.getWorld().getEntityManager().getPlayer().getX() >= this.getX() + 32 )
+					return false;
+			}
+			else return true;
+			return false;
 		}
 		
-		private boolean isUpPlayer() {
-			if (handler.getWorld().getEntityManager().getPlayer().getX() != this.getX())
-				return false;
-			if (handler.getWorld().getEntityManager().getPlayer().getY() != this.getY() + 1)
-				return false;
-			return true;
-		}
-		
-		private boolean isDownPlayer() {
-			if (handler.getWorld().getEntityManager().getPlayer().getY() != this.getY())
-				return false;
-			if (handler.getWorld().getEntityManager().getPlayer().getX() != this.getX() + 1)
-				return false;
-			return true;
-		}
 		
 		@Override
 		public void render(Graphics g) {
@@ -163,6 +176,30 @@ public class lizardEnemy extends Creature{
 							(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 				}
 			}
+			
+			
+//			if (this.health == 0 && isRightPlayer()) {	// đứng bên phải player và bị player tấn công
+//				g.drawImage(dieLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+//						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+//			}
+//			
+//			if (this.health == 0 && isLeftPlayer()) {	// đứng bên trái player và bị player tấn công
+//				g.drawImage(dieRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+//						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+//			}
+			
+//			if (isHurtLeft) {
+//				g.drawImage(hurtLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+//					(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+//				isHurtLeft = false;
+//			}
+//			
+//			if (isHurtRight) {
+//				g.drawImage(hurtRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+//						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+//				isHurtRight = false;
+//			}
+				
 
 		}
 
