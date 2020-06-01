@@ -38,10 +38,9 @@ public class EntityManager {
 			Entity e = entities.get(i); // = entities[i]
 			e.tick();
 
-//			if(!e.isActive()) {
-//				e.die();
-//				entities.remove(e);
-//			}
+			if(!e.isActive()) {
+				entities.remove(e);
+			}
 		}
 		entities.sort(renderSorter);
 	}
