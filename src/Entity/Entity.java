@@ -8,7 +8,7 @@ import Main.Handler;
 public abstract class Entity {
 
 	protected Handler handler;
-	public static final int HEALTH = 200;
+	public static final int HEALTH = 1000;
 	protected float x, y;
 	protected int width, height;
 	protected int health;
@@ -24,7 +24,7 @@ public abstract class Entity {
 		this.height = height;
 
 		health = HEALTH;
-		bounds = new Rectangle(20, 20, width, height);
+		this.bounds = new Rectangle((int) x, (int) y, width, height);
 	}
 
 	public abstract void tick();
@@ -42,7 +42,7 @@ public abstract class Entity {
 	}
 	
 	public void hurt(int amt) {
-		health -= amt;
+		this.health -= amt;
 		if(health <= 0) {
 			active = false;
 			

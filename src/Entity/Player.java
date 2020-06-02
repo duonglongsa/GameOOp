@@ -16,24 +16,28 @@ public class Player extends Creature {
 	private Animation animDown, animUp, animLeft, animRight;
 	private Animation aLeft, aRight, extraLeft, extraRight;
 	private Animation dieLeft, dieRight, hurtLeft, hurtRight;
+	
 	// attack cooldown
 	private long lastAttackTimer, attackCooldown = 100, attackTimer = attackCooldown;
+	
 	// directions
 	private int direction = 0;
+	
 	// Player-bar
-	private double totalHealth = HEALTH, health, totalMana = 100, mana = 100;
+	private double totalHealth = HEALTH, totalMana = 100, mana = 100;
 
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDHT, Creature.DEFAULT_CREATURE_HEIGHT);
 		this.atkDame = 3;
-		this.health = totalHealth;
+		this.health = HEALTH;
 
 		// chinh kich thuoc va cham
 		bounds.x = 8;
 		bounds.y = 30;
 		bounds.width = 19;
 		bounds.height = 30;
-
+		this.health = HEALTH;
+		
 		// Animations
 		animDown = new Animation(180, Assets.player_down, handler);
 		animUp = new Animation(180, Assets.player_up, handler);
@@ -76,6 +80,8 @@ public class Player extends Creature {
 
 	@Override
 	public void tick() {
+		// chinh kich thuoc va cham
+		
 		// Animations
 		animDown.tick();
 		animUp.tick();
@@ -166,9 +172,9 @@ public class Player extends Creature {
 
 	}
 
-
 	@Override
 	public void render(Graphics g) {
+
 		if (direction == 1 || direction == 3) { // facing up or right
 			if (handler.getKeyManager().attack) {
 				g.drawImage(aRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
@@ -178,14 +184,13 @@ public class Player extends Creature {
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 			} else if (this.isActive() == false) {
 				g.drawImage(dieRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
-							(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 
-			} else if(this.isHurt) {
+			} else if (this.isHurt) {
 				g.drawImage(hurtRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 
-				
-			}else {
+			} else {
 				g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 			}
@@ -199,7 +204,7 @@ public class Player extends Creature {
 			} else if (this.isActive() == false) {
 				g.drawImage(dieLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
-			}else if(this.isHurt) {
+			} else if (this.isHurt) {
 				g.drawImage(hurtLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 			} else {
@@ -245,7 +250,7 @@ public class Player extends Creature {
 	@Override
 	public void die() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

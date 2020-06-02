@@ -6,9 +6,8 @@ import tile.Tile;
 
 public abstract class Creature extends Entity {
 
-	public static final int DEFAULT_CREATURE_WIDHT = 35, DEFAULT_CREATURE_HEIGHT = 64;
+	public static final int DEFAULT_CREATURE_WIDHT = 64, DEFAULT_CREATURE_HEIGHT = 64;
 
-	protected int health;
 	protected float speed;
 	protected float xMove, yMove;
 	//dame
@@ -38,6 +37,7 @@ public abstract class Creature extends Entity {
 					!collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)) { // goc duoi ben
 																										// phai
 				x += xMove;
+				
 			}
 
 		} else if (xMove < 0) {

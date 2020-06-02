@@ -59,31 +59,30 @@ public class World {
 	private int spawnX, spawnY;
 	private int[][] tiles;
 	private static String path;
-	
-	//entities
+
+	// entities
 	private EntityManager entityManager;
 	public static NPCJeweler npcJeweler;
 
 	public static void addStaticEntityDesert(Handler handler, EntityManager entityManager) {
-		
-		//NPC
+
+		// NPC
 		npcJeweler = new NPCJeweler(handler, 400, 100);
 		entityManager.addEntity(npcJeweler);
-		
+
 		// Desert building
 		entityManager.addEntity(new BuildingDesert1(handler, 710, 490));
 		entityManager.addEntity(new BuildingDesert3(handler, 230, 50));
 		entityManager.addEntity(new BuildingDesert3(handler, 810, 200));
 		entityManager.addEntity(new BuildingDesert3(handler, 935, 330));
 
-		
 		// Desert stone
-		//entityManager.addEntity(new StoneDesert1(handler, 510, 50));
+		// entityManager.addEntity(new StoneDesert1(handler, 510, 50));
 		entityManager.addEntity(new StoneDesert2(handler, 600, 700));
 		entityManager.addEntity(new StoneDesert1(handler, 940, 50));
 		entityManager.addEntity(new StoneDesert2(handler, 1030, 600));
 		entityManager.addEntity(new StoneDesert3(handler, -50, -50));
-			
+
 		// Rock 1
 		entityManager.addEntity(new Rock1(handler, 100, 400));
 		entityManager.addEntity(new Rock1(handler, 500, 80));
@@ -91,17 +90,16 @@ public class World {
 		entityManager.addEntity(new Rock1(handler, 90, 800));
 		entityManager.addEntity(new Rock1(handler, 20, 650));
 		entityManager.addEntity(new Rock1(handler, 475, 750));
-			
+
 		// Rock 2
 		entityManager.addEntity(new Rock2(handler, 80, 500));
 		entityManager.addEntity(new Rock2(handler, 380, 600));
-			
+
 		// Rock 3
 		entityManager.addEntity(new Rock3(handler, 150, 450));
 		entityManager.addEntity(new Rock3(handler, 320, 680));
 		entityManager.addEntity(new Rock3(handler, 380, 60));
 		entityManager.addEntity(new Rock3(handler, 105, 750));
-
 
 		// Pyramid
 		entityManager.addEntity(new Pyramid(handler, 400, 170));
@@ -109,10 +107,10 @@ public class World {
 		// Tent
 		entityManager.addEntity(new Tent(handler, 700, 40));
 		entityManager.addEntity(new Tent(handler, 1130, 40));
-			
-		//Lake
+
+		// Lake
 		entityManager.addEntity(new Lake(handler, 150, 650));
-			
+
 		// Tree
 		entityManager.addEntity(new Tree1(handler, 230, 600));
 		entityManager.addEntity(new Tree1(handler, 110, 500));
@@ -123,22 +121,25 @@ public class World {
 		entityManager.addEntity(new Tree4(handler, 650, 600));
 		entityManager.addEntity(new Tree4(handler, 100, 350));
 		entityManager.addEntity(new Tree5(handler, 67, 70));
-		//entityManager.addEntity(new Tree3(handler, 700, 400));
+		// entityManager.addEntity(new Tree3(handler, 700, 400));
 		entityManager.addEntity(new Tree3(handler, 1000, 400));
 		entityManager.addEntity(new Tree2(handler, 380, 660));
-		entityManager.addEntity(new Tree11(handler, 550, 50));		
+		entityManager.addEntity(new Tree11(handler, 550, 50));
 		entityManager.addEntity(new Tree12(handler, 600, 500));
 
 		// Decor
 		entityManager.addEntity(new Decor7(handler, 490, 350));
+
+		// enemy
+		//entityManager.addEntity(new lizardEnemy(handler, 500, 500));
 	}
-	
+
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
-		
-		//NPC
+
+		// NPC
 		npcJeweler = new NPCJeweler(handler, 490, 540);
 		entityManager.addEntity(npcJeweler);
-		
+
 		// Building
 		entityManager.addEntity(new BuildingWind1(handler, 1070, 60));
 		entityManager.addEntity(new BuildingWind1(handler, 1070, 230));
@@ -147,16 +148,16 @@ public class World {
 		entityManager.addEntity(new BuildingWind3(handler, 995, 642));
 		entityManager.addEntity(new BuildingWind4(handler, 578, 230));
 		entityManager.addEntity(new BuildingWind5(handler, 840, 600));
-		
+
 		entityManager.addEntity(new BuildingWind6(handler, 220, 530));
 		entityManager.addEntity(new BuildingWind6(handler, 480, 530));
-		
+
 		entityManager.addEntity(new BuildingWind7(handler, 90, 530));
-		entityManager.addEntity(new BuildingWind7(handler, 350,530));
-		
+		entityManager.addEntity(new BuildingWind7(handler, 350, 530));
+
 		entityManager.addEntity(new BuildingWind7(handler, 220, 400));
 		entityManager.addEntity(new BuildingWind7(handler, 480, 400));
-		
+
 		entityManager.addEntity(new BuildingWind6(handler, 90, 400));
 		entityManager.addEntity(new BuildingWind6(handler, 350, 400));
 
@@ -164,11 +165,11 @@ public class World {
 		entityManager.addEntity(new BuildingWind9(handler, 85, 200));
 		entityManager.addEntity(new BuildingWind9(handler, 85, 300));
 		entityManager.addEntity(new BuildingWind9(handler, 85, 100));
-		
+
 		entityManager.addEntity(new BuildingWind10(handler, 860, -75));
 		entityManager.addEntity(new BuildingWind11(handler, 270, -5));
 		entityManager.addEntity(new BuildingWind12(handler, 350, 70));
-		
+
 		entityManager.addEntity(new BuildingWind13(handler, 660, 385));
 		entityManager.addEntity(new BuildingWind13(handler, 660, 500));
 
@@ -196,7 +197,7 @@ public class World {
 		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 330, 730));
 		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 330, 450));
 		entityManager.addEntity(new statics.entity.wind.Tree1(handler, 25, 590));
-		
+
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 47, 322));
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, -20, -15));
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 90, -30));
@@ -205,110 +206,110 @@ public class World {
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 390, -10));
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 650, -40));
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 290, 590));
-		
-		//NPC
+
+		// NPC
 		npcJeweler = new NPCJeweler(handler, 820, 350);
 		entityManager.addEntity(npcJeweler);
 
 		// enemy
-		entityManager.addEntity(new lizardEnemy(handler, 500, 330));
+		entityManager.addEntity(new lizardEnemy(handler, 500, 400));
 	}
-	
+
 	public World(Handler handler, String path) {
 		this.handler = handler;
 		this.path = path;
 		loadWorld(path);
-		
-		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY));
-		
-		
+
+		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY),
+				new lizardEnemy(handler, 500, 500));
+
 		// add static desert
-		if(path == "res/world/world2.desert.txt") {
+		if (path == "res/world/world2.desert.txt") {
 			addStaticEntityDesert(handler, entityManager);
 		}
-		
-		//add static wind
-		if(path == "res/world/world1.wind.txt") {
+
+		// add static wind
+		if (path == "res/world/world1.wind.txt") {
 			addStaticEntityWind(handler, entityManager);
 		}
-				
+
 	}
-	
+
 	public void tick() {
 		entityManager.tick();
 	}
-	
+
 	public void render(Graphics g) {
-		
+
 		int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILE_WIDTH);
-		int xEnd   = (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILE_WIDTH + 1);
+		int xEnd = (int) Math.min(width,
+				(handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILE_WIDTH + 1);
 		int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILE_HEIGHT);
-		int yEnd   = (int) Math.min(height, (handler.getGameCamera().getyOffset() + handler.getWidth()) / Tile.TILE_HEIGHT + 1);
-		
-		for(int y = yStart; y < yEnd; y++) {
-			for(int x = xStart; x < xEnd; x++) {
-				getTile(x, y).render(g, (int)(x * Tile.TILE_WIDTH - handler.getGameCamera().getxOffset()),
-										(int)(y * Tile.TILE_HEIGHT - handler.getGameCamera().getyOffset()));
+		int yEnd = (int) Math.min(height,
+				(handler.getGameCamera().getyOffset() + handler.getWidth()) / Tile.TILE_HEIGHT + 1);
+
+		for (int y = yStart; y < yEnd; y++) {
+			for (int x = xStart; x < xEnd; x++) {
+				getTile(x, y).render(g, (int) (x * Tile.TILE_WIDTH - handler.getGameCamera().getxOffset()),
+						(int) (y * Tile.TILE_HEIGHT - handler.getGameCamera().getyOffset()));
+				
 			}
 		}
-				
+
 		entityManager.render(g);
 
-		if(npcJeweler.getCheck()) {
-		
+		if (npcJeweler.getCheck()) {
+
 			g.drawImage(Assets.npcJeweler[1], 300, 380, null);
-			if(handler.getKeyManager().talk) {
+			if (handler.getKeyManager().talk) {
 				npcJeweler.setCheck(false);
 			}
-			
-	
-				handler.getKeyManager().down = false;
-				handler.getKeyManager().left = false;
-				handler.getKeyManager().right= false;
-				handler.getKeyManager().up = true;
+
+			handler.getKeyManager().down = false;
+			handler.getKeyManager().left = false;
+			handler.getKeyManager().right = false;
+			handler.getKeyManager().up = true;
 		}
-		
-		//System.out.println(handler.getKeyManager().up);
-		
+
 		entityManager.getPlayer().postRender(g);
 
 	}
-	
+
 	public Tile getTile(int x, int y) {
-		
-		if(x < 0 || y < 0 || x >= width || y >= height) {
+
+		if (x < 0 || y < 0 || x >= width || y >= height) {
 			return Tile.desertTileSolid;
 		}
 		Tile t = Tile.tiles[tiles[x][y]];
-		if(t == null) {
+		if (t == null) {
 			return Tile.desertTileSolid;
-		}else
+		} else
 			return t;
 	}
-	
+
 	private void loadWorld(String path) {
 		String file = Utils.loadFileAsString(path);
-		
-		String[] tokens = file.split("\\s+");//ta'ch string -> array ko lay space
-		
-		width  = Utils.parseInt(tokens[0]);
+
+		String[] tokens = file.split("\\s+");// ta'ch string -> array ko lay space
+
+		width = Utils.parseInt(tokens[0]);
 		height = Utils.parseInt(tokens[1]);
 		spawnX = Utils.parseInt(tokens[2]);
 		spawnY = Utils.parseInt(tokens[3]);
-	
+
 		tiles = new int[width][height];
-		
-		for(int y = 0; y < height; y++) {
-			for(int x = 0; x < width; x++) {
-				tiles[x][y] = Utils.parseInt(tokens[x + y * width + 4]);//lay int tai [x][y]
+
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++) {
+				tiles[x][y] = Utils.parseInt(tokens[x + y * width + 4]);// lay int tai [x][y]
 			}
 		}
 	}
-	
+
 	public int getWidth() {
 		return width;
 	}
-	
+
 	public int getHeight() {
 		return height;
 	}
@@ -316,9 +317,9 @@ public class World {
 	public EntityManager getEntityManager() {
 		return entityManager;
 	}
-	
+
 	public NPCJeweler getNpcJeweler() {
 		return npcJeweler;
 	}
-	
+
 }
