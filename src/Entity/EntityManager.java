@@ -39,6 +39,7 @@ public class EntityManager {
 			e.tick();
 
 			if(!e.isActive()) {
+				e.die();
 				entities.remove(e);
 			}
 		}
@@ -78,6 +79,14 @@ public class EntityManager {
 
 	public void setEntities(ArrayList<Entity> entities) {
 		this.entities = entities;
+	}
+
+	public lizardEnemy getLizardEnemy() {
+		return lizardEnemy;
+	}
+
+	public void setLizardEnemy(lizardEnemy lizardEnemy) {
+		this.lizardEnemy = lizardEnemy;
 	}
 	
 	

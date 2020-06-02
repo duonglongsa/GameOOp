@@ -50,6 +50,5 @@ public class Animation {
 	public BufferedImage getCurrentFrame() {
 			return frames[index];
 		}
-	
 
 }

@@ -129,15 +129,17 @@ public class World {
 		entityManager.addEntity(new Tree11(handler, 550, 50));		
 		entityManager.addEntity(new Tree12(handler, 600, 500));
 
+		
+		entityManager.addEntity(new lizardEnemy(handler, 500, 500));
 		// Decor
-//<<<<<<< HEAD
-//		entityManager.addEntity(new Decor7(handler, 300, 500));
+
+		entityManager.addEntity(new Decor7(handler, 300, 500));
 	}
 	
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
 
 
-		entityManager.addEntity(new Decor7(handler, 490, 350));
+		//entityManager.addEntity(new Decor7(handler, 490, 350));
 	
 	
 		//NPC
@@ -274,7 +276,7 @@ public class World {
 				handler.getKeyManager().up = true;
 		}
 		
-		System.out.println(handler.getKeyManager().up);
+		//System.out.println(handler.getKeyManager().up);
 		
 		entityManager.getPlayer().postRender(g);
 

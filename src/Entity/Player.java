@@ -4,36 +4,37 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.IconifyAction;
 
 import Main.Game;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
 
 import Main.Handler;
 import gfx.Animation;
 import gfx.Assets;
-import statics.entity.wind.NPCJeweler;
 
 public class Player extends Creature {
 
 	// Animations
 	private Animation animDown, animUp, animLeft, animRight;
 	private Animation aLeft, aRight, extraLeft, extraRight;
+	private Animation dieLeft, dieRight, hurtLeft, hurtRight;
 	// attack cooldown
 	private long lastAttackTimer, attackCooldown = 50, attackTimer = attackCooldown;
 	// directions
 	private int direction = 0;
-	//Player-bar
-	private double health = 100, totalMana = 100, mana = 100;
+	// Player-bar
+	private double totalHealth = HEALTH, health, totalMana = 100, mana = 100;
 
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDHT, Creature.DEFAULT_CREATURE_HEIGHT);
-		
-		health = 100000;
+		this.atkDame = 3;
+		this.health = HEALTH;
 
 		// chinh kich thuoc va cham
 		bounds.x = 8;
@@ -50,11 +51,15 @@ public class Player extends Creature {
 		// attack animations
 		aLeft = new Animation(180, Assets.attack_left, handler);
 		aRight = new Animation(180, Assets.attack_right, handler);
-	
-		extraLeft = new Animation(90, Assets.extra_left, handler);
-		extraRight = new Animation(90, Assets.extra_right, handler);
 
-
+		extraLeft = new Animation(100, Assets.extra_left, handler);
+		extraRight = new Animation(100, Assets.extra_right, handler);
+		// die
+		dieLeft = new Animation(30, Assets.die_left, handler);
+		dieRight = new Animation(30, Assets.die_right, handler);
+		// hurt
+		hurtLeft = new Animation(90, Assets.hurt_left, handler);
+		hurtRight = new Animation(90, Assets.hurt_right, handler);
 	}
 
 	private void getInput() {
@@ -84,38 +89,51 @@ public class Player extends Creature {
 		animUp.tick();
 		animLeft.tick();
 		animRight.tick();
-		//aLeft.attackTick();
-		//aRight.attackTick();
-		//extraLeft.attackTick();
-		//extraRight.attackTick();
+		
+		hurtLeft.tick();
+		hurtRight.tick();
+		dieLeft.tick();
+		dieRight.tick();
+
 
 		getInput();
 		move();
 		handler.getGameCamera().centerOnEtity(this);
 
 		// attack
-
-
 		aLeft.tick();
 		aRight.tick();
 		extraLeft.tick();
 		extraRight.tick();
 
 
+		// skill
+		extraLeft.tick();
+		extraRight.tick();
+
 		// attack
 		checkAttack();
+		// die
 
-		
-		//Player-bar
-		if(handler.getKeyManager().skill) {
-			if(mana > 0) {
+		// Player-bar
+		if (this.isHurt) {
+			if (health > 0) {
+				health -= 1;
+
+			} else {
+
+				active = false;
+			}
+		}
+		if (handler.getKeyManager().skill) {
+			if (mana > 0) {
 				mana -= 0.2;
-			}else {
+			} else {
 				handler.getKeyManager().skill = false;
 			}
 		}
-		if(mana <= totalMana) {
-					mana += 0.01;
+		if (mana <= totalMana) {
+			mana += 0.01;
 		}
 
 	}
@@ -156,37 +174,49 @@ public class Player extends Creature {
 				if (e.equals(this)) {
 					continue;
 				} else if (e.getCollisionBounds(0, 0).intersects(ar)) {
-					e.hurt(1);
+					e.hurt(3);
+					
+					System.out.println(e.getHealth());
 				}
+			}
 			}
 		}
 
-	}
 
-	@Override
-	public void die() {
-
-	}
 
 	@Override
 	public void render(Graphics g) {
 		if (direction == 1 || direction == 3) { // facing up or right
 			if (handler.getKeyManager().attack) {
-				g.drawImage(aRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
-						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+				attackRender(g);
 			} else if (handler.getKeyManager().skill) {
 				g.drawImage(extraRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
-			} else {
+			} else if (this.isActive() == false) {
+				g.drawImage(dieRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+							(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+
+			} else if(this.isHurt) {
+				g.drawImage(hurtRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+
+				
+			}else {
 				g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 			}
-		} else if (direction == 0 || direction == 2) {
+		} else if (direction == 0 || direction == 2) { // facing left or down
 			if (handler.getKeyManager().attack) {
 				g.drawImage(aLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 			} else if (handler.getKeyManager().skill) {
 				g.drawImage(extraLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+			} else if (this.isActive() == false) {
+				g.drawImage(dieLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+			}else if(this.isHurt) {
+				g.drawImage(hurtLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 			} else {
 				g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()),
@@ -196,14 +226,20 @@ public class Player extends Creature {
 
 	}
 	
+	public void attackRender(Graphics g) {
+		g.drawImage(aRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
+				(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
+		
+	}
+
 	public void postRender(Graphics g) {
-		//Player-bar
+		// Player-bar
 		g.setColor(Color.red);
-		g.fillRect(73, 30, 127, 12);				
-								
+		g.fillRect(73, 30, (int) (127 * (health / totalHealth)), 12);
+
 		g.setColor(Color.blue);
-		g.fillRect(73, 46, (int) (122 *  (mana / totalMana)), 6);
-			
+		g.fillRect(73, 46, (int) (122 * (mana / totalMana)), 6);
+
 		g.drawImage(Assets.playerBar, 0, 0, null);
 	}
 
@@ -226,6 +262,12 @@ public class Player extends Creature {
 			return Assets.directions[direction];
 		}
 
+	}
+
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
