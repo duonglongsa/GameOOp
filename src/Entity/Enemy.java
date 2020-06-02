@@ -1,37 +1,43 @@
 package Entity;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Ellipse2D.Double;
 import java.awt.image.BufferedImage;
 
 import Main.Handler;
 import gfx.Animation;
 
-public class Enemy extends Creature{
+public class Enemy extends Creature {
 
 	// Animations
 	protected Animation animLeft, animRight;
 	protected Animation aLeft, aRight;
-		
+
 	// attack cooldown
 	protected long lastAttackTimer, attackCooldown = 200, attackTimer = attackCooldown;
-		
+
 	// directions
 	protected int direction = 3;
-		
+
 	protected Animation hurtLeft, hurtRight;
 	protected Animation dieLeft, dieRight;
 	protected boolean isHurtRight, isHurtLeft; //
-		
-	//moving
+
+	// moving
 	protected boolean xMoveDirection = true;
 	protected boolean yMoveDirection = false;
-	
-	//attack range
+
+	// attack range
 	protected Rectangle atkRange;
-	
+	protected Shape circle = new Ellipse2D.Double(100, 100, 50, 50);
+
 	private float spawnY;
-	
+
 	public Enemy(Handler handler, float x, float y, int width, int height) {
 		super(handler, x, y, width, height);
 		this.spawnY = y;
@@ -40,7 +46,7 @@ public class Enemy extends Creature{
 	@Override
 	public void tick() {
 		this.atkRange = new Rectangle((int) (x - 80), (int) (y - 50), 200, 200);
-		
+
 		// Animations
 		animLeft.tick();
 		animRight.tick();
@@ -50,40 +56,40 @@ public class Enemy extends Creature{
 
 		dieLeft.tick();
 		dieRight.tick();
-				
-		//moving
+
+		// moving
 		moveAfterPlayer();
-				
+
 		//
 		aLeft.attackTick();
 		aRight.attackTick();
-		
+
 		// attack
 		checkAttack();
-		
+
 	}
 
 	@Override
 	public void render(Graphics g) {
-		
+
 		g.drawRect((int) (x - 80), (int) (y - 50), 200, 200);
-		
+
 		if (direction == 1 || direction == 3) { // facing up or right
-			if(isLeftPlayer()) {
+			if (isLeftPlayer()) {
 				g.drawImage(aLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
-			}else if (direction == 3) { //moving right
+			} else if (direction == 3) { // moving right
 				g.drawImage(animRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 			} else {
 				g.drawImage(animLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 			}
-		} else if (direction == 0 || direction == 2 ) {
+		} else if (direction == 0 || direction == 2) {
 			if (isRightPlayer()) {
 				g.drawImage(aRight.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
-			} else if (direction == 2) { //moving left
+			} else if (direction == 2) { // moving left
 				g.drawImage(animLeft.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()),
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 			} else {
@@ -91,10 +97,10 @@ public class Enemy extends Creature{
 						(int) (y - handler.getGameCamera().getyOffset()), 32, 64, null);
 			}
 		}
-		
+
 	}
 
-	private boolean isNearPlayer(Rectangle a, Rectangle b) {
+	protected boolean isNearPlayer(Rectangle a, Rectangle b) {
 		if (a.intersects(b))
 			return true;
 		else {
@@ -102,8 +108,8 @@ public class Enemy extends Creature{
 		}
 
 	}
-	
-	private boolean isLeftPlayer() {
+
+	protected boolean isLeftPlayer() {
 		if (handler.getWorld().getEntityManager().getPlayer().getX() < this.getX()
 				&& handler.getWorld().getEntityManager().getPlayer().getY() < this.getY() + 32
 				&& handler.getWorld().getEntityManager().getPlayer().getY() > this.getY() - 32
@@ -115,7 +121,7 @@ public class Enemy extends Creature{
 		return false;
 	}
 
-	private boolean isRightPlayer() {
+	protected boolean isRightPlayer() {
 		if (handler.getWorld().getEntityManager().getPlayer().getX() > this.getX()
 				&& handler.getWorld().getEntityManager().getPlayer().getY() < this.getY() + 32
 				&& handler.getWorld().getEntityManager().getPlayer().getY() > this.getY() - 32
@@ -126,106 +132,102 @@ public class Enemy extends Creature{
 
 		return false;
 	}
-	
+
 	protected void checkAttack() {
 		attackTimer += System.currentTimeMillis() - lastAttackTimer;
 		lastAttackTimer = System.currentTimeMillis();
 		if (attackTimer < attackCooldown) {
 			return;
 		}
-		
+
 		Rectangle cb = getCollisionBounds(0, 0); // get the collision bound
 		Rectangle ar = new Rectangle(); // attack rectangle
 		int arSize = 20;
 		ar.width = arSize;
 		ar.height = arSize;
 
-		if (isNearPlayer(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0), this.getCollisionBounds(0, 0))) {
+		if (isLeftPlayer()) { // facing left
+			ar.x = cb.x - arSize;
+			ar.y = cb.y + cb.height / 2 - arSize / 2;
+		} else if (isRightPlayer()) { // facing left
+			ar.x = cb.x + cb.width;
+			ar.y = cb.y + cb.height / 2 - arSize / 2;
+		}
+		attackTimer = 0;
 
-			if (isLeftPlayer()) { // facing left
-				ar.x = cb.x - arSize;
-				ar.y = cb.y + cb.height / 2 - arSize / 2;
-			} else if (isRightPlayer()) { // facing left
-				ar.x = cb.x + cb.width;
-				ar.y = cb.y + cb.height / 2 - arSize / 2;
+		for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
+			if (e.equals(this)) {
+				continue;
+			} else if (e.getCollisionBounds(0, 0).intersects(ar)) {
+
+				e.hurt((int) this.getAtkDame());
+				e.isHurt = true;
+
+			} else {
+				e.isHurt = false;
 			}
-			attackTimer = 0;
-
-			for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
-				if (e.equals(this)) {
-					continue;
-				} else if (e.getCollisionBounds(0, 0).intersects(ar)) {
-
-					e.hurt((int) this.getAtkDame());
-					e.isHurt = true;
-					
-				} else {
-					e.isHurt = false;
-				}
-			}
-
 		}
 
 	}
-	
+
 	public void moveAround() {
-	
-		if(isLeftPlayer() || isRightPlayer()) {
+
+		if (isLeftPlayer() || isRightPlayer()) {
 			return;
-		} else if(this.getY() < spawnY){
+		} else if (this.getY() < spawnY) {
 			this.y += this.speed;
-			this.y = (int)this.getY();
-		} else if(this.getY() > spawnY) {		//back to spawn position 
+			this.y = (int) this.getY();
+		} else if (this.getY() > spawnY) { // back to spawn position
 			this.y -= this.speed;
-			this.y = (int)this.getY();
-		}else if(direction == 3) {
-			if(this.getX() < 600) {
+			this.y = (int) this.getY();
+		} else if (direction == 3) {
+			if (this.getX() < 600) {
 				this.x += this.speed;
-			}else {
+			} else {
 				direction = 2;
 			}
 		} else if (direction == 2) {
-			if(this.getX() > 400) {
+			if (this.getX() > 400) {
 				this.x -= this.speed;
-			}else {
+			} else {
 				direction = 3;
 			}
-		}	
-	}  
-	
+		}
+	}
+
 	public void moveAfterPlayer() {
 
-		if(isNearPlayer(this.getAtkRange(), handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0))) {
-			if(!isNearPlayer(this.getCollisionBounds(0, 0), handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0))) {
-				
+		if (isNearPlayer(this.getAtkRange(),
+				handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0))) {
+			if (!isNearPlayer(this.getCollisionBounds(0, 0),
+					handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0))) {
+
 				this.xMove = (handler.getWorld().getEntityManager().getPlayer().getX() - this.getX()) / 70;
 				this.yMove = (handler.getWorld().getEntityManager().getPlayer().getY() - this.getY()) / 70;
-				
-				if(xMove > 0) {			// change direction when move after player
+
+				if (xMove > 0) { // change direction when move after player
 					this.direction = 3;
-				}else {
+				} else {
 					this.direction = 2;
 				}
-				
+
 				super.moveX();
 				super.moveY();
 			}
-		}else {
+		} else {
 			moveAround();
 		}
 	}
 
 	public BufferedImage getCurrentAnimationFrame() {
-		if(xMoveDirection) {
+		if (xMoveDirection) {
 			return animRight.getCurrentFrame();
 		} else {
 			return animLeft.getCurrentFrame();
 		}
 
 	}
-	
-	
-	
+
 	public Rectangle getAtkRange() {
 		return atkRange;
 	}
@@ -237,7 +239,7 @@ public class Enemy extends Creature{
 	@Override
 	public void die() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

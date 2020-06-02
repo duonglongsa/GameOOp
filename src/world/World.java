@@ -6,8 +6,10 @@ import javax.management.loading.PrivateClassLoader;
 import javax.xml.crypto.dsig.keyinfo.X509Data;
 
 import Entity.EntityManager;
+import Entity.MedusaBullet;
 import Entity.Player;
 import Entity.lizardEnemy;
+import Entity.medusaEnemy;
 import Main.Game;
 import Main.Handler;
 import gfx.Assets;
@@ -63,6 +65,8 @@ public class World {
 	// entities
 	private EntityManager entityManager;
 	public static NPCJeweler npcJeweler;
+	public static medusaEnemy medusaEnemy;
+	public static MedusaBullet medusaBullet;
 
 	public static void addStaticEntityDesert(Handler handler, EntityManager entityManager) {
 
@@ -131,7 +135,15 @@ public class World {
 		entityManager.addEntity(new Decor7(handler, 490, 350));
 
 		// enemy
-		//entityManager.addEntity(new lizardEnemy(handler, 500, 500));
+		medusaEnemy = new medusaEnemy(handler, 600, 500, 128, 128);
+		entityManager.addEntity(medusaEnemy);
+		
+		medusaBullet = new MedusaBullet(handler, 600, 500, 20, 20);
+		entityManager.addEntity(medusaBullet);
+		
+		
+		
+		
 	}
 
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
@@ -220,8 +232,7 @@ public class World {
 		this.path = path;
 		loadWorld(path);
 
-		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY),
-				new lizardEnemy(handler, 500, 500));
+		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY));
 
 		// add static desert
 		if (path == "res/world/world2.desert.txt") {
@@ -321,5 +332,11 @@ public class World {
 	public NPCJeweler getNpcJeweler() {
 		return npcJeweler;
 	}
+
+	public static medusaEnemy getMedusaEnemy() {
+		return medusaEnemy;
+	}
+	
+	
 
 }

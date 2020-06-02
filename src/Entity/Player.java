@@ -174,6 +174,10 @@ public class Player extends Creature {
 
 	@Override
 	public void render(Graphics g) {
+		
+		g.setColor(Color.red);
+		g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
+		
 
 		if (direction == 1 || direction == 3) { // facing up or right
 			if (handler.getKeyManager().attack) {

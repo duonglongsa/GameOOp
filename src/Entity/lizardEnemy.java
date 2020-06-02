@@ -23,6 +23,7 @@ public class lizardEnemy extends Enemy {
 		
 		this.health = 20;
 		this.atkDame = 1;
+		
 		// Animations
 		animLeft = new Animation(180, Assets.lizard_left, handler);
 		animRight = new Animation(180, Assets.lizard_right, handler);

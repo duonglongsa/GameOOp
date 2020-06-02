@@ -14,7 +14,7 @@ public class EntityManager {
 	private Player player;
 
 	private lizardEnemy lizardEnemy;
-
+	
 	private ArrayList<Entity> entities;
 	private Comparator<Entity> renderSorter = new Comparator<Entity>() {
 		
@@ -27,13 +27,13 @@ public class EntityManager {
 		
 	};
  	
-	public EntityManager(Handler handler, Player player,lizardEnemy lizardEnemy) {
+	public EntityManager(Handler handler, Player player) {
 		this.handler = handler;
 		this.player = player;
-		this.lizardEnemy = lizardEnemy;
+		
 		entities = new ArrayList<Entity>();
 		addEntity(player);
-		addEntity(lizardEnemy);
+
 	}
 	
 	public void tick() {
@@ -53,6 +53,8 @@ public class EntityManager {
 			e.render(g);
 			g.setColor(Color.blue);
 			g.drawRect(e.getCollisionBounds(0, 0).x, e.getCollisionBounds(0, 0).y, e.getCollisionBounds(0, 0).width, e.getCollisionBounds(0, 0).height  );
+		
+			
 		}
 	}
 
