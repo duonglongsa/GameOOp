@@ -1,5 +1,6 @@
 package Entity;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.time.Year;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class EntityManager {
 	private Player player;
 
 	private lizardEnemy lizardEnemy;
-
+	
 	private ArrayList<Entity> entities;
 	private Comparator<Entity> renderSorter = new Comparator<Entity>() {
 		
@@ -29,8 +30,10 @@ public class EntityManager {
 	public EntityManager(Handler handler, Player player) {
 		this.handler = handler;
 		this.player = player;
+		
 		entities = new ArrayList<Entity>();
 		addEntity(player);
+
 	}
 	
 	public void tick() {
@@ -38,10 +41,9 @@ public class EntityManager {
 			Entity e = entities.get(i); // = entities[i]
 			e.tick();
 
-//			if(!e.isActive()) {
-//				e.die();
-//				entities.remove(e);
-//			}
+			if(!e.isActive()) {
+				entities.remove(e);
+			}
 		}
 		entities.sort(renderSorter);
 	}
@@ -49,6 +51,10 @@ public class EntityManager {
 	public void render(Graphics g) {
 		for(Entity e : entities) {
 			e.render(g);
+			g.setColor(Color.blue);
+			g.drawRect(e.getCollisionBounds(0, 0).x, e.getCollisionBounds(0, 0).y, e.getCollisionBounds(0, 0).width, e.getCollisionBounds(0, 0).height  );
+		
+			
 		}
 	}
 

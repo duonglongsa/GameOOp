@@ -33,27 +33,26 @@ public class Assets {
 	public static BufferedImage[] buildingWind;
 	public static BufferedImage[] treeWind;
 	
-	// animation
+	// player
 	public static BufferedImage[] player_right, player_up, player_left, player_down, hurt_left, hurt_right, die_left,
 			die_right;
-
-	// attack
 	public static BufferedImage[] attack_left, attack_right, extra_left, extra_right, skill;
+	public static BufferedImage[] directions;
 	
+	
+	//lizard
 	public static BufferedImage[] lizard_right, lizard_left, lizard_hurt_left, lizard_hurt_right, lizard_die_left,
 	lizard_die_right;
-
-	
 	public static BufferedImage[] lizard_attack_left, lizard_attack_right, lizard_skill;
-
-	// direction
-	public static BufferedImage[] directions;
 	public static BufferedImage[] lizard_directions;
-
+	
+	//medusa
+	public static BufferedImage[] medusa_right, medusa_left, medusa_hurt_right, medusa_hurt_left, medusa_die_right, 
+	medusa_die_left;
+	public static BufferedImage[] medusa_attack_right, medusa_attack_left, medusa_skill_right, medusa_skill_left;
+	public static BufferedImage medusa_bullet;
+	
 	//UI
-
-//	public static BufferedImage[] button_play, button_settings, share, button_exit, github, facebook, google;
-
 	public static BufferedImage[] easy, hard, settings, exit, github, facebook, google, share;
 	public static BufferedImage background, playBackground;
 
@@ -106,7 +105,7 @@ public class Assets {
 		google[1] = ImageLoader.loadImage("/GUI/google1.png");
 		
 		
-		// my character
+		// player
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/player/rouge.png"));
 		player_right = new BufferedImage[6];
 		for(int i = 0; i < 6; i++) {
@@ -180,7 +179,7 @@ public class Assets {
 		directions[2] = player_left[0];
 		
 		// Manh - for Lizard
-		// my character
+
 				SpriteSheet lizard = new SpriteSheet(ImageLoader.loadImage("/enemy/lizard.png"));
 				lizard_right = new BufferedImage[6];
 				for(int i = 0; i < 6; i++) {
@@ -234,6 +233,48 @@ public class Assets {
 				lizard_directions[3] = lizard_right[0];
 				lizard_directions[2] = lizard_right[0];
 
+				
+		//medusa
+		SpriteSheet medusa = new SpriteSheet(ImageLoader.loadImage("/enemy/medusa.png"));
+		
+		medusa_right = new BufferedImage[4];
+		for(int i = 0; i < 4; i++) {
+			medusa_right[i] = medusa.crop(width*(i), 0, width, height);
+		}
+		medusa_left = new BufferedImage[4];
+		for(int i = 0; i < 4; i++) {
+			medusa_left[i] = medusa.crop(width*(i), height, width, height);
+		}
+		
+		medusa_attack_right = new BufferedImage[6];
+		for(int i = 0; i < 6; i++) {
+			medusa_attack_right[i] = medusa.crop(width*(i), height * 2, width, height);
+		}
+		medusa_attack_left = new BufferedImage[6];
+		for(int i = 0; i < 6; i++) {
+			medusa_attack_left[i] = medusa.crop(width*(i), height * 3, width, height);
+		}
+		
+		medusa_hurt_right = new BufferedImage[2];
+		for(int i = 0; i < 2; i++) {
+			medusa_hurt_right[i] = medusa.crop(width*(i), height * 4, width, height);
+		}
+		medusa_hurt_left = new BufferedImage[2];
+		for(int i = 0; i < 2; i++) {
+			medusa_hurt_left[i] = medusa.crop(width*(i), height * 5, width, height);
+		}
+		
+		medusa_die_right = new BufferedImage[6];
+		for(int i = 0; i < 6; i++) {
+			medusa_die_right[i] = medusa.crop(width*(i), height * 6, width, height);
+		}
+		medusa_die_left = new BufferedImage[6];
+		for(int i = 0; i < 6; i++) {
+			medusa_die_left[i] = medusa.crop(width*(i), height * 7, width, height);
+		}
+		
+		medusa_bullet = ImageLoader.loadImage("/enemy/medusa_bullet.png");
+				
 		// Desert Tile
 		SpriteSheet desertSheet = new SpriteSheet(ImageLoader.loadImage("/desert/bg.png"));
 		desertTile = desertSheet.crop(0, 0, 32*8, 32*8);
