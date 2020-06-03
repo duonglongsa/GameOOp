@@ -1,6 +1,7 @@
 package Entity;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import Main.Handler;
@@ -19,7 +20,7 @@ public class MedusaBullet extends Creature{
 
 		this.active = false;
 		
-		this.speed = 2.5f;
+		this.speed = 5.0f;
 	}
 
 	@Override
@@ -33,19 +34,23 @@ public class MedusaBullet extends Creature{
 	}
 
 	private void checkAttack() {
-		
-		System.out.println(handler.getWorld().getMedusaEnemy().getAtkRange().getX());
+				
+		Rectangle a = new Rectangle();
+		a.x = 100;
+		a.y = 200;
+		a.width = 300;
+		a.height = 400;
 		
 		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0).
 				intersects(handler.getWorld().getMedusaEnemy().getAtkRange())) {
-			System.out.println("huy");
 //			handler.getWorld().getEntityManager().addEntity(new MedusaBullet(handler, 200, 200, 200, 200));
 			this.setActive(true);
 		}
 		
 		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0).
 				intersects(this.getCollisionBounds(0, 0))) {
-			
+			medusaEnemy.temp = 0;
+			handler.getWorld().getEntityManager().getEntities().remove(this);
 			handler.getWorld().getEntityManager().getPlayer().isHurt = true;
 			this.setActive(false);
 			
@@ -59,8 +64,8 @@ public class MedusaBullet extends Creature{
 			float playerX = handler.getWorld().getEntityManager().getPlayer().getX();
 			float playerY = handler.getWorld().getEntityManager().getPlayer().getY();
 			
-			float xMove = (playerX + 10 - this.x)/50;
-			float yMove = (playerY + 30 - this.y)/50;
+			float xMove = (playerX + 10 - this.x)/10;
+			float yMove = (playerY + 30 - this.y)/10;
 			
 			
 			this.setX(this.getX() + xMove);
@@ -71,7 +76,7 @@ public class MedusaBullet extends Creature{
 	
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Assets.medusa_bullet, (int) x + 50, (int) y + 50, 20, 20,  null);
+		g.drawImage(Assets.medusa_bullet, (int) x , (int) y , 4, 4,  null);
 		
 	}
 	

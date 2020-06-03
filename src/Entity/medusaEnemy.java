@@ -7,7 +7,9 @@ import gfx.Animation;
 import gfx.Assets;
 
 public class medusaEnemy extends Enemy{
-
+	
+	public static int temp = 0;
+	
 	public medusaEnemy(Handler handler, float x, float y, int width, int height) {
 		super(handler, x, y, width, height);
 
@@ -34,6 +36,11 @@ public class medusaEnemy extends Enemy{
 		dieRight = new Animation(180, Assets.medusa_die_right, handler);
 		dieLeft = new Animation(180, Assets.medusa_die_left, handler);
 		
+	}
+	
+	public void tick() {
+		super.tick();
+		bulletFire();
 	}
 	
 	public void render(Graphics g) {
@@ -64,6 +71,27 @@ public class medusaEnemy extends Enemy{
 		}
 		
 	}
+	
+	public void bulletFire() {
+		if(this.getAtkRange().intersects(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0))) {
+			
+			MedusaBullet a = new MedusaBullet(handler, this.x, this.y, 10, 10);
+			if(!check()) {
+				handler.getWorld().getEntityManager().addEntity(a);
+				temp += 1;
+			}
+		}
+	}
+	
+	public boolean check() {
+		if(temp > 0) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	
 	
 
 }
