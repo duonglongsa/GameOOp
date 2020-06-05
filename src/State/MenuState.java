@@ -6,15 +6,18 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import gfx.Assets;
+import entity.LizardEnemy;
 import main.Handler;
+import gfx.Assets;
 import ui.ClickListener;
 import ui.UIImageButton;
 import ui.UIManager;
 import utils.AudioClip;
 import utils.AudioPlayer;
 
-public class MenuState extends State {
+public class MenuState extends State { 
+	
+	public static int mode ;
 	
 	private UIManager uiManager;
 	//public static UIManager uiManager;
@@ -35,6 +38,9 @@ public class MenuState extends State {
 				handler.getMouseManager().setUIManager(null);
 				AudioPlayer.stopSound(menuMusic);
 				AudioPlayer.playSound(map1Music);																//phat nhac map1
+				mode = 1;
+				
+				LizardEnemy.lizardHelath = 50;
 			}
 		}));
 		
@@ -48,6 +54,9 @@ public class MenuState extends State {
 				handler.getMouseManager().setUIManager(null);
 				AudioPlayer.stopSound(menuMusic);
 				AudioPlayer.playSound(map1Music);
+				mode = 2;
+				
+				LizardEnemy.lizardHelath = 100;
 			}
 		}));
 		

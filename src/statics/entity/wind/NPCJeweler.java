@@ -1,14 +1,10 @@
 package statics.entity.wind;
 
 import java.awt.Graphics;
-import java.awt.Rectangle;
-
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.IconifyAction;
 
 import entity.StaticEntity;
-import gfx.Assets;
 import main.Handler;
-
+import gfx.Assets;
 
 
 public class NPCJeweler extends StaticEntity{

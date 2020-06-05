@@ -1,16 +1,11 @@
 package entity;
-
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Ellipse2D.Double;
 import java.awt.image.BufferedImage;
 
-import gfx.Animation;
+
 import main.Handler;
+import gfx.Animation;
 
 public class Enemy extends Creature {
 
@@ -34,13 +29,13 @@ public class Enemy extends Creature {
 
 	// attack range
 	protected Rectangle atkRange;
-	protected Shape circle = new Ellipse2D.Double(100, 100, 50, 50);
 
-	private float spawnY;
+	private float spawnY, spawnX;
 
 	public Enemy(Handler handler, float x, float y, int width, int height) {
 		super(handler, x, y, width, height);
 		this.spawnY = y;
+		this.spawnX = x;
 	}
 
 	@Override
@@ -158,14 +153,21 @@ public class Enemy extends Creature {
 		for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
 			if (e.equals(this)) {
 				continue;
-			} else if (e.getCollisionBounds(0, 0).intersects(ar)) {
+			} else if(e.equals(handler.getWorld().getEntityManager().getPlayer())) {
+				if(e.getCollisionBounds(0, 0).intersects(ar)) {
+					e.hurt((int) this.getAtkDame());
+					e.setHurt(true);
+					if(this.getHealth() < 10) {
+						e.setHurt(false);
+					}
+				}else {
+					e.setHurt(false);
 
-				e.hurt((int) this.getAtkDame());
-				e.isHurt = true;
-
-			} else {
-				e.isHurt = false;
 			}
+			}
+//			 else {
+//				e.isHurt = false;
+//			}
 		}
 
 	}
@@ -181,13 +183,13 @@ public class Enemy extends Creature {
 			this.y -= this.speed;
 			this.y = (int) this.getY();
 		} else if (direction == 3) {
-			if (this.getX() < 600) {
+			if (this.getX() < this.spawnX + 100) {
 				this.x += this.speed;
 			} else {
 				direction = 2;
 			}
 		} else if (direction == 2) {
-			if (this.getX() > 400) {
+			if (this.getX() > this.spawnX - 100) {
 				this.x -= this.speed;
 			} else {
 				direction = 3;
@@ -202,8 +204,17 @@ public class Enemy extends Creature {
 			if (!isNearPlayer(this.getCollisionBounds(0, 0),
 					handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0))) {
 
-				this.xMove = (handler.getWorld().getEntityManager().getPlayer().getX() - this.getX()) / 70;
-				this.yMove = (handler.getWorld().getEntityManager().getPlayer().getY() - this.getY()) / 70;
+				float playerX = handler.getWorld().getEntityManager().getPlayer().getX();
+				float playerY = handler.getWorld().getEntityManager().getPlayer().getY();
+				float k = Math.abs((playerX - this.x) / (playerY - this.y));
+				float xDirection = (playerX - this.x) / Math.abs(playerX - this.x);
+				float yDirection = (playerY - this.y) / Math.abs(playerY - this.y);
+
+				this.xMove = xDirection * (k * this.speed) / (k * k + 1);
+				this.yMove = yDirection * this.speed / (k * k + 1);
+
+//				this.xMove = (handler.getWorld().getEntityManager().getPlayer().getX() - this.getX()) / 1;
+//				this.yMove = (handler.getWorld().getEntityManager().getPlayer().getY() - this.getY()) / 1;
 
 				if (xMove > 0) { // change direction when move after player
 					this.direction = 3;

@@ -3,9 +3,8 @@ package statics.entity.wind;
 import java.awt.Graphics;
 
 import entity.StaticEntity;
-import gfx.Assets;
 import main.Handler;
-
+import gfx.Assets;
 public class BuildingWind15 extends StaticEntity{
 	public BuildingWind15(Handler handler, float x, float y) {
 		super(handler, x, y, 166, 150);

@@ -3,8 +3,10 @@ package statics.entity.desert;
 import java.awt.Graphics;
 
 import entity.StaticEntity;
-import gfx.Assets;
 import main.Handler;
+import gfx.Assets;
+
+
 
 public class Tree5 extends StaticEntity{
 	public Tree5(Handler handler, float x, float y) {

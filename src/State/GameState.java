@@ -3,9 +3,10 @@ package state;
 import java.awt.Graphics;
 
 import entity.Player;
-import gfx.Assets;
+
 import main.Game;
 import main.Handler;
+import gfx.Assets;
 import utils.AudioClip;
 import utils.AudioPlayer;
 import world.World;
@@ -16,10 +17,9 @@ public class GameState extends State{
 	
 	public GameState(Handler handler, String path) {
 		super(handler);
-		
-		//world = new World(handler, "res/world/world2.desert.txt");
+	
 		world = new World(handler, path);
-
+		System.out.println("abc");
 		handler.setWorld(world);
 	}
 	

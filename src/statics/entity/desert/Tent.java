@@ -3,14 +3,17 @@ package statics.entity.desert;
 import java.awt.Graphics;
 
 import entity.StaticEntity;
-import gfx.Assets;
 import main.Handler;
+import gfx.Assets;
+
+
+import gfx.Assets;
 
 public class Tent extends StaticEntity{
 	public Tent(Handler handler, float x, float y) {
 		super(handler, x, y, 100, 100);
 		
-		bounds.x = 0;
+		bounds.x = 100;
 		bounds.height = 50;
 	}
 	

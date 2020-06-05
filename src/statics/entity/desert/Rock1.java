@@ -3,8 +3,10 @@ package statics.entity.desert;
 import java.awt.Graphics;
 
 import entity.StaticEntity;
-import gfx.Assets;
 import main.Handler;
+import gfx.Assets;
+
+import gfx.Assets;
 import tile.Tile;
 
 public class Rock1 extends StaticEntity{

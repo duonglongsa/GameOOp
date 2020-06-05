@@ -3,8 +3,8 @@ package statics.entity.desert;
 import java.awt.Graphics;
 
 import entity.StaticEntity;
-import gfx.Assets;
 import main.Handler;
+import gfx.Assets;
 
 public class Decor7 extends StaticEntity{
 	public Decor7(Handler handler, float x, float y) {

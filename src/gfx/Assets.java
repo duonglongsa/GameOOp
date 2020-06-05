@@ -8,14 +8,14 @@ public class Assets {
 
 	private static final int width = 64;
 	private static final int height = 64;
-	
-	//Player-bar
+
+	// Player-bar
 	public static BufferedImage playerBar;
-	
-	//NPC
+
+	// NPC
 	public static BufferedImage[] npcJeweler;
 
-	// Desert 
+	// Desert
 	public static BufferedImage desertTile;
 	public static BufferedImage[] buildingDesert;
 	public static BufferedImage[] stoneDesert;
@@ -32,62 +32,63 @@ public class Assets {
 	public static BufferedImage[] roadWind;
 	public static BufferedImage[] buildingWind;
 	public static BufferedImage[] treeWind;
-	
+
 	// player
 	public static BufferedImage[] player_right, player_up, player_left, player_down, hurt_left, hurt_right, die_left,
 			die_right;
 	public static BufferedImage[] attack_left, attack_right, extra_left, extra_right, skill;
 	public static BufferedImage[] directions;
-	
-	
-	//lizard
+
+	// lizard
 	public static BufferedImage[] lizard_right, lizard_left, lizard_hurt_left, lizard_hurt_right, lizard_die_left,
-	lizard_die_right;
+			lizard_die_right;
 	public static BufferedImage[] lizard_attack_left, lizard_attack_right, lizard_skill;
 	public static BufferedImage[] lizard_directions;
-	
-	//medusa
-	public static BufferedImage[] medusa_right, medusa_left, medusa_hurt_right, medusa_hurt_left, medusa_die_right, 
-	medusa_die_left;
+
+	// medusa
+	public static BufferedImage[] medusa_right, medusa_left, medusa_hurt_right, medusa_hurt_left, medusa_die_right,
+			medusa_die_left;
 	public static BufferedImage[] medusa_attack_right, medusa_attack_left, medusa_skill_right, medusa_skill_left;
 	public static BufferedImage medusa_bullet;
-	
-	//UI
+
+	// UI
 	public static BufferedImage[] easy, hard, settings, exit, github, facebook, google, share;
 	public static BufferedImage background, playBackground;
 
-	
+	// portal
+	public static BufferedImage[] portal_open, portal_apr, portal_disapr;
+
 	public static void init() {
-		
-		//Player-bar
+
+		// Player-bar
 		playerBar = ImageLoader.loadImage("/player/PlayerBar.png");
-		
-		//NPC
+
+		// NPC
 		npcJeweler = new BufferedImage[2];
 		npcJeweler[0] = ImageLoader.loadImage("/npc/jeweler.png");
 		npcJeweler[1] = ImageLoader.loadImage("/npc/jeweler_talk.png");
-		
+
 		// menu state
-		//UI
+		// UI
 		background = ImageLoader.loadImage("/GUI/background.jpg");
 		playBackground = ImageLoader.loadImage("/GUI/playBackground.png");
-				
+
 		easy = new BufferedImage[2];
 		easy[0] = ImageLoader.loadImage("/GUI/easy0.png");
 		easy[1] = ImageLoader.loadImage("/GUI/easy1.png");
-		
+
 		hard = new BufferedImage[2];
 		hard[0] = ImageLoader.loadImage("/GUI/hard0.png");
 		hard[1] = ImageLoader.loadImage("/GUI/hard1.png");
-				
+
 		settings = new BufferedImage[2];
 		settings[0] = ImageLoader.loadImage("/GUI/settings0.png");
 		settings[1] = ImageLoader.loadImage("/GUI/settings1.png");
-				
+
 		exit = new BufferedImage[2];
 		exit[0] = ImageLoader.loadImage("/GUI/exit0.png");
 		exit[1] = ImageLoader.loadImage("/GUI/exit1.png");
-				
+
 		share = new BufferedImage[2];
 		share[0] = ImageLoader.loadImage("/GUI/share0.png");
 		share[1] = ImageLoader.loadImage("/GUI/share1.png");
@@ -95,244 +96,251 @@ public class Assets {
 		github = new BufferedImage[2];
 		github[0] = ImageLoader.loadImage("/GUI/github0.png");
 		github[1] = ImageLoader.loadImage("/GUI/github1.png");
-				
+
 		facebook = new BufferedImage[2];
 		facebook[0] = ImageLoader.loadImage("/GUI/facebook0.png");
 		facebook[1] = ImageLoader.loadImage("/GUI/facebook1.png");
-				
+
 		google = new BufferedImage[2];
 		google[0] = ImageLoader.loadImage("/GUI/google0.png");
 		google[1] = ImageLoader.loadImage("/GUI/google1.png");
-		
-		
+
 		// player
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/player/rouge.png"));
 		player_right = new BufferedImage[6];
-		for(int i = 0; i < 6; i++) {
-			player_right[i] = sheet.crop(width*(i), 0, width, height);
+		for (int i = 0; i < 6; i++) {
+			player_right[i] = sheet.crop(width * (i), 0, width, height);
 		}
-		
+
 		player_left = new BufferedImage[6];
-		for(int i = 0; i < 6; i++) {
-			player_left[i] = sheet.crop(width*(i), height, width, height);
+		for (int i = 0; i < 6; i++) {
+			player_left[i] = sheet.crop(width * (i), height, width, height);
 		}
-	
+
 		player_up = new BufferedImage[4];
-		for(int i = 0; i < 4; i++) {
-			player_up[i] = sheet.crop(width*(i), height*2, width, height);
+		for (int i = 0; i < 4; i++) {
+			player_up[i] = sheet.crop(width * (i), height * 2, width, height);
 		}
-		
+
 		player_down = new BufferedImage[4];
-		for(int i = 0; i < 4; i++) {
-			player_down[i] = sheet.crop(width*(i), height*3, width, height);
+		for (int i = 0; i < 4; i++) {
+			player_down[i] = sheet.crop(width * (i), height * 3, width, height);
 		}
-		
-		//attack
+
+		// attack
 		attack_right = new BufferedImage[4];
-		for(int i = 0; i < 4; i++) {
-			attack_right[i] = sheet.crop(width*(i), height*4, width, height);
+		for (int i = 0; i < 4; i++) {
+			attack_right[i] = sheet.crop(width * (i), height * 4, width, height);
 		}
 		extra_right = new BufferedImage[10];
-		for(int i = 0; i < 10; i++) {
-			extra_right[i] = sheet.crop(width*(i), height*4, width, height);
+		for (int i = 0; i < 10; i++) {
+			extra_right[i] = sheet.crop(width * (i), height * 4, width, height);
 		}
-		
+
 		attack_left = new BufferedImage[4];
-		for(int i = 0; i < 4; i++) {
-			attack_left[i] = sheet.crop(width*(i), height*5, width, height);
+		for (int i = 0; i < 4; i++) {
+			attack_left[i] = sheet.crop(width * (i), height * 5, width, height);
 		}
 		extra_left = new BufferedImage[10];
-		for(int i = 0; i < 10; i++) {
-			extra_left[i] = sheet.crop(width*(i), height*5, width, height);
+		for (int i = 0; i < 10; i++) {
+			extra_left[i] = sheet.crop(width * (i), height * 5, width, height);
 		}
-		
-		//hurt
+
+		// hurt
 		hurt_right = new BufferedImage[4];
-		for(int i = 0; i < 4; i++) {
-			hurt_right[i] = sheet.crop(width*(i), height*6, width, height);
+		for (int i = 0; i < 4; i++) {
+			hurt_right[i] = sheet.crop(width * (i), height * 6, width, height);
 		}
-		
+
 		hurt_left = new BufferedImage[4];
-		for(int i = 0; i < 4; i++) {
-			hurt_left[i] = sheet.crop(width*(i), height*7, width, height);
+		for (int i = 0; i < 4; i++) {
+			hurt_left[i] = sheet.crop(width * (i), height * 7, width, height);
 		}
-		
-		//die
+
+		// die
 		die_right = new BufferedImage[10];
-		for(int i = 0; i < 10; i++) {
-			die_right[i] = sheet.crop(width*i, height*8, width, height);
+		for (int i = 0; i < 10; i++) {
+			die_right[i] = sheet.crop(width * i, height * 8, width, height);
 		}
 		die_left = new BufferedImage[10];
-		for(int i = 0; i < 5; i++) {
-			die_left[i] = sheet.crop(width*(i), height*9, width, height);
+		for (int i = 0; i < 5; i++) {
+			die_left[i] = sheet.crop(width * (i), height * 9, width, height);
 		}
 		die_left[6] = die_right[6];
 		die_left[7] = die_right[7];
 		die_left[8] = die_right[8];
 		die_left[9] = die_right[9];
-		
+
 		// direction
 		directions = new BufferedImage[4];
 		directions[0] = player_down[0];
 		directions[1] = player_up[2];
 		directions[3] = player_right[0];
 		directions[2] = player_left[0];
-		
+
 		// Manh - for Lizard
 
-				SpriteSheet lizard = new SpriteSheet(ImageLoader.loadImage("/enemy/lizard.png"));
-				lizard_right = new BufferedImage[6];
-				for(int i = 0; i < 6; i++) {
-					lizard_right[i] = lizard.crop(width*(i), 0, width, height);
-				}
-				
-				lizard_left = new BufferedImage[6];
-				for(int i = 0; i < 6; i++) {
-					lizard_left[i] = lizard.crop(width*(i), height, width, height);
-				}
-			
-				
-				//lizard_attack
-				lizard_attack_right = new BufferedImage[5];
-				for(int i = 0; i < 5; i++) {
-					lizard_attack_right[i] = lizard.crop(width*(i), height*2, width, height);
-				}
-				
-				lizard_attack_left = new BufferedImage[5];
-				for(int i = 0; i < 5; i++) {
-					lizard_attack_left[i] = lizard.crop(width*(i), height*3, width, height);
-				}
-			
-				
-				//hurt
-				lizard_hurt_right = new BufferedImage[2];
-				for(int i = 0; i < 2; i++) {
-					lizard_hurt_right[i] = lizard.crop(width*(i), height*4, width, height);
-				}
-				
-				lizard_hurt_left = new BufferedImage[2];
-				for(int i = 0; i < 2; i++) {
-					lizard_hurt_left[i] = lizard.crop(width*(i), height*5, width, height);
-				}
-				
-				//lizard_die
-				lizard_die_right = new BufferedImage[6];
-				for(int i = 0; i < 6; i++) {
-					lizard_die_right[i] = lizard.crop(width*i, height*6, width, height);
-				}
-				lizard_die_left = new BufferedImage[6];
-				for(int i = 0; i < 6; i++) {
-					lizard_die_left[i] = lizard.crop(width*(i), height*7, width, height);
-				}
-				
-				
-				// direction
-				lizard_directions = new BufferedImage[4];
-				lizard_directions[0] = lizard_right[0];
-				lizard_directions[1] = lizard_right[0];
-				lizard_directions[3] = lizard_right[0];
-				lizard_directions[2] = lizard_right[0];
+		SpriteSheet lizard = new SpriteSheet(ImageLoader.loadImage("/enemy/lizard.png"));
+		lizard_right = new BufferedImage[6];
+		for (int i = 0; i < 6; i++) {
+			lizard_right[i] = lizard.crop(width * (i), 0, width, height);
+		}
 
-				
-		//medusa
+		lizard_left = new BufferedImage[6];
+		for (int i = 0; i < 6; i++) {
+			lizard_left[i] = lizard.crop(width * (i), height, width, height);
+		}
+
+		// lizard_attack
+		lizard_attack_right = new BufferedImage[5];
+		for (int i = 0; i < 5; i++) {
+			lizard_attack_right[i] = lizard.crop(width * (i), height * 2, width, height);
+		}
+
+		lizard_attack_left = new BufferedImage[5];
+		for (int i = 0; i < 5; i++) {
+			lizard_attack_left[i] = lizard.crop(width * (i), height * 3, width, height);
+		}
+
+		// hurt
+		lizard_hurt_right = new BufferedImage[2];
+		for (int i = 0; i < 2; i++) {
+			lizard_hurt_right[i] = lizard.crop(width * (i), height * 4, width, height);
+		}
+
+		lizard_hurt_left = new BufferedImage[2];
+		for (int i = 0; i < 2; i++) {
+			lizard_hurt_left[i] = lizard.crop(width * (i), height * 5, width, height);
+		}
+
+		// lizard_die
+		lizard_die_right = new BufferedImage[6];
+		for (int i = 0; i < 6; i++) {
+			lizard_die_right[i] = lizard.crop(width * i, height * 6, width, height);
+		}
+		lizard_die_left = new BufferedImage[6];
+		for (int i = 0; i < 6; i++) {
+			lizard_die_left[i] = lizard.crop(width * (i), height * 7, width, height);
+		}
+
+		// direction
+		lizard_directions = new BufferedImage[4];
+		lizard_directions[0] = lizard_right[0];
+		lizard_directions[1] = lizard_right[0];
+		lizard_directions[3] = lizard_right[0];
+		lizard_directions[2] = lizard_right[0];
+
+		// medusa
 		SpriteSheet medusa = new SpriteSheet(ImageLoader.loadImage("/enemy/medusa.png"));
-		
+
 		medusa_right = new BufferedImage[4];
-		for(int i = 0; i < 4; i++) {
-			medusa_right[i] = medusa.crop(width*(i), 0, width, height);
+		for (int i = 0; i < 4; i++) {
+			medusa_right[i] = medusa.crop(width * (i), 0, width, height);
 		}
 		medusa_left = new BufferedImage[4];
-		for(int i = 0; i < 4; i++) {
-			medusa_left[i] = medusa.crop(width*(i), height, width, height);
+		for (int i = 0; i < 4; i++) {
+			medusa_left[i] = medusa.crop(width * (i), height, width, height);
 		}
-		
+
 		medusa_attack_right = new BufferedImage[6];
-		for(int i = 0; i < 6; i++) {
-			medusa_attack_right[i] = medusa.crop(width*(i), height * 2, width, height);
+		for (int i = 0; i < 6; i++) {
+			medusa_attack_right[i] = medusa.crop(width * (i), height * 2, width, height);
 		}
 		medusa_attack_left = new BufferedImage[6];
-		for(int i = 0; i < 6; i++) {
-			medusa_attack_left[i] = medusa.crop(width*(i), height * 3, width, height);
+		for (int i = 0; i < 6; i++) {
+			medusa_attack_left[i] = medusa.crop(width * (i), height * 3, width, height);
 		}
-		
+
 		medusa_hurt_right = new BufferedImage[2];
-		for(int i = 0; i < 2; i++) {
-			medusa_hurt_right[i] = medusa.crop(width*(i), height * 4, width, height);
+		for (int i = 0; i < 2; i++) {
+			medusa_hurt_right[i] = medusa.crop(width * (i), height * 4, width, height);
 		}
 		medusa_hurt_left = new BufferedImage[2];
-		for(int i = 0; i < 2; i++) {
-			medusa_hurt_left[i] = medusa.crop(width*(i), height * 5, width, height);
+		for (int i = 0; i < 2; i++) {
+			medusa_hurt_left[i] = medusa.crop(width * (i), height * 5, width, height);
 		}
-		
 		medusa_die_right = new BufferedImage[6];
-		for(int i = 0; i < 6; i++) {
-			medusa_die_right[i] = medusa.crop(width*(i), height * 6, width, height);
+		for (int i = 0; i < 6; i++) {
+			medusa_die_right[i] = medusa.crop(width * (i), height * 6, width, height);
 		}
 		medusa_die_left = new BufferedImage[6];
-		for(int i = 0; i < 6; i++) {
-			medusa_die_left[i] = medusa.crop(width*(i), height * 7, width, height);
+		for (int i = 0; i < 6; i++) {
+			medusa_die_left[i] = medusa.crop(width * (i), height * 7, width, height);
 		}
-		
-		//Bullet
+
 		SpriteSheet bulletSheet = new SpriteSheet(ImageLoader.loadImage("/enemy/fire.png"));
 		medusa_bullet = bulletSheet.crop(0, 0, 256, 256);
-				
+		
+		//portal
+		SpriteSheet portal = new SpriteSheet(ImageLoader.loadImage("/portal/portal.png"));
+		portal_open = new BufferedImage[8];
+		for (int i = 0; i < 8; i++) {
+			portal_open[i] = portal.crop(width * i, height * 0, width, width);
+		}
+		portal_apr = new BufferedImage[8];
+		for (int i = 0; i < 8; i++) {
+			portal_apr[i] = portal.crop(width * i, height * 1, width, width);
+		}
+		portal_disapr = new BufferedImage[4];
+		for (int i = 0; i < 4; i++) {
+			portal_disapr[i] = portal.crop(width * i, height * 2, width, width);
+		}
+
 		// Desert Tile
 		SpriteSheet desertSheet = new SpriteSheet(ImageLoader.loadImage("/desert/bg.png"));
-		desertTile = desertSheet.crop(0, 0, 32*8, 32*8);
-				
-		//Desert building
+		desertTile = desertSheet.crop(0, 0, 32 * 8, 32 * 8);
+
+		// Desert building
 		buildingDesert = new BufferedImage[5];
-		SpriteSheet buildingDesertSheet0 = new SpriteSheet(ImageLoader.loadImage("/desert/building_1.png"));		
+		SpriteSheet buildingDesertSheet0 = new SpriteSheet(ImageLoader.loadImage("/desert/building_1.png"));
 		SpriteSheet buildingDesertSheet1 = new SpriteSheet(ImageLoader.loadImage("/desert/building_2.png"));
 		SpriteSheet buildingDesertSheet2 = new SpriteSheet(ImageLoader.loadImage("/desert/building_3.png"));
 		SpriteSheet buildingDesertSheet3 = new SpriteSheet(ImageLoader.loadImage("/desert/building_4.png"));
-		SpriteSheet buildingDesertSheet4 = new SpriteSheet(ImageLoader.loadImage("/desert/building_5.png"));	
-				
+		SpriteSheet buildingDesertSheet4 = new SpriteSheet(ImageLoader.loadImage("/desert/building_5.png"));
+
 		buildingDesert[0] = buildingDesertSheet0.crop(0, 0, 559, 549);
 		buildingDesert[1] = buildingDesertSheet1.crop(0, 0, 650, 378);
 		buildingDesert[2] = buildingDesertSheet2.crop(0, 0, 243, 397);
 		buildingDesert[3] = buildingDesertSheet3.crop(0, 0, 303, 568);
 		buildingDesert[4] = buildingDesertSheet4.crop(0, 0, 404, 507);
-				
-		//Desert stone
+
+		// Desert stone
 		stoneDesert = new BufferedImage[3];
 		SpriteSheet stoneDesertSheet0 = new SpriteSheet(ImageLoader.loadImage("/desert/stones_10.png"));
 		SpriteSheet stoneDesertSheet1 = new SpriteSheet(ImageLoader.loadImage("/desert/stones_11.png"));
 		SpriteSheet stoneDesertSheet2 = new SpriteSheet(ImageLoader.loadImage("/desert/stones_12.png"));
-				
+
 		stoneDesert[0] = stoneDesertSheet0.crop(0, 0, 769, 630);
 		stoneDesert[1] = stoneDesertSheet1.crop(0, 0, 1422, 643);
 		stoneDesert[2] = stoneDesertSheet2.crop(0, 0, 948, 660);
-				
-		//Desert rock
+
+		// Desert rock
 		rockDesert = new BufferedImage[3];
 		SpriteSheet rockDesertSheet0 = new SpriteSheet(ImageLoader.loadImage("/desert/stones_1.png"));
 		SpriteSheet rockDesertSheet1 = new SpriteSheet(ImageLoader.loadImage("/desert/stones_5.png"));
 		SpriteSheet rockDesertSheet2 = new SpriteSheet(ImageLoader.loadImage("/desert/stones_6.png"));
-				
+
 		rockDesert[0] = rockDesertSheet0.crop(0, 0, 106, 79);
 		rockDesert[1] = rockDesertSheet1.crop(0, 0, 181, 136);
 		rockDesert[2] = rockDesertSheet2.crop(0, 0, 199, 188);
-				
+
 		// Desert pyramid
 		SpriteSheet pyramidSheet = new SpriteSheet(ImageLoader.loadImage("/desert/decor_1.png"));
-				
+
 		pyramidDesert = pyramidSheet.crop(0, 0, 356, 296);
-				
+
 		// Desert land
 		landDesert = new BufferedImage[9];
 		SpriteSheet landSheet = new SpriteSheet(ImageLoader.loadImage("/desert/land_6.png"));
 		SpriteSheet landSheet1 = new SpriteSheet(ImageLoader.loadImage("/desert/land_1.png"));
 		SpriteSheet landSheet2 = new SpriteSheet(ImageLoader.loadImage("/desert/land_2.png"));
-		SpriteSheet landSheet3 = new SpriteSheet(ImageLoader.loadImage("/desert/land_3.png"));		
-		SpriteSheet landSheet18 = new SpriteSheet(ImageLoader.loadImage("/desert/land_18.png"));		
-		SpriteSheet landSheet9 = new SpriteSheet(ImageLoader.loadImage("/desert/land_9.png"));		
-		SpriteSheet landSheet11 = new SpriteSheet(ImageLoader.loadImage("/desert/land_11.png"));		
-		SpriteSheet landSheetgoc1 = new SpriteSheet(ImageLoader.loadImage("/desert/land_goc1.png"));		
-		SpriteSheet landSheetgoc2 = new SpriteSheet(ImageLoader.loadImage("/desert/land_goc2.png"));		
+		SpriteSheet landSheet3 = new SpriteSheet(ImageLoader.loadImage("/desert/land_3.png"));
+		SpriteSheet landSheet18 = new SpriteSheet(ImageLoader.loadImage("/desert/land_18.png"));
+		SpriteSheet landSheet9 = new SpriteSheet(ImageLoader.loadImage("/desert/land_9.png"));
+		SpriteSheet landSheet11 = new SpriteSheet(ImageLoader.loadImage("/desert/land_11.png"));
+		SpriteSheet landSheetgoc1 = new SpriteSheet(ImageLoader.loadImage("/desert/land_goc1.png"));
+		SpriteSheet landSheetgoc2 = new SpriteSheet(ImageLoader.loadImage("/desert/land_goc2.png"));
 
-				
 		landDesert[0] = landSheet.crop(0, 0, 256, 256);
 		landDesert[1] = landSheet1.crop(0, 0, 256, 256);
 		landDesert[2] = landSheet2.crop(0, 0, 256, 256);
@@ -345,33 +353,28 @@ public class Assets {
 
 		// Tent
 		SpriteSheet tentSheet = new SpriteSheet(ImageLoader.loadImage("/desert/decor_2.png"));
-				
+
 		tentDesert = tentSheet.crop(0, 0, 258, 279);
-				
+
 		// Lake
 		SpriteSheet lakeSheet = new SpriteSheet(ImageLoader.loadImage("/desert/lake.png"));
-				
+
 		lakeDesert = lakeSheet.crop(0, 0, 559, 221);
-				
+
 		// Stair
 		SpriteSheet stairSheet = new SpriteSheet(ImageLoader.loadImage("/desert/land_13.png"));
 
 		stairDesert = stairSheet.crop(0, 0, 256, 239);
-				
+
 		// Tree
 		treeDesert = new BufferedImage[8];
-				
+
 		SpriteSheet treeSheet0 = new SpriteSheet(ImageLoader.loadImage("/desert/tree_1.png"));
 		SpriteSheet treeSheet1 = new SpriteSheet(ImageLoader.loadImage("/desert/tree_1.png"));
 		SpriteSheet treeSheet2 = new SpriteSheet(ImageLoader.loadImage("/desert/tree_2.png"));
 		SpriteSheet treeSheet3 = new SpriteSheet(ImageLoader.loadImage("/desert/tree_3.png"));
 		SpriteSheet treeSheet4 = new SpriteSheet(ImageLoader.loadImage("/desert/tree_4.png"));
 		SpriteSheet treeSheet5 = new SpriteSheet(ImageLoader.loadImage("/desert/tree_5.png"));
-		SpriteSheet treeSheet6 = new SpriteSheet(ImageLoader.loadImage("/desert/tree_6.png"));
-		SpriteSheet treeSheet7 = new SpriteSheet(ImageLoader.loadImage("/desert/tree_7.png"));
-		SpriteSheet treeSheet8 = new SpriteSheet(ImageLoader.loadImage("/desert/tree_8.png"));
-		SpriteSheet treeSheet9 = new SpriteSheet(ImageLoader.loadImage("/desert/tree_9.png"));
-		SpriteSheet treeSheet10 = new SpriteSheet(ImageLoader.loadImage("/desert/tree_10.png"));
 		SpriteSheet treeSheet11 = new SpriteSheet(ImageLoader.loadImage("/desert/tree_11.png"));
 		SpriteSheet treeSheet12 = new SpriteSheet(ImageLoader.loadImage("/desert/tree_12.png"));
 
@@ -383,63 +386,82 @@ public class Assets {
 		treeDesert[5] = treeSheet5.crop(0, 0, 187, 244);
 		treeDesert[6] = treeSheet11.crop(0, 0, 206, 367);
 		treeDesert[7] = treeSheet12.crop(0, 0, 221, 301);
-				
+
 		// Road
 		SpriteSheet roadSheet = new SpriteSheet(ImageLoader.loadImage("/desert/road_18.png"));
-				
+
 		roadDesert = roadSheet.crop(0, 0, 64, 64);
-				
+
 		// Decor
 		decorDesert = new BufferedImage[1];
-				
+
 		SpriteSheet decorSheet = new SpriteSheet(ImageLoader.loadImage("/desert/decor_7.png"));
-				
+
 		decorDesert[0] = decorSheet.crop(0, 0, 131, 142);
-				
+
 		// Greenery
-				
+
 		greeneryDesert = new BufferedImage[1];
-				
+
 		SpriteSheet greenerySheet = new SpriteSheet(ImageLoader.loadImage("/desert/greenery_3.png"));
-				
+
 		greeneryDesert[0] = greenerySheet.crop(0, 0, 87, 162);
-		
-	// Wind
-		
+
+		// Wind
+
 		// Wind tile
 		SpriteSheet windSheet = new SpriteSheet(ImageLoader.loadImage("/wind/land/land_1.png"));
-		
+
 		windTile = windSheet.crop(0, 0, 256, 256);
-						
+
 		// Wind Road
 		roadWind = new BufferedImage[2];
 		SpriteSheet roadSheet16 = new SpriteSheet(ImageLoader.loadImage("/wind/road/road_16.png"));
 		SpriteSheet roadSheet5 = new SpriteSheet(ImageLoader.loadImage("/wind/road/road_5.png"));
-		
+
 		roadWind[0] = roadSheet16.crop(0, 0, 64, 64);
 		roadWind[1] = roadSheet5.crop(0, 0, 64, 64);
-		
+
 		// Wind Building
 		buildingWind = new BufferedImage[19];
-		SpriteSheet buildingWindSheet0 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_1/building_1.png"));
-		SpriteSheet buildingWindSheet1 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_1/building_1.png"));
-		SpriteSheet buildingWindSheet2 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_2/building_1.png"));
-		SpriteSheet buildingWindSheet3 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_3/building_1.png"));
-		SpriteSheet buildingWindSheet4 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_4/building_1.png"));
-		SpriteSheet buildingWindSheet5 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_5/building_1.png"));
-		SpriteSheet buildingWindSheet6 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_6/building_1.png"));
-		SpriteSheet buildingWindSheet7 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_7/building_1.png"));
-		SpriteSheet buildingWindSheet8 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_8/building_1.png"));
-		SpriteSheet buildingWindSheet9 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_9/building_1.png"));
-		SpriteSheet buildingWindSheet10 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_10/building_1.png"));
-		SpriteSheet buildingWindSheet11 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_11/building_1.png"));
-		SpriteSheet buildingWindSheet12 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_12/building_1.png"));
-		SpriteSheet buildingWindSheet13 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_13/building_1.png"));
-		SpriteSheet buildingWindSheet14 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_14/building_1.png"));
-		SpriteSheet buildingWindSheet15 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_15/building_1.png"));
-		SpriteSheet buildingWindSheet16 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_16/building_1.png"));
-		SpriteSheet buildingWindSheet17 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_17/building_1.png"));
-		SpriteSheet buildingWindSheet18 = new SpriteSheet(ImageLoader.loadImage("/wind/buildings/building_18/building_1.png"));
+		SpriteSheet buildingWindSheet0 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_1/building_1.png"));
+		SpriteSheet buildingWindSheet1 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_1/building_1.png"));
+		SpriteSheet buildingWindSheet2 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_2/building_1.png"));
+		SpriteSheet buildingWindSheet3 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_3/building_1.png"));
+		SpriteSheet buildingWindSheet4 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_4/building_1.png"));
+		SpriteSheet buildingWindSheet5 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_5/building_1.png"));
+		SpriteSheet buildingWindSheet6 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_6/building_1.png"));
+		SpriteSheet buildingWindSheet7 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_7/building_1.png"));
+		SpriteSheet buildingWindSheet8 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_8/building_1.png"));
+		SpriteSheet buildingWindSheet9 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_9/building_1.png"));
+		SpriteSheet buildingWindSheet10 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_10/building_1.png"));
+		SpriteSheet buildingWindSheet11 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_11/building_1.png"));
+		SpriteSheet buildingWindSheet12 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_12/building_1.png"));
+		SpriteSheet buildingWindSheet13 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_13/building_1.png"));
+		SpriteSheet buildingWindSheet14 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_14/building_1.png"));
+		SpriteSheet buildingWindSheet15 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_15/building_1.png"));
+		SpriteSheet buildingWindSheet16 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_16/building_1.png"));
+		SpriteSheet buildingWindSheet17 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_17/building_1.png"));
+		SpriteSheet buildingWindSheet18 = new SpriteSheet(
+				ImageLoader.loadImage("/wind/buildings/building_18/building_1.png"));
 
 		buildingWind[0] = buildingWindSheet0.crop(0, 0, 476, 672);
 		buildingWind[1] = buildingWindSheet1.crop(0, 0, 476, 672);
@@ -460,12 +482,12 @@ public class Assets {
 		buildingWind[16] = buildingWindSheet16.crop(0, 0, 492, 557);
 		buildingWind[17] = buildingWindSheet17.crop(0, 0, 843, 766);
 		buildingWind[18] = buildingWindSheet18.crop(0, 0, 532, 523);
-		
+
 		// Tree Wind
 		treeWind = new BufferedImage[2];
 		SpriteSheet treeWindSheet1 = new SpriteSheet(ImageLoader.loadImage("/wind/decor/tree_1.png"));
 		SpriteSheet treeWindSheet2 = new SpriteSheet(ImageLoader.loadImage("/wind/decor/tree_2.png"));
-		
+
 		treeWind[0] = treeWindSheet1.crop(0, 0, 355, 620);
 		treeWind[1] = treeWindSheet2.crop(0, 0, 317, 543);
 	}

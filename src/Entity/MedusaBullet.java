@@ -4,8 +4,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import gfx.Assets;
 import main.Handler;
+import gfx.Assets;
 
 public class MedusaBullet extends Creature{
 	
@@ -25,6 +25,8 @@ public class MedusaBullet extends Creature{
 
 	@Override
 	public void tick() {
+		
+		
 		
 		bulletMove();
 		checkAttack();
@@ -74,7 +76,7 @@ public class MedusaBullet extends Creature{
 	
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Assets.medusa_bullet, (int) x , (int) y, 32, 32, null);
+		g.drawImage(Assets.medusa_bullet, (int) x , (int) y , 32, 32,  null);
 		
 	}
 	
@@ -82,6 +84,7 @@ public class MedusaBullet extends Creature{
 
 	@Override
 	public void die() {
+		
 		
 	}
 	

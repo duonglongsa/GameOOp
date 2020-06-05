@@ -6,15 +6,15 @@ import java.awt.image.BufferedImage;
 
 import display.Display;
 import entity.Player;
+import state.GameState;
+import state.MenuState;
+import state.State;
 import gfx.Assets;
 import gfx.GameCamera;
 import gfx.ImageLoader;
 import gfx.SpriteSheet;
 import input.KeyManager;
 import input.MouseManager;
-import state.GameState;
-import state.MenuState;
-import state.State;
 import statics.entity.wind.NPCJeweler;
 import utils.AudioClip;
 import utils.AudioPlayer;
@@ -35,7 +35,7 @@ public class Game implements Runnable {
 	public int q = 0;
 	
 	//State
-	public MenuState menuState;
+	public State menuState;
 	public State gameState;
 	
 	//Input
@@ -67,14 +67,11 @@ public class Game implements Runnable {
 		
 		handler = new Handler(this);
 		gameCamera = new GameCamera(handler, 0, 0);
-		
 		menuState = new MenuState(handler);
 		
 		gameState = new GameState(handler, path);
 		
 		State.setState(gameState);
-		
-		//State.setState(gameState);
 		
 		if(q == 1) {
 			State.setState(gameState);
@@ -122,8 +119,8 @@ public class Game implements Runnable {
 	public void run() {		
 
 		String[] path = new String[2];
-		path[1] = "res/world/world1.wind.txt";
-		path[0] = "res/world/world2.desert.txt";
+		path[0] = "res/world/world1.wind.txt";
+		path[1] = "res/world/world2.desert.txt";
 		
 		while(true) {
 			

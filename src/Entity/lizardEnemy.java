@@ -5,11 +5,14 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import main.Handler;
+import state.MenuState;
 import gfx.Animation;
 import gfx.Assets;
-import main.Handler;
 
 public class LizardEnemy extends Enemy {
+	
+	public static int lizardHelath;
 	
 	public LizardEnemy(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDHT, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -21,8 +24,6 @@ public class LizardEnemy extends Enemy {
 		bounds.height = 35;
 		
 		
-		this.health = 20;
-		this.atkDame = 1;
 		
 		// Animations
 		animLeft = new Animation(180, Assets.lizard_left, handler);
@@ -39,11 +40,15 @@ public class LizardEnemy extends Enemy {
 		// die animations
 		dieLeft = new Animation(180, Assets.lizard_die_left, handler);
 		dieRight = new Animation(180, Assets.lizard_die_right, handler);
-		
-		this.speed = 1.5f;
 
 	}
 
+	public void tick() {
+		super.tick();
+		
+		
+	}
+	
 	@Override
 	public void die() {
 		// TODO Auto-generated method stub

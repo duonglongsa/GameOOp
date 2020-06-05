@@ -2,9 +2,10 @@ package entity;
 
 import java.awt.Graphics;
 
+import main.Handler;
+import state.MenuState;
 import gfx.Animation;
 import gfx.Assets;
-import main.*;
 
 public class MedusaEnemy extends Enemy{
 	
@@ -18,10 +19,6 @@ public class MedusaEnemy extends Enemy{
 		bounds.y = 10;
 		bounds.width = 32;
 		bounds.height = 32;
-		
-		this.health = 50;
-		this.atkDame = 5;
-		this.speed = 1.5f;
 		
 		//animation
 		animRight = new Animation(180, Assets.medusa_right, handler);
@@ -41,6 +38,10 @@ public class MedusaEnemy extends Enemy{
 	public void tick() {
 		super.tick();
 		bulletFire();
+		
+//		this.health = 50 * MenuState.mode;
+		this.atkDame = 5 * MenuState.mode;
+		this.speed = 1.0f * MenuState.mode;
 	}
 	
 	public void render(Graphics g) {
@@ -75,7 +76,7 @@ public class MedusaEnemy extends Enemy{
 	public void bulletFire() {
 		if(this.getAtkRange().intersects(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0))) {
 			
-			MedusaBullet a = new MedusaBullet(handler, this.x, this.y, 64, 64);
+			MedusaBullet a = new MedusaBullet(handler, this.x, this.y, 10, 10);
 			if(!check()) {
 				handler.getWorld().getEntityManager().addEntity(a);
 				temp += 1;
@@ -87,6 +88,7 @@ public class MedusaEnemy extends Enemy{
 		if(temp > 0) {
 			return true;
 		}
+		
 		return false;
 	}
 	

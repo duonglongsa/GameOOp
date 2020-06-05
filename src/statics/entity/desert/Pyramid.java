@@ -1,12 +1,10 @@
 package statics.entity.desert;
 
 import java.awt.Graphics;
-import java.awt.image.renderable.RenderableImage;
 
 import entity.StaticEntity;
-import gfx.Assets;
 import main.Handler;
-
+import gfx.Assets;
 public class Pyramid extends StaticEntity{
 	public Pyramid(Handler handler, float x, float y) {
 		super(handler, x, y, 266, 196);

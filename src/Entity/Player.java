@@ -6,11 +6,11 @@ import java.awt.image.BufferedImage;
 
 import java.awt.Rectangle;
 
-import gfx.Animation;
-import gfx.Assets;
 import main.Handler;
 import utils.AudioClip;
 import utils.AudioPlayer;
+import gfx.Animation;
+import gfx.Assets;
 
 public class Player extends Creature {
 
@@ -18,13 +18,13 @@ public class Player extends Creature {
 	private Animation animDown, animUp, animLeft, animRight;
 	private Animation aLeft, aRight, extraLeft, extraRight;
 	private Animation dieLeft, dieRight, hurtLeft, hurtRight;
-	
+
 	// attack cooldown
 	private long lastAttackTimer, attackCooldown = 100, attackTimer = attackCooldown;
-	
+
 	// directions
 	private int direction = 0;
-	
+
 	// Player-bar
 	private double totalHealth = HEALTH, totalMana = 100, mana = 100;
 
@@ -39,7 +39,7 @@ public class Player extends Creature {
 		bounds.width = 19;
 		bounds.height = 30;
 		this.health = HEALTH;
-		
+
 		// Animations
 		animDown = new Animation(180, Assets.player_down, handler);
 		animUp = new Animation(180, Assets.player_up, handler);
@@ -83,10 +83,10 @@ public class Player extends Creature {
 	@Override
 	public void tick() {
 		// chinh kich thuoc va cham
-		
-		if(this.isHurt()) {
-			AudioClip hurt = new AudioClip("death1.wav");
-			AudioPlayer.playSound(hurt);
+
+		if(this.isHurt() ) {
+			AudioClip hurtAudioClip = new AudioClip("death1.wav");
+			AudioPlayer.playSound(hurtAudioClip);
 		}
 		
 		// Animations
@@ -121,7 +121,6 @@ public class Player extends Creature {
 				health -= 1;
 
 			} else {
-
 				active = false;
 			}
 		}
@@ -139,8 +138,6 @@ public class Player extends Creature {
 	}
 
 	private void checkAttack() {
-		
-		
 		attackTimer += System.currentTimeMillis() - lastAttackTimer;
 		lastAttackTimer = System.currentTimeMillis();
 		if (attackTimer < attackCooldown) {
@@ -153,8 +150,10 @@ public class Player extends Creature {
 		ar.height = arSize;
 
 		if (handler.getKeyManager().attack || handler.getKeyManager().skill) {
+			
 			AudioClip attackAudioClip = new AudioClip("skill.wav");
 			AudioPlayer.playSound(attackAudioClip);
+			
 			if (direction == 1) { // facing up
 				ar.x = cb.x + cb.width / 2 - arSize / 2;
 				ar.y = cb.y - arSize;
@@ -176,7 +175,9 @@ public class Player extends Creature {
 				if (e.equals(this)) {
 					continue;
 				} else if (e.getCollisionBounds(0, 0).intersects(ar)) {
-					e.hurt((int) this.getAtkDame());
+					e.hurt(4);
+					System.out.println(e.getHealth());
+
 				}
 			}
 		}
@@ -185,10 +186,9 @@ public class Player extends Creature {
 
 	@Override
 	public void render(Graphics g) {
-		
+
 		g.setColor(Color.red);
 		g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
-		
 
 		if (direction == 1 || direction == 3) { // facing up or right
 			if (handler.getKeyManager().attack) {
