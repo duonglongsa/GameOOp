@@ -1,21 +1,23 @@
-package Main;
+package main;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
-import Display.Display;
-import Entity.Player;
-import State.GameState;
-import State.MenuState;
-import State.State;
+import display.Display;
+import entity.Player;
 import gfx.Assets;
 import gfx.GameCamera;
 import gfx.ImageLoader;
 import gfx.SpriteSheet;
 import input.KeyManager;
 import input.MouseManager;
+import state.GameState;
+import state.MenuState;
+import state.State;
 import statics.entity.wind.NPCJeweler;
+import utils.AudioClip;
+import utils.AudioPlayer;
 
 
 public class Game implements Runnable {
@@ -30,12 +32,11 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 	
-	private int q = 0;
+	public int q = 0;
 	
-
 	//State
+	public MenuState menuState;
 	public State gameState;
-	public State menuState;
 	
 	//Input
 	private KeyManager keyManager;
@@ -68,16 +69,18 @@ public class Game implements Runnable {
 		gameCamera = new GameCamera(handler, 0, 0);
 		
 		menuState = new MenuState(handler);
-
+		
 		gameState = new GameState(handler, path);
 		
 		State.setState(gameState);
 		
 		//State.setState(gameState);
-
 		
 		if(q == 1) {
 			State.setState(gameState);
+			handler.getMouseManager().setUIManager(null);
+			AudioClip map2Music = new AudioClip("Map2Music.wav");
+			AudioPlayer.playSound(map2Music);								//phat nhac map2
 		}
 		else {
 			State.setState(menuState);

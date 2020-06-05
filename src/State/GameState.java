@@ -1,12 +1,13 @@
-package State;
+package state;
 
 import java.awt.Graphics;
 
-import Entity.Player;
-
-import Main.Game;
-import Main.Handler;
+import entity.Player;
 import gfx.Assets;
+import main.Game;
+import main.Handler;
+import utils.AudioClip;
+import utils.AudioPlayer;
 import world.World;
 
 public class GameState extends State{
@@ -19,7 +20,6 @@ public class GameState extends State{
 		//world = new World(handler, "res/world/world2.desert.txt");
 		world = new World(handler, path);
 
-		
 		handler.setWorld(world);
 	}
 	

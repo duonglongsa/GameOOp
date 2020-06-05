@@ -2,9 +2,9 @@ package tile.desert;
 
 import java.awt.Graphics;
 
-import Entity.StaticEntity;
-import Main.Handler;
+import entity.StaticEntity;
 import gfx.Assets;
+import main.Handler;
 import tile.Tile;
 
 public class Stair1 extends Tile{

@@ -1,8 +1,8 @@
 package gfx;
 
-import Entity.Entity;
-import Main.Game;
-import Main.Handler;
+import entity.Entity;
+import main.Game;
+import main.Handler;
 import tile.Tile;
 
 public class GameCamera {

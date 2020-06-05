@@ -2,15 +2,15 @@ package statics.entity.desert;
 
 import java.awt.Graphics;
 
-import Entity.StaticEntity;
-import Main.Handler;
+import entity.StaticEntity;
 import gfx.Assets;
+import main.Handler;
 
 public class Tent extends StaticEntity{
 	public Tent(Handler handler, float x, float y) {
 		super(handler, x, y, 100, 100);
 		
-		bounds.x = 100;
+		bounds.x = 0;
 		bounds.height = 50;
 	}
 	

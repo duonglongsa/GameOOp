@@ -5,14 +5,14 @@ import java.awt.Graphics;
 import javax.management.loading.PrivateClassLoader;
 import javax.xml.crypto.dsig.keyinfo.X509Data;
 
-import Entity.EntityManager;
-import Entity.MedusaBullet;
-import Entity.Player;
-import Entity.lizardEnemy;
-import Entity.medusaEnemy;
-import Main.Game;
-import Main.Handler;
+import entity.EntityManager;
+import entity.LizardEnemy;
+import entity.MedusaBullet;
+import entity.MedusaEnemy;
+import entity.Player;
 import gfx.Assets;
+import main.Game;
+import main.Handler;
 import statics.entity.desert.BuildingDesert1;
 import statics.entity.desert.BuildingDesert3;
 import statics.entity.desert.Decor7;
@@ -65,7 +65,7 @@ public class World {
 	// entities
 	private EntityManager entityManager;
 	public static NPCJeweler npcJeweler;
-	public static medusaEnemy medusaEnemy;
+	public static MedusaEnemy medusaEnemy;
 	public static MedusaBullet medusaBullet;
 
 	public static void addStaticEntityDesert(Handler handler, EntityManager entityManager) {
@@ -135,7 +135,7 @@ public class World {
 		entityManager.addEntity(new Decor7(handler, 490, 350));
 
 		// enemy
-		medusaEnemy = new medusaEnemy(handler, 600, 500, 128, 128);
+		medusaEnemy = new MedusaEnemy(handler, 600, 500, 128, 128);
 		entityManager.addEntity(medusaEnemy);
 		
 		medusaBullet = new MedusaBullet(handler, 600, 500, 20, 20);
@@ -224,7 +224,7 @@ public class World {
 		entityManager.addEntity(npcJeweler);
 
 		// enemy
-		entityManager.addEntity(new lizardEnemy(handler, 500, 400));
+		entityManager.addEntity(new LizardEnemy(handler, 500, 400));
 	}
 
 	public World(Handler handler, String path) {
@@ -333,7 +333,7 @@ public class World {
 		return npcJeweler;
 	}
 
-	public static medusaEnemy getMedusaEnemy() {
+	public static MedusaEnemy getMedusaEnemy() {
 		return medusaEnemy;
 	}
 	

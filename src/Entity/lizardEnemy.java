@@ -1,17 +1,17 @@
-package Entity;
+package entity;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import Main.Handler;
 import gfx.Animation;
 import gfx.Assets;
+import main.Handler;
 
-public class lizardEnemy extends Enemy {
+public class LizardEnemy extends Enemy {
 	
-	public lizardEnemy(Handler handler, float x, float y) {
+	public LizardEnemy(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDHT, Creature.DEFAULT_CREATURE_HEIGHT);
 
 		// chinh kich thuoc va cham

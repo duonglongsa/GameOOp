@@ -2,7 +2,7 @@ package gfx;
 
 import java.awt.image.BufferedImage;
 
-import Main.Handler;
+import main.Handler;
 
 public class Animation {
 

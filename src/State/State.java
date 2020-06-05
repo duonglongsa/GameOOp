@@ -1,9 +1,9 @@
-package State;
+package state;
 
 import java.awt.Graphics;
 
-import Main.Game;
-import Main.Handler;
+import main.Game;
+import main.Handler;
 
 public abstract class State {
 	

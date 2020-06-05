@@ -1,16 +1,16 @@
-package Entity;
+package entity;
 
 import java.awt.Graphics;
 
-import Main.Handler;
 import gfx.Animation;
 import gfx.Assets;
+import main.*;
 
-public class medusaEnemy extends Enemy{
+public class MedusaEnemy extends Enemy{
 	
 	public static int temp = 0;
 	
-	public medusaEnemy(Handler handler, float x, float y, int width, int height) {
+	public MedusaEnemy(Handler handler, float x, float y, int width, int height) {
 		super(handler, x, y, width, height);
 
 		//adjust bounds
@@ -75,7 +75,7 @@ public class medusaEnemy extends Enemy{
 	public void bulletFire() {
 		if(this.getAtkRange().intersects(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0))) {
 			
-			MedusaBullet a = new MedusaBullet(handler, this.x, this.y, 10, 10);
+			MedusaBullet a = new MedusaBullet(handler, this.x, this.y, 64, 64);
 			if(!check()) {
 				handler.getWorld().getEntityManager().addEntity(a);
 				temp += 1;
@@ -87,7 +87,6 @@ public class medusaEnemy extends Enemy{
 		if(temp > 0) {
 			return true;
 		}
-		
 		return false;
 	}
 	

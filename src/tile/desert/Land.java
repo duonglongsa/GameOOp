@@ -1,7 +1,7 @@
 package tile.desert;
 
-import Main.Handler;
 import gfx.Assets;
+import main.Handler;
 import tile.Tile;
 
 public class Land extends Tile{

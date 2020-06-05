@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -9,8 +9,8 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Ellipse2D.Double;
 import java.awt.image.BufferedImage;
 
-import Main.Handler;
 import gfx.Animation;
+import main.Handler;
 
 public class Enemy extends Creature {
 

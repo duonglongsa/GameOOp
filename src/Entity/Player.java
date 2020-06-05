@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -6,9 +6,11 @@ import java.awt.image.BufferedImage;
 
 import java.awt.Rectangle;
 
-import Main.Handler;
 import gfx.Animation;
 import gfx.Assets;
+import main.Handler;
+import utils.AudioClip;
+import utils.AudioPlayer;
 
 public class Player extends Creature {
 
@@ -82,6 +84,11 @@ public class Player extends Creature {
 	public void tick() {
 		// chinh kich thuoc va cham
 		
+		if(this.isHurt()) {
+			AudioClip hurt = new AudioClip("death1.wav");
+			AudioPlayer.playSound(hurt);
+		}
+		
 		// Animations
 		animDown.tick();
 		animUp.tick();
@@ -132,6 +139,8 @@ public class Player extends Creature {
 	}
 
 	private void checkAttack() {
+		
+		
 		attackTimer += System.currentTimeMillis() - lastAttackTimer;
 		lastAttackTimer = System.currentTimeMillis();
 		if (attackTimer < attackCooldown) {
@@ -144,6 +153,8 @@ public class Player extends Creature {
 		ar.height = arSize;
 
 		if (handler.getKeyManager().attack || handler.getKeyManager().skill) {
+			AudioClip attackAudioClip = new AudioClip("skill.wav");
+			AudioPlayer.playSound(attackAudioClip);
 			if (direction == 1) { // facing up
 				ar.x = cb.x + cb.width / 2 - arSize / 2;
 				ar.y = cb.y - arSize;

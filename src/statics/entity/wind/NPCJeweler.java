@@ -5,9 +5,9 @@ import java.awt.Rectangle;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.IconifyAction;
 
-import Entity.StaticEntity;
-import Main.Handler;
+import entity.StaticEntity;
 import gfx.Assets;
+import main.Handler;
 
 
 

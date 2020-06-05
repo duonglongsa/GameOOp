@@ -1,7 +1,7 @@
-package Entity;
+package entity;
 
-import Main.Game;
-import Main.Handler;
+import main.Game;
+import main.Handler;
 import tile.Tile;
 
 public abstract class Creature extends Entity {

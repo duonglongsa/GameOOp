@@ -273,7 +273,9 @@ public class Assets {
 			medusa_die_left[i] = medusa.crop(width*(i), height * 7, width, height);
 		}
 		
-		medusa_bullet = ImageLoader.loadImage("/enemy/medusa_bullet.png");
+		//Bullet
+		SpriteSheet bulletSheet = new SpriteSheet(ImageLoader.loadImage("/enemy/fire.png"));
+		medusa_bullet = bulletSheet.crop(0, 0, 256, 256);
 				
 		// Desert Tile
 		SpriteSheet desertSheet = new SpriteSheet(ImageLoader.loadImage("/desert/bg.png"));
