@@ -66,15 +66,10 @@ public class Game implements Runnable {
 		
 		handler = new Handler(this);
 		gameCamera = new GameCamera(handler, 0, 0);
-		
 		menuState = new MenuState(handler);
-
 		gameState = new GameState(handler, path);
 		
 		State.setState(gameState);
-		
-		//State.setState(gameState);
-
 		
 		if(q == 1) {
 			State.setState(gameState);
