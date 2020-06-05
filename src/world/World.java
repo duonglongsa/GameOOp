@@ -135,6 +135,8 @@ public class World {
 		entityManager.addEntity(new Decor7(handler, 490, 350));
 
 		// enemy
+
+		
 		medusaEnemy = new medusaEnemy(handler, 600, 500, 128, 128);
 		entityManager.addEntity(medusaEnemy);
 		

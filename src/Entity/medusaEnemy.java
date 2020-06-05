@@ -3,6 +3,7 @@ package Entity;
 import java.awt.Graphics;
 
 import Main.Handler;
+import State.MenuState;
 import gfx.Animation;
 import gfx.Assets;
 
@@ -18,10 +19,6 @@ public class medusaEnemy extends Enemy{
 		bounds.y = 10;
 		bounds.width = 32;
 		bounds.height = 32;
-		
-		this.health = 50;
-		this.atkDame = 5;
-		this.speed = 1.5f;
 		
 		//animation
 		animRight = new Animation(180, Assets.medusa_right, handler);
@@ -41,6 +38,10 @@ public class medusaEnemy extends Enemy{
 	public void tick() {
 		super.tick();
 		bulletFire();
+		
+//		this.health = 50 * MenuState.mode;
+		this.atkDame = 5 * MenuState.mode;
+		this.speed = 1.0f * MenuState.mode;
 	}
 	
 	public void render(Graphics g) {

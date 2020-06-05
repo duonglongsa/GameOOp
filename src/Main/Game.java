@@ -16,6 +16,8 @@ import gfx.SpriteSheet;
 import input.KeyManager;
 import input.MouseManager;
 import statics.entity.wind.NPCJeweler;
+import utils.AudioClip;
+import utils.AudioPlayer;
 
 
 public class Game implements Runnable {
@@ -30,12 +32,11 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 	
-	private int q = 0;
+	public int q = 0;
 	
-
 	//State
-	public State gameState;
 	public State menuState;
+	public State gameState;
 	
 	//Input
 	private KeyManager keyManager;
@@ -67,12 +68,16 @@ public class Game implements Runnable {
 		handler = new Handler(this);
 		gameCamera = new GameCamera(handler, 0, 0);
 		menuState = new MenuState(handler);
+		
 		gameState = new GameState(handler, path);
 		
 		State.setState(gameState);
 		
 		if(q == 1) {
 			State.setState(gameState);
+			handler.getMouseManager().setUIManager(null);
+			AudioClip map2Music = new AudioClip("Map2Music.wav");
+			AudioPlayer.playSound(map2Music);								//phat nhac map2
 		}
 		else {
 			State.setState(menuState);
@@ -114,8 +119,8 @@ public class Game implements Runnable {
 	public void run() {		
 
 		String[] path = new String[2];
-		path[1] = "res/world/world1.wind.txt";
-		path[0] = "res/world/world2.desert.txt";
+		path[0] = "res/world/world1.wind.txt";
+		path[1] = "res/world/world2.desert.txt";
 		
 		while(true) {
 			
