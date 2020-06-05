@@ -20,7 +20,7 @@ public class MedusaBullet extends Creature{
 
 		this.active = false;
 		
-		this.speed = 5.0f;
+		this.speed = 3.0f;
 	}
 
 	@Override
@@ -52,7 +52,10 @@ public class MedusaBullet extends Creature{
 			medusaEnemy.temp = 0;
 			handler.getWorld().getEntityManager().getEntities().remove(this);
 			handler.getWorld().getEntityManager().getPlayer().isHurt = true;
-			this.setActive(false);
+						
+		}
+		if(handler.getWorld().getMedusaEnemy().isActive() == false) {
+			handler.getWorld().getEntityManager().getPlayer().isHurt = false;
 			
 		}
 		

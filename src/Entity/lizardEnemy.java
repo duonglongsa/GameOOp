@@ -22,7 +22,7 @@ public class lizardEnemy extends Enemy {
 		bounds.y = 22;
 		bounds.width = 32;
 		bounds.height = 35;
-		
+		this.atkDame = 4;
 		
 		
 		// Animations
@@ -45,6 +45,7 @@ public class lizardEnemy extends Enemy {
 
 	public void tick() {
 		super.tick();
+		
 		
 		
 	}

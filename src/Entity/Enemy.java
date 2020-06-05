@@ -8,6 +8,7 @@ import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Ellipse2D.Double;
 import java.awt.image.BufferedImage;
+import java.util.IllegalFormatCodePointException;
 
 import javax.swing.tree.DefaultTreeCellEditor.EditorContainer;
 
@@ -63,8 +64,8 @@ public class Enemy extends Creature {
 		moveAfterPlayer();
 
 		//
-		aLeft.attackTick();
-		aRight.attackTick();
+		aLeft.tick();
+		aRight.tick();
 
 		// attack
 		checkAttack();
@@ -160,17 +161,17 @@ public class Enemy extends Creature {
 		for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
 			if (e.equals(this)) {
 				continue;
-			} else if(e.equals(handler.getWorld().getEntityManager().getPlayer())) {
-				if(e.getCollisionBounds(0, 0).intersects(ar)) {
+			} else if (e.equals(handler.getWorld().getEntityManager().getPlayer())) {
+				if (e.getCollisionBounds(0, 0).intersects(ar)) {
 					e.hurt((int) this.getAtkDame());
 					e.setHurt(true);
-					if(this.getHealth() < 10) {
+					if (this.getHealth() < 10) {
 						e.setHurt(false);
 					}
-				}else {
+				} else {
 					e.setHurt(false);
 
-			}
+				}
 			}
 //			 else {
 //				e.isHurt = false;
@@ -213,15 +214,9 @@ public class Enemy extends Creature {
 
 				float playerX = handler.getWorld().getEntityManager().getPlayer().getX();
 				float playerY = handler.getWorld().getEntityManager().getPlayer().getY();
-				float k = Math.abs((playerX - this.x) / (playerY - this.y));
-				float xDirection = (playerX - this.x) / Math.abs(playerX - this.x);
-				float yDirection = (playerY - this.y) / Math.abs(playerY - this.y);
 
-				this.xMove = xDirection * (k * this.speed) / (k * k + 1);
-				this.yMove = yDirection * this.speed / (k * k + 1);
-
-//				this.xMove = (handler.getWorld().getEntityManager().getPlayer().getX() - this.getX()) / 1;
-//				this.yMove = (handler.getWorld().getEntityManager().getPlayer().getY() - this.getY()) / 1;
+				this.xMove = (playerX - this.x) / 70 ;
+				this.yMove = (playerY - this.y) / 70;
 
 				if (xMove > 0) { // change direction when move after player
 					this.direction = 3;

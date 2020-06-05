@@ -19,7 +19,7 @@ public class GameState extends State{
 		super(handler);
 	
 		world = new World(handler, path);
-		System.out.println("abc");
+		
 		handler.setWorld(world);
 	}
 	

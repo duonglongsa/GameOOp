@@ -14,6 +14,7 @@ public class Assets {
 
 	// NPC
 	public static BufferedImage[] npcJeweler;
+	public static BufferedImage[] npcJeweler_talk;
 
 	// Desert
 	public static BufferedImage desertTile;
@@ -66,7 +67,15 @@ public class Assets {
 		// NPC
 		npcJeweler = new BufferedImage[2];
 		npcJeweler[0] = ImageLoader.loadImage("/npc/jeweler.png");
-		npcJeweler[1] = ImageLoader.loadImage("/npc/jeweler_talk.png");
+		
+		npcJeweler_talk = new BufferedImage[7];
+		npcJeweler_talk[0] = ImageLoader.loadImage("/npc/jeweler_talk01.png");
+		npcJeweler_talk[1] = ImageLoader.loadImage("/npc/jeweler_talk02.png");
+		npcJeweler_talk[2] = ImageLoader.loadImage("/npc/jeweler_talk03.png");
+		npcJeweler_talk[3] = ImageLoader.loadImage("/npc/jeweler_talk04.png");
+		npcJeweler_talk[4] = ImageLoader.loadImage("/npc/jeweler_talk05.png");
+		npcJeweler_talk[5] = ImageLoader.loadImage("/npc/jeweler_talk06.png");
+		npcJeweler_talk[6] = ImageLoader.loadImage("/npc/jeweler_talk07.png");
 
 		// menu state
 		// UI

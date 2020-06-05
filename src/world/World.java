@@ -51,6 +51,7 @@ import statics.entity.wind.BuildingWind7;
 import statics.entity.wind.BuildingWind8;
 import statics.entity.wind.BuildingWind9;
 import statics.entity.wind.NPCJeweler;
+import statics.entity.wind.NPCJewelerTalk;
 import tile.Tile;
 import utils.Utils;
 
@@ -65,15 +66,11 @@ public class World {
 	// entities
 	private EntityManager entityManager;
 	public static NPCJeweler npcJeweler;
-	public static medusaEnemy medusaEnemy;
-	public static MedusaBullet medusaBullet;
+	public static medusaEnemy medusaEnemy,medusaEnemy2;
+	public static MedusaBullet medusaBullet,medusaBullet2;
 
 	public static void addStaticEntityDesert(Handler handler, EntityManager entityManager) {
-
-		// NPC
-		npcJeweler = new NPCJeweler(handler, 400, 100);
-		entityManager.addEntity(npcJeweler);
-
+		
 		// Desert building
 		entityManager.addEntity(new BuildingDesert1(handler, 710, 490));
 		entityManager.addEntity(new BuildingDesert3(handler, 230, 50));
@@ -143,16 +140,15 @@ public class World {
 		medusaBullet = new MedusaBullet(handler, 600, 500, 20, 20);
 		entityManager.addEntity(medusaBullet);
 		
-		
-		
-		
+		entityManager.addEntity(new lizardEnemy(handler, 200, 200));
+		entityManager.addEntity(new lizardEnemy(handler, 800, 300));
 	}
 
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
 
 		// NPC
-		npcJeweler = new NPCJeweler(handler, 490, 540);
-		entityManager.addEntity(npcJeweler);
+		entityManager.addEntity(new NPCJeweler(handler, 800, 350));
+		entityManager.addEntity(new NPCJewelerTalk(handler, 250, 400));
 
 		// Building
 		entityManager.addEntity(new BuildingWind1(handler, 1070, 60));
@@ -221,12 +217,6 @@ public class World {
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 650, -40));
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 290, 590));
 
-		// NPC
-		npcJeweler = new NPCJeweler(handler, 820, 350);
-		entityManager.addEntity(npcJeweler);
-
-		// enemy
-		entityManager.addEntity(new lizardEnemy(handler, 500, 400));
 	}
 
 	public World(Handler handler, String path) {
@@ -250,6 +240,13 @@ public class World {
 
 	public void tick() {
 		entityManager.tick();
+		
+//		//demo lizard
+//		int count = 0;
+//		if(NPCJewelerTalk.index == 5 && count < 1) {
+//			entityManager.addEntity(lizardEnemy);
+//			count += 1;
+//		}
 	}
 
 	public void render(Graphics g) {
@@ -270,19 +267,6 @@ public class World {
 		}
 
 		entityManager.render(g);
-
-		if (npcJeweler.getCheck()) {
-
-			g.drawImage(Assets.npcJeweler[1], 300, 380, null);
-			if (handler.getKeyManager().talk) {
-				npcJeweler.setCheck(false);
-			}
-
-			handler.getKeyManager().down = false;
-			handler.getKeyManager().left = false;
-			handler.getKeyManager().right = false;
-			handler.getKeyManager().up = true;
-		}
 
 		entityManager.getPlayer().postRender(g);
 
@@ -338,7 +322,11 @@ public class World {
 	public static medusaEnemy getMedusaEnemy() {
 		return medusaEnemy;
 	}
-	
+
+//	public lizardEnemy getLizardEnemy() {
+//		return lizardEnemy;
+//	}
+//	
 	
 
 }
