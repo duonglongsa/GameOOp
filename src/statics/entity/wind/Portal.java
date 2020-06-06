@@ -7,10 +7,12 @@ import gfx.Assets;
 import gfx.PortalAnimation;
 import main.Handler;
 
+
 public class Portal extends StaticEntity{
 
 	private PortalAnimation portalAnimation;
 	public static boolean check = false;
+
 	
 	public Portal(Handler handler, float x, float y) {
 		super(handler, x, y, 100, 100);

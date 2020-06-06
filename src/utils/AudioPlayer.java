@@ -6,9 +6,6 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-import main.Game;
-import state.GameWinState;
-
 public class AudioPlayer {
 	
 	static Clip clip;
@@ -27,6 +24,7 @@ public class AudioPlayer {
 					   sound.path == "C:/Users/ACER/eclipse-workspace/2DGame/res/audio/MenuMusic.wav") {
 					clip.loop(Clip.LOOP_CONTINUOUSLY);
 					}
+
 					
 				}catch(Exception e) {
 					e.printStackTrace();

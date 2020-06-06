@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.management.loading.PrivateClassLoader;
 import javax.xml.crypto.dsig.keyinfo.X509Data;
-
 import statics.entity.wind.Portal;
 import entity.EntityManager;
 import entity.MedusaBullet;
@@ -68,6 +67,7 @@ public class World {
 	private EntityManager entityManager;
 	public static NPCJeweler npcJeweler;
 	public static MedusaEnemy medusaEnemy,medusaEnemy2;
+
 	public static MedusaBullet medusaBullet,medusaBullet2;
 	public static Portal portal;
 
@@ -137,6 +137,7 @@ public class World {
 
 		
 		medusaEnemy = new MedusaEnemy(handler, 600, 500, 128, 128);
+
 		entityManager.addEntity(medusaEnemy);
 		
 		medusaBullet = new MedusaBullet(handler, 600, 500, 20, 20);
@@ -245,6 +246,13 @@ public class World {
 
 	public void tick() {
 		entityManager.tick();
+		
+//		//demo lizard
+//		int count = 0;
+//		if(NPCJewelerTalk.index == 5 && count < 1) {
+//			entityManager.addEntity(lizardEnemy);
+//			count += 1;
+//		}
 	}
 
 	public void render(Graphics g) {
@@ -324,5 +332,6 @@ public class World {
 	public static Portal getPortal() {
 		return portal;
 	}
+
 
 }

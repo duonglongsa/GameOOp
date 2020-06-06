@@ -8,8 +8,7 @@ import entity.MedusaEnemy;
 import entity.Player;
 import gfx.Assets;
 import gfx.GameCamera;
-import gfx.ImageLoader;
-import gfx.SpriteSheet;
+
 import input.KeyManager;
 import input.MouseManager;
 import state.GameState;
@@ -35,11 +34,12 @@ public class Game implements Runnable {
 	
 	public int q = 0;
 	
-	public int chuyenMap = 0;
+	public static int chuyenMap = 0;
 	//State
 	public State menuState;
 	public State gameState;
 	public State gameWinState;
+
 	
 	//Input
 	private KeyManager keyManager;
@@ -72,16 +72,16 @@ public class Game implements Runnable {
 		
 		gameCamera = new GameCamera(handler, 0, 0);
 										
+
 		if(q == 1) {
 			AudioPlayer.stopSound(MenuState.map1Music);
 			gameState = new GameState(handler, path);
 			State.setState(gameState);
 			handler.getMouseManager().setUIManager(null);
 			AudioClip map2Music = new AudioClip("Map2Music.wav");
-			AudioPlayer.playSound(map2Music);								//phat nhac map2
-			if(chuyenMap > 0) {
-				AudioPlayer.stopSound(map2Music);
-			}
+			if(chuyenMap <1 ) {
+				AudioPlayer.playSound(map2Music);								//phat nhac map2
+			}			
 		}
 		else if (q == 0){
 			menuState = new MenuState(handler);
@@ -155,7 +155,6 @@ public class Game implements Runnable {
 					running = false;
 					stop();
 					Portal.check = false;
-					//Main main = new Main();
 				}
 				if( Player.check == true ) {
 					chuyenMap += 1;

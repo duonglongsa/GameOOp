@@ -13,6 +13,7 @@ public class MedusaEnemy extends Enemy{
 	public static boolean check = false;
 	
 	public MedusaEnemy(Handler handler, float x, float y, int width, int height) {
+
 		super(handler, x, y, width, height);
 
 		//adjust bounds
@@ -39,11 +40,9 @@ public class MedusaEnemy extends Enemy{
 	public void tick() {
 		super.tick();
 		bulletFire();
-		
 		if(!this.isActive()) {
 			check = true;
 		}
-		
 //		this.health = 50 * MenuState.mode;
 		this.atkDame = 5 * MenuState.mode;
 		this.speed = 1.0f * MenuState.mode;

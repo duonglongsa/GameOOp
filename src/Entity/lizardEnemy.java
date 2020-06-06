@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.security.cert.CertPathChecker;
-
 import gfx.Animation;
 import gfx.Assets;
 import main.Handler;
@@ -51,6 +50,7 @@ public class LizardEnemy extends Enemy {
 		if(!this.isActive()) {
 			check = true;
 		}
+
 	}
 	
 	@Override

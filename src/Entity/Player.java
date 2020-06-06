@@ -22,6 +22,9 @@ public class Player extends Creature {
 	// attack cooldown
 	private long lastAttackTimer, attackCooldown = 100, attackTimer = attackCooldown;
 	public static boolean check = false;
+	public static boolean check2 = false;
+
+	
 	// directions
 	private int direction = 0;
 
@@ -88,7 +91,7 @@ public class Player extends Creature {
 			AudioClip hurtAudioClip = new AudioClip("death1.wav");
 			AudioPlayer.playSound(hurtAudioClip);
 		}
-		
+
 		// Animations
 		animDown.tick();
 		animUp.tick();

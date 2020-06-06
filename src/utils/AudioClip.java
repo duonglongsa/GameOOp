@@ -13,6 +13,7 @@ public class AudioClip {
 	
 	public AudioClip(String path) {
 		path = "C:/Users/ACER/eclipse-workspace/2DGame/res/audio/" + path;
+
 		file = new File(path);
 	}
 	

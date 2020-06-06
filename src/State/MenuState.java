@@ -5,8 +5,8 @@ import java.awt.Graphics;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import entity.LizardEnemy;
+
 import gfx.Assets;
 import main.Handler;
 import ui.ClickListener;
@@ -22,6 +22,7 @@ public class MenuState extends State {
 	private UIManager uiManager;
 	//public static UIManager uiManager;
 	public static AudioClip map1Music = new AudioClip("Map1Music.wav");
+
 	public AudioClip menuMusic = new AudioClip("MenuMusic.wav");
 	
 	public MenuState(Handler handler) {
@@ -41,6 +42,7 @@ public class MenuState extends State {
 				mode = 1;
 				
 				LizardEnemy.lizardHelath = 50;
+
 			}
 		}));
 		
@@ -57,6 +59,7 @@ public class MenuState extends State {
 				mode = 2;
 				
 				LizardEnemy.lizardHelath = 100;
+
 			}
 		}));
 		

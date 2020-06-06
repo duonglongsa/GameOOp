@@ -2,7 +2,6 @@ package statics.entity.wind;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-
 import entity.StaticEntity;
 import gfx.Assets;
 import main.Game;

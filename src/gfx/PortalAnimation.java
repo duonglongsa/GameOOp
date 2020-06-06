@@ -1,7 +1,6 @@
 package gfx;
 
 import java.awt.image.BufferedImage;
-
 import main.Handler;
 import statics.entity.wind.Portal;
 
@@ -27,6 +26,7 @@ public class PortalAnimation extends Animation {
 						.intersects(handler.getWorld().getPortal().getCollisionBounds(0, 0))) {
 					 index = 16;
 					 handler.getWorld().getEntityManager().getEntities().remove(handler.getWorld().getEntityManager().getPlayer());					
+
 				}
 			}
 			if (index > 19) {
