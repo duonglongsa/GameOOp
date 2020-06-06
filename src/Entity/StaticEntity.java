@@ -1,6 +1,6 @@
-package Entity;
+package entity;
 
-import Main.Handler;
+import main.Handler;
 
 public abstract class StaticEntity  extends Entity{
 

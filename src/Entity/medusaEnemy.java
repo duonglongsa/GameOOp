@@ -1,16 +1,18 @@
-package Entity;
+package entity;
 
 import java.awt.Graphics;
 
-import Main.Handler;
 import gfx.Animation;
 import gfx.Assets;
+import main.Handler;
+import state.MenuState;
 
-public class medusaEnemy extends Enemy{
+public class MedusaEnemy extends Enemy{
 	
 	public static int temp = 0;
+	public static boolean check = false;
 	
-	public medusaEnemy(Handler handler, float x, float y, int width, int height) {
+	public MedusaEnemy(Handler handler, float x, float y, int width, int height) {
 		super(handler, x, y, width, height);
 
 		//adjust bounds
@@ -18,10 +20,6 @@ public class medusaEnemy extends Enemy{
 		bounds.y = 10;
 		bounds.width = 32;
 		bounds.height = 32;
-		
-		this.health = 50;
-		this.atkDame = 5;
-		this.speed = 1.5f;
 		
 		//animation
 		animRight = new Animation(180, Assets.medusa_right, handler);
@@ -41,6 +39,14 @@ public class medusaEnemy extends Enemy{
 	public void tick() {
 		super.tick();
 		bulletFire();
+		
+		if(!this.isActive()) {
+			check = true;
+		}
+		
+//		this.health = 50 * MenuState.mode;
+		this.atkDame = 5 * MenuState.mode;
+		this.speed = 1.0f * MenuState.mode;
 	}
 	
 	public void render(Graphics g) {

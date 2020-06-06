@@ -2,9 +2,9 @@ package statics.entity.wind;
 
 import java.awt.Graphics;
 
-import Entity.StaticEntity;
-import Main.Handler;
+import entity.StaticEntity;
 import gfx.Assets;
+import main.Handler;
 
 public class BuildingWind15 extends StaticEntity{
 	public BuildingWind15(Handler handler, float x, float y) {

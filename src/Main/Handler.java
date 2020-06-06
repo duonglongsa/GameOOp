@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 import gfx.GameCamera;
 import input.KeyManager;

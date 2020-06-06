@@ -5,14 +5,15 @@ import java.awt.Graphics;
 import javax.management.loading.PrivateClassLoader;
 import javax.xml.crypto.dsig.keyinfo.X509Data;
 
-import Entity.EntityManager;
-import Entity.MedusaBullet;
-import Entity.Player;
-import Entity.lizardEnemy;
-import Entity.medusaEnemy;
-import Main.Game;
-import Main.Handler;
+import statics.entity.wind.Portal;
+import entity.EntityManager;
+import entity.MedusaBullet;
+import entity.Player;
+import entity.LizardEnemy;
+import entity.MedusaEnemy;
 import gfx.Assets;
+import main.Game;
+import main.Handler;
 import statics.entity.desert.BuildingDesert1;
 import statics.entity.desert.BuildingDesert3;
 import statics.entity.desert.Decor7;
@@ -51,6 +52,7 @@ import statics.entity.wind.BuildingWind7;
 import statics.entity.wind.BuildingWind8;
 import statics.entity.wind.BuildingWind9;
 import statics.entity.wind.NPCJeweler;
+import statics.entity.wind.NPCJewelerTalk;
 import tile.Tile;
 import utils.Utils;
 
@@ -65,15 +67,12 @@ public class World {
 	// entities
 	private EntityManager entityManager;
 	public static NPCJeweler npcJeweler;
-	public static medusaEnemy medusaEnemy;
-	public static MedusaBullet medusaBullet;
+	public static MedusaEnemy medusaEnemy,medusaEnemy2;
+	public static MedusaBullet medusaBullet,medusaBullet2;
+	public static Portal portal;
 
 	public static void addStaticEntityDesert(Handler handler, EntityManager entityManager) {
-
-		// NPC
-		npcJeweler = new NPCJeweler(handler, 400, 100);
-		entityManager.addEntity(npcJeweler);
-
+		
 		// Desert building
 		entityManager.addEntity(new BuildingDesert1(handler, 710, 490));
 		entityManager.addEntity(new BuildingDesert3(handler, 230, 50));
@@ -135,22 +134,27 @@ public class World {
 		entityManager.addEntity(new Decor7(handler, 490, 350));
 
 		// enemy
-		medusaEnemy = new medusaEnemy(handler, 600, 500, 128, 128);
+
+		
+		medusaEnemy = new MedusaEnemy(handler, 600, 500, 128, 128);
 		entityManager.addEntity(medusaEnemy);
 		
 		medusaBullet = new MedusaBullet(handler, 600, 500, 20, 20);
 		entityManager.addEntity(medusaBullet);
 		
-		
-		
-		
+		entityManager.addEntity(new LizardEnemy(handler, 200, 200));
+		entityManager.addEntity(new LizardEnemy(handler, 800, 300));
 	}
 
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
 
+		//portal
+		portal = new Portal(handler, 900, 400);
+		entityManager.addEntity(portal);
+		
 		// NPC
-		npcJeweler = new NPCJeweler(handler, 490, 540);
-		entityManager.addEntity(npcJeweler);
+		entityManager.addEntity(new NPCJeweler(handler, 800, 350));
+		entityManager.addEntity(new NPCJewelerTalk(handler, 250, 400));
 
 		// Building
 		entityManager.addEntity(new BuildingWind1(handler, 1070, 60));
@@ -219,17 +223,10 @@ public class World {
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 650, -40));
 		entityManager.addEntity(new statics.entity.wind.Tree2(handler, 290, 590));
 
-		// NPC
-		npcJeweler = new NPCJeweler(handler, 820, 350);
-		entityManager.addEntity(npcJeweler);
-
-		// enemy
-		entityManager.addEntity(new lizardEnemy(handler, 500, 400));
 	}
 
 	public World(Handler handler, String path) {
 		this.handler = handler;
-		this.path = path;
 		loadWorld(path);
 
 		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY));
@@ -268,19 +265,6 @@ public class World {
 		}
 
 		entityManager.render(g);
-
-		if (npcJeweler.getCheck()) {
-
-			g.drawImage(Assets.npcJeweler[1], 300, 380, null);
-			if (handler.getKeyManager().talk) {
-				npcJeweler.setCheck(false);
-			}
-
-			handler.getKeyManager().down = false;
-			handler.getKeyManager().left = false;
-			handler.getKeyManager().right = false;
-			handler.getKeyManager().up = true;
-		}
 
 		entityManager.getPlayer().postRender(g);
 
@@ -333,10 +317,12 @@ public class World {
 		return npcJeweler;
 	}
 
-	public static medusaEnemy getMedusaEnemy() {
+	public static MedusaEnemy getMedusaEnemy() {
 		return medusaEnemy;
 	}
-	
-	
+
+	public static Portal getPortal() {
+		return portal;
+	}
 
 }

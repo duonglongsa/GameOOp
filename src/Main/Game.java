@@ -1,21 +1,24 @@
-package Main;
+package main;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-
-import Display.Display;
-import Entity.Player;
-import State.GameState;
-import State.MenuState;
-import State.State;
+import display.Display;
+import entity.LizardEnemy;
+import entity.MedusaEnemy;
+import entity.Player;
 import gfx.Assets;
 import gfx.GameCamera;
 import gfx.ImageLoader;
 import gfx.SpriteSheet;
 import input.KeyManager;
 import input.MouseManager;
-import statics.entity.wind.NPCJeweler;
+import state.GameState;
+import state.GameWinState;
+import state.MenuState;
+import state.State;
+import statics.entity.wind.Portal;
+import utils.AudioClip;
+import utils.AudioPlayer;
 
 
 public class Game implements Runnable {
@@ -30,12 +33,13 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 	
-	private int q = 0;
+	public int q = 0;
 	
-
+	public int chuyenMap = 0;
 	//State
-	public State gameState;
 	public State menuState;
+	public State gameState;
+	public State gameWinState;
 	
 	//Input
 	private KeyManager keyManager;
@@ -65,22 +69,28 @@ public class Game implements Runnable {
 		Assets.init();
 		
 		handler = new Handler(this);
+		
 		gameCamera = new GameCamera(handler, 0, 0);
-		
-		menuState = new MenuState(handler);
-
-		gameState = new GameState(handler, path);
-		
-		State.setState(gameState);
-		
-		//State.setState(gameState);
-
-		
+										
 		if(q == 1) {
+			AudioPlayer.stopSound(MenuState.map1Music);
+			gameState = new GameState(handler, path);
 			State.setState(gameState);
+			handler.getMouseManager().setUIManager(null);
+			AudioClip map2Music = new AudioClip("Map2Music.wav");
+			AudioPlayer.playSound(map2Music);								//phat nhac map2
+			if(chuyenMap > 0) {
+				AudioPlayer.stopSound(map2Music);
+			}
+		}
+		else if (q == 0){
+			menuState = new MenuState(handler);
+			State.setState(menuState);
+			gameState = new GameState(handler, path);
 		}
 		else {
-			State.setState(menuState);
+			gameWinState = new GameWinState(handler);
+			State.setState(gameWinState);
 		}
 	}
 	
@@ -107,10 +117,7 @@ public class Game implements Runnable {
 		if(State.getState() != null) {
 			State.getState().render(g);
 		}
-		
-		
-		//end drawing
-		
+
 		bs.show();
 		g.dispose();
 	}
@@ -118,9 +125,10 @@ public class Game implements Runnable {
 	@Override
 	public void run() {		
 
-		String[] path = new String[2];
-		path[1] = "res/world/world1.wind.txt";
-		path[0] = "res/world/world2.desert.txt";
+		String[] path = new String[3];
+		path[0] = "res/world/world1.wind.txt";
+		path[1] = "res/world/world2.desert.txt";
+		path[2] = "res/world/world2.desert.txt";
 		
 		while(true) {
 			
@@ -142,12 +150,25 @@ public class Game implements Runnable {
 					render();
 					delta --;
 				}
-				if( NPCJeweler.check == true && q<1) {
+				if( Portal.check && q<1) {
 					q = 1;
 					running = false;
-					NPCJeweler.check = false;
 					stop();
-					Main main = new Main();
+					Portal.check = false;
+					//Main main = new Main();
+				}
+				if( Player.check == true ) {
+					chuyenMap += 1;
+					q = 1;
+					running = false;
+					Player.check = false;
+					stop();
+				}
+				if(Player.check == false && LizardEnemy.check == true && MedusaEnemy.check == true) {
+					q = 2;
+					running = false;
+					MedusaEnemy.check = false;
+					stop();
 				}
 			}
 			stop();

@@ -1,7 +1,7 @@
-package Entity;
+package entity;
 
-import Main.Game;
-import Main.Handler;
+import main.Game;
+import main.Handler;
 import tile.Tile;
 
 public abstract class Creature extends Entity {
@@ -11,7 +11,7 @@ public abstract class Creature extends Entity {
 	protected float speed;
 	protected float xMove, yMove;
 	//dame
-	protected float atkDame = 0;
+	protected float atkDame ;
 	
 	
 	public Creature(Handler handler, float x, float y, int width, int height) {

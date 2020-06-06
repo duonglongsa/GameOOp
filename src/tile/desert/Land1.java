@@ -8,8 +8,4 @@ public class Land1 extends Tile{
 		super(Assets.landDesert[1], id);
 	}
 	
-	@Override
-	public boolean isSolid() {
-		return true;
-	}
 }

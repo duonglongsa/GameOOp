@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -6,14 +6,12 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import Main.Handler;
+import main.Handler;
 
 public class EntityManager {
 
 	private Handler handler;
 	private Player player;
-
-	private lizardEnemy lizardEnemy;
 	
 	private ArrayList<Entity> entities;
 	private Comparator<Entity> renderSorter = new Comparator<Entity>() {
@@ -87,14 +85,4 @@ public class EntityManager {
 		this.entities = entities;
 	}
 
-	public lizardEnemy getLizardEnemy() {
-		return lizardEnemy;
-	}
-
-	public void setLizardEnemy(lizardEnemy lizardEnemy) {
-		this.lizardEnemy = lizardEnemy;
-	}
-	
-	
-	
 }

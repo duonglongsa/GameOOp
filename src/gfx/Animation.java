@@ -2,7 +2,7 @@ package gfx;
 
 import java.awt.image.BufferedImage;
 
-import Main.Handler;
+import main.Handler;
 
 public class Animation {
 
@@ -32,7 +32,7 @@ public class Animation {
 		}
 	}
 
-	public void attackTick() {
+	public void skillTick() {
 		timer += System.currentTimeMillis() - lastTime;
 		lastTime = System.currentTimeMillis();
 
@@ -41,6 +41,13 @@ public class Animation {
 			timer = 0;
 			if (index >= frames.length) {
 				index = 0;
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
 		}
 	}

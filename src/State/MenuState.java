@@ -1,32 +1,46 @@
-package State;
+package state;
 
 import java.awt.Desktop;
 import java.awt.Graphics;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.security.PublicKey;
-import Main.Handler;
+
+import entity.LizardEnemy;
 import gfx.Assets;
+import main.Handler;
 import ui.ClickListener;
 import ui.UIImageButton;
 import ui.UIManager;
+import utils.AudioClip;
+import utils.AudioPlayer;
 
-public class MenuState extends State {
+public class MenuState extends State { 
+	
+	public static int mode ;
 	
 	private UIManager uiManager;
 	//public static UIManager uiManager;
+	public static AudioClip map1Music = new AudioClip("Map1Music.wav");
+	public AudioClip menuMusic = new AudioClip("MenuMusic.wav");
 	
 	public MenuState(Handler handler) {
 		super(handler);
 		uiManager = new UIManager(handler);
 		handler.getMouseManager().setUIManager(uiManager);
 		
+		AudioPlayer.playSound(menuMusic);																		//phat nhac menu
+		
 		uiManager.addObject(new UIImageButton(460, 470, 360, 70, Assets.easy, new ClickListener() {				//tao nut easy
 			@Override
 			public void onClick() {
 				State.setState(handler.getGame().gameState);
 				handler.getMouseManager().setUIManager(null);
+				AudioPlayer.stopSound(menuMusic);
+				AudioPlayer.playSound(map1Music);																//phat nhac map1
+				mode = 1;
+				
+				LizardEnemy.lizardHelath = 50;
 			}
 		}));
 		
@@ -38,8 +52,17 @@ public class MenuState extends State {
 				//handler.getMouseManager().setUIManager(null);
 				State.setState(handler.getGame().gameState);
 				handler.getMouseManager().setUIManager(null);
+				AudioPlayer.stopSound(menuMusic);
+				AudioPlayer.playSound(map1Music);
+				mode = 2;
+				
+				LizardEnemy.lizardHelath = 100;
 			}
 		}));
+		
+		if(handler.getGame().q == 1) {
+			AudioPlayer.stopSound(map1Music);
+		}
 		
 		uiManager.addObject(new UIImageButton(1200, 600, 45, 45, Assets.settings, new ClickListener() {			//tao nut settings
 			@Override
@@ -54,7 +77,7 @@ public class MenuState extends State {
 			}
 		}));
 		
-		//uiManager.addObject(new UIImageButton(1200, 10, 45, 45, Assets.share, new ClickListener() {				//tao nut share
+		//uiManager.addObject(new UIImageButton(1200, 10, 45, 45, Assets.share, new ClickListener() {			//tao nut share
 
 		uiManager.addObject(new UIImageButton(1200, 10, 45, 45, Assets.github, new ClickListener() {			//tao nut github
 
@@ -95,6 +118,7 @@ public class MenuState extends State {
 				}
 			}
 		}));
+		
 	}
 	
 	@Override
@@ -109,13 +133,14 @@ public class MenuState extends State {
 	public void render(Graphics g) {
 		j++;
 		if(bgX == 0)															//background chuyen dong
-			g.drawImage(Assets.background, 0, -10, null);
+			g.drawImage(Assets.background, bgX, -10, null);
 		else if(j % 10 == 0) 
 			g.drawImage(Assets.background, bgX++, -10, null);
 		else 
 			g.drawImage(Assets.background, bgX, -10, null);
 		
-		g.drawImage(Assets.playBackground, 385, 360, 500, 320, null);			//render o PLAY
+		g.drawImage(Assets.playBackground, 385, 375, 500, 320, null);			//render o PLAY
 		uiManager.render(g);													//render cac nut
 	}
+	
 }

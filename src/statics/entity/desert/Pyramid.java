@@ -3,9 +3,9 @@ package statics.entity.desert;
 import java.awt.Graphics;
 import java.awt.image.renderable.RenderableImage;
 
-import Entity.StaticEntity;
-import Main.Handler;
+import entity.StaticEntity;
 import gfx.Assets;
+import main.Handler;
 
 public class Pyramid extends StaticEntity{
 	public Pyramid(Handler handler, float x, float y) {

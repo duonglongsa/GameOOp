@@ -2,18 +2,18 @@ package statics.entity.desert;
 
 import java.awt.Graphics;
 
-import Entity.StaticEntity;
-import Main.Handler;
+import entity.StaticEntity;
 import gfx.Assets;
+import main.Handler;
 
 public class Decor7 extends StaticEntity{
 	public Decor7(Handler handler, float x, float y) {
 		super(handler, x, y, 67, 70);
 		
 		bounds.x = 17;
-		bounds.y = 30;
-		bounds.width = 45;
-		bounds.height = 30;
+		bounds.y = 40;
+		bounds.width = 38;
+		bounds.height = 20;
 	}
 	
 	@Override

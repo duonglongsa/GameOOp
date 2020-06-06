@@ -2,9 +2,9 @@ package statics.entity.desert;
 
 import java.awt.Graphics;
 
-import Entity.StaticEntity;
-import Main.Handler;
+import entity.StaticEntity;
 import gfx.Assets;
+import main.Handler;
 
 public class BuildingDesert3 extends StaticEntity{
 	public BuildingDesert3(Handler handler, float x, float y) {
