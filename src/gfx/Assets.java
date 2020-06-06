@@ -281,17 +281,15 @@ public class Assets {
 		
 		//portal
 		SpriteSheet portal = new SpriteSheet(ImageLoader.loadImage("/portal/portal.png"));
-		portal_open = new BufferedImage[8];
+		portal_open = new BufferedImage[20];
 		for (int i = 0; i < 8; i++) {
-			portal_open[i] = portal.crop(width * i, height * 0, width, width);
+			portal_open[i + 8] = portal.crop(width * i, height * 0, width, width);
 		}
-		portal_apr = new BufferedImage[8];
 		for (int i = 0; i < 8; i++) {
 			portal_open[i] = portal.crop(width * i, height * 1, width, width);
 		}
-		portal_disapr = new BufferedImage[4];
-		for (int i = 0; i < 8; i++) {
-			portal_open[i] = portal.crop(width * i, height * 2, width, width);
+		for (int i = 0; i < 4; i++) {
+			portal_open[i + 16] = portal.crop(width * i, height * 2, width, width);
 		}
 
 		// Desert Tile

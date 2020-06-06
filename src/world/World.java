@@ -8,6 +8,7 @@ import javax.xml.crypto.dsig.keyinfo.X509Data;
 import Entity.EntityManager;
 import Entity.MedusaBullet;
 import Entity.Player;
+import statics.entity.wind.Portal;
 import Entity.lizardEnemy;
 import Entity.medusaEnemy;
 import Main.Game;
@@ -68,6 +69,7 @@ public class World {
 	public static NPCJeweler npcJeweler;
 	public static medusaEnemy medusaEnemy,medusaEnemy2;
 	public static MedusaBullet medusaBullet,medusaBullet2;
+	public static Portal portal;
 
 	public static void addStaticEntityDesert(Handler handler, EntityManager entityManager) {
 		
@@ -146,6 +148,10 @@ public class World {
 
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
 
+		//portal
+		portal = new Portal(handler, 900, 400);
+		entityManager.addEntity(portal);
+		
 		// NPC
 		entityManager.addEntity(new NPCJeweler(handler, 800, 350));
 		entityManager.addEntity(new NPCJewelerTalk(handler, 250, 400));
@@ -323,10 +329,15 @@ public class World {
 		return medusaEnemy;
 	}
 
+	public static Portal getPortal() {
+		return portal;
+	}
+
 //	public lizardEnemy getLizardEnemy() {
 //		return lizardEnemy;
 //	}
 //	
+	
 	
 
 }
