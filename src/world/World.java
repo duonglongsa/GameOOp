@@ -67,8 +67,11 @@ public class World {
 	private EntityManager entityManager;
 	public static NPCJeweler npcJeweler;
 	public static MedusaEnemy medusaEnemy,medusaEnemy2;
-
 	public static MedusaBullet medusaBullet,medusaBullet2;
+	
+	public static LizardEnemy lizardEnemy;
+	private static int count = 0;
+	
 	public static Portal portal;
 
 	public static void addStaticEntityDesert(Handler handler, EntityManager entityManager) {
@@ -149,9 +152,11 @@ public class World {
 
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
 
+		//init lizard
+		lizardEnemy = new LizardEnemy(handler, 1000, 500);
+		
 		//portal
-		portal = new Portal(handler, 900, 400);
-		entityManager.addEntity(portal);
+		portal = new Portal(handler, 1100, 500);
 		
 		// NPC
 		entityManager.addEntity(new NPCJeweler(handler, 800, 350));
@@ -247,12 +252,17 @@ public class World {
 	public void tick() {
 		entityManager.tick();
 		
-//		//demo lizard
-//		int count = 0;
-//		if(NPCJewelerTalk.index == 5 && count < 1) {
-//			entityManager.addEntity(lizardEnemy);
-//			count += 1;
-//		}
+		//demo lizard
+		if(NPCJewelerTalk.index == 5 && count < 1) {
+			entityManager.addEntity(lizardEnemy);
+			count ++;
+		}
+		
+		//portal
+		if(NPCJewelerTalk.index == 7 && count == 1 && lizardEnemy.isActive() == false) {
+			entityManager.addEntity(portal);
+			count ++;
+		}
 	}
 
 	public void render(Graphics g) {
@@ -333,5 +343,8 @@ public class World {
 		return portal;
 	}
 
+	public static LizardEnemy getLizardEnemy() {
+		return lizardEnemy;
+	}
 
 }

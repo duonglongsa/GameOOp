@@ -162,7 +162,7 @@ public class Enemy extends Creature {
 			if (e.equals(this)) {
 				continue;
 			} else if (e.equals(handler.getWorld().getEntityManager().getPlayer())) {
-				if (e.getCollisionBounds(0, 0).intersects(ar)) {
+				if (e.getCollisionBounds(3, 0).intersects(ar)) {
 					e.hurt((int) this.getAtkDame());
 					e.setHurt(true);
 					if (this.getHealth() < 10) {
@@ -182,20 +182,24 @@ public class Enemy extends Creature {
 		if (isLeftPlayer() || isRightPlayer()) {
 			return;
 		} else if (this.getY() < spawnY) {
-			this.y += this.speed;
+			this.yMove = this.speed;
+			super.moveY();
 			this.y = (int) this.getY();
 		} else if (this.getY() > spawnY) { // back to spawn position
-			this.y -= this.speed;
+			this.yMove = - this.speed;
+			super.moveY();
 			this.y = (int) this.getY();
 		} else if (direction == 3) {
 			if (this.getX() < this.spawnX + 100) {
-				this.x += this.speed;
+				this.xMove = this.speed;
+				super.moveX();
 			} else {
 				direction = 2;
 			}
 		} else if (direction == 2) {
 			if (this.getX() > this.spawnX - 100) {
-				this.x -= this.speed;
+				this.xMove = - this.speed;
+				super.moveX();
 			} else {
 				direction = 3;
 			}

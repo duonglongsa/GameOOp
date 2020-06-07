@@ -19,9 +19,9 @@ public class AudioPlayer {
 					clip = AudioSystem.getClip();
 					clip.open(stream);
 					clip.start();
-					if(sound.path == "C:/Users/ACER/eclipse-workspace/2DGame/res/audio/Map1Music.wav" ||
-					   sound.path == "C:/Users/ACER/eclipse-workspace/2DGame/res/audio/Map2Music.wav" ||
-					   sound.path == "C:/Users/ACER/eclipse-workspace/2DGame/res/audio/MenuMusic.wav") {
+					if(sound.path == "/audio/Map1Music.wav" ||
+					   sound.path == "/audio/Map2Music.wav" ||
+					   sound.path == "/audio/MenuMusic.wav") {
 					clip.loop(Clip.LOOP_CONTINUOUSLY);
 					}
 

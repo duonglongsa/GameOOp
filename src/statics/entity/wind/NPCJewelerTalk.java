@@ -10,6 +10,7 @@ import main.Handler;
 public class NPCJewelerTalk extends StaticEntity {
 
 	public static int index;
+	private static int timer = 0;
 
 	public NPCJewelerTalk(Handler handler, float x, float y) {
 		super(handler, x, y, 50, 1000);
@@ -18,25 +19,19 @@ public class NPCJewelerTalk extends StaticEntity {
 
 	@Override
 	public void tick() {
-		if (index < 7) {
-			if(index == 5) {
-				if(handler.getKeyManager().attack == true ) {
-					index += 1;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			} else if (handler.getKeyManager().talk == true) {
-				index += 1;
+		if (timer < 300) {
+			timer++;
+		} else {
+			if (handler.getKeyManager().talk == true && index < 7) {
+
+				index++;
 				try {
-					Thread.sleep(100);
+					Thread.sleep(300);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+
 			}
 		}
 
@@ -44,7 +39,11 @@ public class NPCJewelerTalk extends StaticEntity {
 
 	@Override
 	public void render(Graphics g) {
-		if(index < 7) {
+		if (index == 6) {
+			if (handler.getWorld().getLizardEnemy().isActive() == false) {
+				g.drawImage(Assets.npcJeweler_talk[index], (int) x, (int) y, null);
+			}
+		} else if (index < 7 && timer == 300) {
 			g.drawImage(Assets.npcJeweler_talk[index], (int) x, (int) y, null);
 		}
 	}
