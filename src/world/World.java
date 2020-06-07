@@ -157,7 +157,6 @@ public class World {
 		
 		//portal
 		portal = new Portal(handler, 1100, 500);
-		entityManager.addEntity(portal);
 		
 		// NPC
 		entityManager.addEntity(new NPCJeweler(handler, 800, 350));
