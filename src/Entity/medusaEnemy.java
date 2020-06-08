@@ -26,8 +26,8 @@ public class MedusaEnemy extends Enemy{
 		animRight = new Animation(180, Assets.medusa_right, handler);
 		animLeft = new Animation(180, Assets.medusa_left, handler);
 		
-		aRight = new Animation(180, Assets.medusa_attack_right, handler);
-		aLeft = new Animation(180, Assets.medusa_attack_left, handler);
+		aRight = new Animation(90, Assets.medusa_attack_right, handler);
+		aLeft = new Animation(90, Assets.medusa_attack_left, handler);
 		
 		hurtRight = new Animation(180, Assets.medusa_hurt_right, handler);
 		hurtLeft = new Animation(180, Assets.medusa_hurt_left, handler);

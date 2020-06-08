@@ -139,11 +139,11 @@ public class World {
 		// enemy
 
 		
-		medusaEnemy = new MedusaEnemy(handler, 600, 500, 128, 128);
+		medusaEnemy = new MedusaEnemy(handler, 500, 500, 512, 512);
 
 		entityManager.addEntity(medusaEnemy);
 		
-		medusaBullet = new MedusaBullet(handler, 600, 500, 20, 20);
+		medusaBullet = new MedusaBullet(handler, 600, 500, 40, 40);
 		entityManager.addEntity(medusaBullet);
 		
 		entityManager.addEntity(new LizardEnemy(handler, 200, 200));
@@ -156,7 +156,7 @@ public class World {
 		lizardEnemy = new LizardEnemy(handler, 1000, 500);
 		
 		//portal
-		portal = new Portal(handler, 1100, 500);
+		portal = new Portal(handler, 1100, 450);
 		
 		// NPC
 		entityManager.addEntity(new NPCJeweler(handler, 800, 350));

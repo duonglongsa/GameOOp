@@ -209,7 +209,7 @@ public class Enemy extends Creature {
 	public void moveAfterPlayer() {
 
 		if (isNearPlayer(this.getAtkRange(),
-				handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0))) {
+				handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(10, 0))) {
 			if (!isNearPlayer(this.getCollisionBounds(0, 0),
 					handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0))) {
 
