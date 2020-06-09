@@ -77,12 +77,14 @@ public class Game implements Runnable {
 			State.setState(menuState);
 			gameState = new GameState(handler, path);
 		}
+
 		else if(q == 1) {
 			gameState = new GameState(handler, path);
 			State.setState(gameState);
 			handler.getMouseManager().setUIManager(null);
 			AudioClip map2Music = new AudioClip("Map2Music.wav");
-			if(chuyenMap <1) {
+			if(chuyenMap <1 ) {
+				AudioPlayer.stopSound(MenuState.map1Music);
 				AudioPlayer.playSound(map2Music);								//phat nhac map2
 			}			
 		}

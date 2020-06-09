@@ -144,6 +144,7 @@ public class MenuState extends State {
 		else 
 			g.drawImage(Assets.background, bgX, -10, null);
 		
+		g.drawImage(Assets.gameLogo, 310, 100, null);
 		g.drawImage(Assets.playBackground, 385, 375, 500, 320, null);			//render o PLAY
 		uiManager.render(g);													//render cac nut
 	}

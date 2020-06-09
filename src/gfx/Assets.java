@@ -54,7 +54,7 @@ public class Assets {
 
 	// UI
 	public static BufferedImage[] easy, hard, settings, exit, github, facebook, google, share, thanks;
-	public static BufferedImage background, playBackground, youwin, ninja;
+	public static BufferedImage background, playBackground, youwin, ninja, gameLogo;
 
 	// portal
 	public static BufferedImage[] portal_open, portal_apr, portal_disapr;
@@ -81,6 +81,7 @@ public class Assets {
 		// menu state
 		background = ImageLoader.loadImage("/GUI/background.jpg");
 		playBackground = ImageLoader.loadImage("/GUI/playBackground.png");
+		gameLogo = ImageLoader.loadImage("/GUI/gameLogo.png");
 
 		easy = new BufferedImage[2];
 		easy[0] = ImageLoader.loadImage("/GUI/easy0.png");
