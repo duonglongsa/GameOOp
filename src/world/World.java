@@ -139,14 +139,14 @@ public class World {
 		// enemy
 
 		
-		medusaEnemy = new MedusaEnemy(handler, 600, 500, 128, 128);
+		medusaEnemy = new MedusaEnemy(handler, 500, 500, 128, 128);
 
 		entityManager.addEntity(medusaEnemy);
 		
 		medusaBullet = new MedusaBullet(handler, 600, 500, 20, 20);
 		entityManager.addEntity(medusaBullet);
 		
-		entityManager.addEntity(new LizardEnemy(handler, 200, 200));
+		entityManager.addEntity(new LizardEnemy(handler, 200, 300));
 		entityManager.addEntity(new LizardEnemy(handler, 800, 300));
 	}
 

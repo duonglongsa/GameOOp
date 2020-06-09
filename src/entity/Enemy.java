@@ -75,7 +75,7 @@ public class Enemy extends Creature {
 	@Override
 	public void render(Graphics g) {
 
-		g.drawRect((int) (x - 80), (int) (y - 50), 200, 200);
+		//g.drawRect((int) (x - 80), (int) (y - 50), 200, 200);
 
 		if (direction == 1 || direction == 3) { // facing up or right
 			if (isLeftPlayer()) {

@@ -49,7 +49,7 @@ public class MedusaEnemy extends Enemy{
 	}
 	
 	public void render(Graphics g) {
-		g.drawRect((int) (x - 80), (int) (y - 50), 200, 200);
+		//g.drawRect((int) (x - 80), (int) (y - 50), 200, 200);
 		
 		if (direction == 1 || direction == 3) { // facing up or right
 			if(this.atkRange.intersects(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0, 0))) {

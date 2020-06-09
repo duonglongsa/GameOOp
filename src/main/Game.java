@@ -32,7 +32,7 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 	
-	public int q = 0;
+	public static int q = 0;
 	
 	public static int chuyenMap = 0;
 	//State
@@ -72,23 +72,21 @@ public class Game implements Runnable {
 		
 		gameCamera = new GameCamera(handler, 0, 0);
 										
-
-		if(q == 1) {
-			AudioPlayer.stopSound(MenuState.map1Music);
-			gameState = new GameState(handler, path);
-			State.setState(gameState);
-			handler.getMouseManager().setUIManager(null);
-			AudioClip map2Music = new AudioClip("Map2Music.wav");
-			if(chuyenMap <1 ) {
-				AudioPlayer.playSound(map2Music);								//phat nhac map2
-			}			
-		}
-		else if (q == 0){
+		if (q == 0){
 			menuState = new MenuState(handler);
 			State.setState(menuState);
 			gameState = new GameState(handler, path);
 		}
-		else {
+		else if(q == 1) {
+			gameState = new GameState(handler, path);
+			State.setState(gameState);
+			handler.getMouseManager().setUIManager(null);
+			AudioClip map2Music = new AudioClip("Map2Music.wav");
+			if(chuyenMap <1) {
+				AudioPlayer.playSound(map2Music);								//phat nhac map2
+			}			
+		}
+		else if (q == 2){
 			gameWinState = new GameWinState(handler);
 			State.setState(gameWinState);
 		}

@@ -24,7 +24,11 @@ public class LizardEnemy extends Enemy {
 		bounds.y = 22;
 		bounds.width = 32;
 		bounds.height = 35;
+		
+		
 		this.atkDame = 4;
+		this.speed = 1.5f;
+		health = 30;
 		
 		
 		// Animations
@@ -52,6 +56,7 @@ public class LizardEnemy extends Enemy {
 		}
 
 	}
+	
 	
 	@Override
 	public void die() {

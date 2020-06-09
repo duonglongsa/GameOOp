@@ -8,6 +8,7 @@ import java.net.URISyntaxException;
 import entity.LizardEnemy;
 
 import gfx.Assets;
+import main.Game;
 import main.Handler;
 import ui.ClickListener;
 import ui.UIImageButton;
@@ -43,6 +44,7 @@ public class MenuState extends State {
 				
 				LizardEnemy.lizardHelath = 50;
 
+				
 			}
 		}));
 		
@@ -63,7 +65,7 @@ public class MenuState extends State {
 			}
 		}));
 		
-		if(handler.getGame().q == 1) {
+		if(Game.q == 1) {
 			AudioPlayer.stopSound(map1Music);
 		}
 		

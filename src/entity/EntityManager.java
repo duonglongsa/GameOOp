@@ -49,10 +49,10 @@ public class EntityManager {
 	public void render(Graphics g) {
 		for(Entity e : entities) {
 			e.render(g);
-			g.setColor(Color.blue);
-			g.drawRect(e.getCollisionBounds(0, 0).x, e.getCollisionBounds(0, 0).y, e.getCollisionBounds(0, 0).width, e.getCollisionBounds(0, 0).height  );
-		
-			
+//			g.setColor(Color.blue);
+//			g.drawRect(e.getCollisionBounds(0, 0).x, e.getCollisionBounds(0, 0).y, e.getCollisionBounds(0, 0).width, e.getCollisionBounds(0, 0).height  );
+//		
+//			
 		}
 	}
 
