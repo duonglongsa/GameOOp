@@ -69,7 +69,7 @@ public class World {
 	public static MedusaEnemy medusaEnemy,medusaEnemy2;
 	public static MedusaBullet medusaBullet,medusaBullet2;
 	
-	public static LizardEnemy lizardEnemy;
+	public static LizardEnemy[] lizardEnemy = new LizardEnemy[3];
 	private static int count = 0;
 	
 	public static Portal portal;
@@ -138,25 +138,33 @@ public class World {
 
 		// enemy
 
-		
+
 		medusaEnemy = new MedusaEnemy(handler, 500, 500, 512, 512);
 
 		entityManager.addEntity(medusaEnemy);
 		
 		medusaBullet = new MedusaBullet(handler, 600, 500, 40, 40);
+
 		entityManager.addEntity(medusaBullet);
 		
-		entityManager.addEntity(new LizardEnemy(handler, 200, 200));
-		entityManager.addEntity(new LizardEnemy(handler, 800, 300));
+		lizardEnemy[1] = new LizardEnemy(handler, 200, 200);
+		entityManager.addEntity(lizardEnemy[1]);
+		
+
+		lizardEnemy[2] = new LizardEnemy(handler, 800, 300);
+		entityManager.addEntity(lizardEnemy[2]);
+		
 	}
 
 	public static void addStaticEntityWind(Handler handler, EntityManager entityManager) {
 
 		//init lizard
-		lizardEnemy = new LizardEnemy(handler, 1000, 500);
+		lizardEnemy[0] = new LizardEnemy(handler, 1000, 500);
 		
 		//portal
+
 		portal = new Portal(handler, 1100, 450);
+
 		
 		// NPC
 		entityManager.addEntity(new NPCJeweler(handler, 800, 350));
@@ -254,12 +262,12 @@ public class World {
 		
 		//demo lizard
 		if(NPCJewelerTalk.index == 5 && count < 1) {
-			entityManager.addEntity(lizardEnemy);
+			entityManager.addEntity(lizardEnemy[0]);
 			count ++;
 		}
 		
 		//portal
-		if(NPCJewelerTalk.index == 7 && count == 1 && lizardEnemy.isActive() == false) {
+		if(NPCJewelerTalk.index == 7 && count == 1 && lizardEnemy[0].isActive() == false) {
 			entityManager.addEntity(portal);
 			count ++;
 		}
@@ -344,7 +352,7 @@ public class World {
 	}
 
 	public static LizardEnemy getLizardEnemy() {
-		return lizardEnemy;
+		return lizardEnemy[0];
 	}
 
 }

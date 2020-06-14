@@ -53,8 +53,10 @@ public class Assets {
 	public static BufferedImage medusa_bullet;
 
 	// UI
-	public static BufferedImage[] easy, hard, settings, exit, github, facebook, google, share;
-	public static BufferedImage background, playBackground;
+
+	public static BufferedImage[] easy, hard, settings, exit, github, facebook, google, share, thanks;
+	public static BufferedImage background, playBackground, youwin, ninja;
+
 
 	// portal
 	public static BufferedImage[] portal_open, portal_apr, portal_disapr;
@@ -77,8 +79,10 @@ public class Assets {
 		npcJeweler_talk[5] = ImageLoader.loadImage("/npc/jeweler_talk06.png");
 		npcJeweler_talk[6] = ImageLoader.loadImage("/npc/jeweler_talk07.png");
 
-		// menu state
+
 		// UI
+		// menu state
+
 		background = ImageLoader.loadImage("/GUI/background.jpg");
 		playBackground = ImageLoader.loadImage("/GUI/playBackground.png");
 
@@ -113,6 +117,15 @@ public class Assets {
 		google = new BufferedImage[2];
 		google[0] = ImageLoader.loadImage("/GUI/google0.png");
 		google[1] = ImageLoader.loadImage("/GUI/google1.png");
+
+		//win game state
+		youwin = ImageLoader.loadImage("/GUI/youwin.png");
+		ninja = ImageLoader.loadImage("/GUI/ninja2.png");
+		
+		thanks = new BufferedImage[2];
+		thanks[0] = ImageLoader.loadImage("/GUI/thanks0.png");
+		thanks[1] = ImageLoader.loadImage("/GUI/thanks1.png");
+
 
 		// player
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/player/rouge.png"));
