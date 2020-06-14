@@ -8,6 +8,7 @@ import java.net.URISyntaxException;
 import entity.LizardEnemy;
 
 import gfx.Assets;
+import main.Game;
 import main.Handler;
 import ui.ClickListener;
 import ui.UIImageButton;
@@ -43,6 +44,7 @@ public class MenuState extends State {
 				
 				LizardEnemy.lizardHelath = 50;
 
+				
 			}
 		}));
 		
@@ -63,7 +65,7 @@ public class MenuState extends State {
 			}
 		}));
 		
-		if(handler.getGame().q == 1) {
+		if(Game.q == 1) {
 			AudioPlayer.stopSound(map1Music);
 		}
 		
@@ -142,6 +144,7 @@ public class MenuState extends State {
 		else 
 			g.drawImage(Assets.background, bgX, -10, null);
 		
+		g.drawImage(Assets.gameLogo, 310, 100, null);
 		g.drawImage(Assets.playBackground, 385, 375, 500, 320, null);			//render o PLAY
 		uiManager.render(g);													//render cac nut
 	}

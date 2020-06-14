@@ -9,11 +9,9 @@ public class Main {
 
 		
 		Game game = new Game("RPG Game", 1280, 736);
-
+	
 		game.start();
-		
-		
-		
+
 	}
 
 }

@@ -47,7 +47,6 @@ public class Enemy extends Creature {
 		this.spawnY = y;
 		this.spawnX = x;
 		
-		totalHealth = this.health;
 	}
 
 	@Override

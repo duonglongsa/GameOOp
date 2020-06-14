@@ -138,8 +138,8 @@ public class World {
 
 		// enemy
 
-
 		medusaEnemy = new MedusaEnemy(handler, 500, 500, 512, 512);
+
 
 		entityManager.addEntity(medusaEnemy);
 		

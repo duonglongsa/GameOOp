@@ -36,6 +36,8 @@ public class MedusaEnemy extends Enemy {
 		dieRight = new Animation(180, Assets.medusa_die_right, handler);
 		dieLeft = new Animation(180, Assets.medusa_die_left, handler);
 
+		
+		this.health = 180;
 		this.totalHealth = this.health;
 
 	}

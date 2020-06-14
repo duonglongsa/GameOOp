@@ -24,8 +24,13 @@ public class LizardEnemy extends Enemy {
 		bounds.y = 22;
 		bounds.width = 32;
 		bounds.height = 35;
+		
+		
 		this.atkDame = 4;
-
+		this.speed = 1.5f;
+		this.health = 30;
+		this.totalHealth = this.health;
+		
 		// Animations
 		animLeft = new Animation(180, Assets.lizard_left, handler);
 		animRight = new Animation(180, Assets.lizard_right, handler);
@@ -52,7 +57,6 @@ public class LizardEnemy extends Enemy {
 
 	}
 
-	@Override
 	public void die() {
 		// TODO Auto-generated method stub
 

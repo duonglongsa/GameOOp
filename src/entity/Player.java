@@ -50,8 +50,8 @@ public class Player extends Creature {
 		animRight = new Animation(180, Assets.player_right, handler);
 
 		// attack animations
-		aLeft = new Animation(180, Assets.attack_left, handler);
-		aRight = new Animation(180, Assets.attack_right, handler);
+		aLeft = new Animation(120, Assets.attack_left, handler);
+		aRight = new Animation(120, Assets.attack_right, handler);
 
 		extraLeft = new Animation(90, Assets.extra_left, handler);
 		extraRight = new Animation(90, Assets.extra_right, handler);

@@ -17,7 +17,7 @@ public class MedusaBullet extends Creature{
 
 		this.active = false;
 		
-		this.speed = 3.0f;
+		this.speed = 2.0f;
 	}
 
 	@Override
